@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import type { JSX } from "react"
-import styles from "./index.module.scss"
+import styles from "./styles/index.module.scss"
 import { useTranslation } from "react-i18next"
 import type { WebApp } from "@twa-dev/types"
 
@@ -15,7 +15,7 @@ export const StorePage = (): JSX.Element => {
     tg.onEvent("themeChanged", () => {
       setTheme(tg.colorScheme)
     })
-    setTg(tg);
+    setTg(tg)
   }, [])
 
   return (
@@ -24,7 +24,7 @@ export const StorePage = (): JSX.Element => {
       <div>
         Current Theme : <strong>{JSON.stringify(theme)}</strong>
       </div>
-      <div style={{ whiteSpace: 'wrap', overflowWrap: 'break-word'}}>
+      <div style={{ whiteSpace: "wrap", overflowWrap: "break-word" }}>
         Current Telegram : <strong>{JSON.stringify(tg)}</strong>
       </div>
       <div className={styles.links}>

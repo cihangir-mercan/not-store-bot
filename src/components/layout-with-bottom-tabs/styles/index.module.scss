@@ -1,6 +1,9 @@
+$bottom-tab-height: 60px;
+
 .appContainer {
   display: flex;
   flex-direction: column;
+  padding-bottom: $bottom-tab-height;
 }
 
 .content {
@@ -9,10 +12,15 @@
 }
 
 .bottomTabbar {
-  display: flex;
-  height: 60px;
-  border-top: 1px solid #ddd;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: $bottom-tab-height;
+  z-index: 55555;
   background: #fff;
+  box-shadow: 0 -2px 8px 0 rgba(0, 0, 0, .1);
+  display: flex;
 
   .tab {
     flex: 1;

@@ -1,6 +1,6 @@
 import type { JSX } from "react"
 import { NavLink, Outlet } from "react-router"
-import styles from "./index.module.scss"
+import styles from "./styles/index.module.scss"
 import clsx from "clsx"
 
 const getTabClasses = (isActive: boolean): string =>
@@ -8,10 +8,9 @@ const getTabClasses = (isActive: boolean): string =>
 
 export const LayoutWithBottomTabs = (): JSX.Element => {
 
-  const tg = window.Telegram.WebApp;
 
   return (
-    <div className={styles.appContainer} style={{height: `${tg.viewportStableHeight.toString()}px`}}>
+    <div className={styles.appContainer}>
       {/* this is where the active page will render */}
       <div className={styles.content}>
         <Outlet />
