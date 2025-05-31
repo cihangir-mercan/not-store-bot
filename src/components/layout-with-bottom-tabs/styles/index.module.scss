@@ -4,7 +4,6 @@ $bottom-tabbar-height: 60px;
   height: 100%;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
 
   :global(.light) & {
     background-color: #ffffff;
