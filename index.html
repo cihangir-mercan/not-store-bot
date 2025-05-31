@@ -10,11 +10,14 @@
     <script>
       (function () {
         if (window.Telegram && window.Telegram.WebApp) {
-          const currentTheme = window.Telegram.WebApp.colorScheme;
+          const tgWebApp = window.Telegram.WebApp;
+          const currentTheme = tgWebApp.colorScheme;
           document.documentElement.classList.add(currentTheme);
+          tgWebApp.expand();
+          tgWebApp.requestFullscreen();
 
-          window.Telegram.WebApp.onEvent("themeChanged", function () {
-            const newTheme = window.Telegram.WebApp.colorScheme;
+          tgWebApp.onEvent("themeChanged", function () {
+            const newTheme = tgWebApp.colorScheme;
             document.documentElement.classList.remove("light", "dark");
             document.documentElement.classList.add(newTheme);
           });
