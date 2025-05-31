@@ -5,8 +5,9 @@ import { Provider } from "react-redux"
 import { App } from "./App"
 import { store } from "./app/store"
 import "./index.scss"
-import type { Telegram } from "@twa-dev/types"
 import "./i18n"
+import type { Telegram } from "@twa-dev/types"
+
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
