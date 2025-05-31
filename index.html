@@ -13,9 +13,8 @@
           const tgWebApp = window.Telegram.WebApp;
           const currentTheme = tgWebApp.colorScheme;
           document.documentElement.classList.add(currentTheme);
-          tgWebApp.expand();
-          tgWebApp.requestFullscreen();
 
+          tgWebApp.disableVerticalSwipes();
           tgWebApp.onEvent("themeChanged", function () {
             const newTheme = tgWebApp.colorScheme;
             document.documentElement.classList.remove("light", "dark");
