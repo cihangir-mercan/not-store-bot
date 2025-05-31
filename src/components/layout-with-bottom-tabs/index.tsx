@@ -8,6 +8,8 @@ const getTabClasses = (isActive: boolean): string =>
 
 export const LayoutWithBottomTabs = (): JSX.Element => {
 
+  const tg = window.Telegram.WebApp;
+  const height = 60 + tg.safeAreaInset.bottom;
 
   return (
     <div className={styles.appContainer}>
@@ -19,6 +21,7 @@ export const LayoutWithBottomTabs = (): JSX.Element => {
       {/* bottom tab bar: always visible */}
       <nav
         className={styles.bottomTabbar}
+        style={{ height: `${height.toString()}px` }}
       >
         <NavLink
           to="/"
