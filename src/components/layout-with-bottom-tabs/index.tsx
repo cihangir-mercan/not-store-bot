@@ -1,13 +1,16 @@
 import type { JSX } from "react"
 import { NavLink, Outlet } from "react-router"
 import styles from "./index.module.scss"
+import clsx from "clsx"
 
-const getTabClasses: (isActive: boolean) => string = isActive => {
-  // If active, return both "tab" and "tabActive"; otherwise just "tab"
-  return isActive ? `${styles.tab} ${styles.tabActive}` : styles.tab
-}
+const getTabClasses = (isActive: boolean): string =>
+  clsx(styles.tab, isActive && styles.tabActive)
 
 export const LayoutWithBottomTabs = (): JSX.Element => {
+
+  const tg = window.Telegram.WebApp;
+  const height = 60 + tg.safeAreaInset.bottom;
+
   return (
     <div className={styles.appContainer}>
       {/* this is where the active page will render */}
@@ -16,7 +19,10 @@ export const LayoutWithBottomTabs = (): JSX.Element => {
       </div>
 
       {/* bottom tab bar: always visible */}
-      <nav className={styles.bottomTabbar}>
+      <nav
+        className={styles.bottomTabbar}
+        style={{ height: `${height.toString()}px` }}
+      >
         <NavLink
           to="/"
           className={({ isActive }) => getTabClasses(isActive)}

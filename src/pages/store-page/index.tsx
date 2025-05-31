@@ -24,7 +24,7 @@ export const StorePage = (): JSX.Element => {
       <div>
         Current Theme : <strong>{JSON.stringify(theme)}</strong>
       </div>
-      <div>
+      <div style={{ whiteSpace: 'wrap', overflowWrap: 'break-word'}}>
         Current Telegram : <strong>{JSON.stringify(tg)}</strong>
       </div>
       <div className={styles.links}>
