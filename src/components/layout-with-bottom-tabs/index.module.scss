@@ -1,7 +1,8 @@
 .appContainer {
+  height: 100%;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  padding-bottom: env(safe-area-inset-bottom); // handles Telegram & iOS safe area
 }
 
 .content {
