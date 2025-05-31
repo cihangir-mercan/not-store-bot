@@ -21,6 +21,102 @@ export const StorePage = (): JSX.Element => {
       <div>
         Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
       </div>
+      <div>
+        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
+      </div>
+      <div>
+        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
+      </div>
+      <div>
+        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
+      </div>
+      <div>
+        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
+      </div>
+      <div>
+        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
+      </div>
+      <div>
+        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
+      </div>
+      <div>
+        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
+      </div>
+      <div>
+        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
+      </div>
+      <div>
+        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
+      </div>
+      <div>
+        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
+      </div>
+      <div>
+        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
+      </div>
+      <div>
+        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
+      </div>
+      <div>
+        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
+      </div>
+      <div>
+        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
+      </div>
+      <div>
+        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
+      </div>
+      <div>
+        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
+      </div>
+      <div>
+        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
+      </div>
+      <div>
+        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
+      </div>
+      <div>
+        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
+      </div>
+      <div>
+        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
+      </div>
+      <div>
+        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
+      </div>
+      <div>
+        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
+      </div>
+      <div>
+        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
+      </div>
+      <div>
+        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
+      </div>
+      <div>
+        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
+      </div>
+      <div>
+        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
+      </div>
+      <div>
+        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
+      </div>
+      <div>
+        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
+      </div>
+      <div>
+        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
+      </div>
+      <div>
+        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
+      </div>
+      <div>
+        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
+      </div>
+      <div>
+        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
+      </div>
       <div className={styles.links}>
         <span>Learn </span>
         <a
