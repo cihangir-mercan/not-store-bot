@@ -14,13 +14,12 @@ $bottom-tabbar-height: 60px;
 
 .bottomTabbar {
   position: fixed;
-  bottom: 0;
   left: 0;
   right: 0;
   height: $bottom-tabbar-height;
   z-index: 55555;
   background: #fff;
-  box-shadow: 0 -2px 8px 0 rgba(0, 0, 0, .1);
+  border-top: 1px solid #ddd;
   display: flex;
 
   .tab {

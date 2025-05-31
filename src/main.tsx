@@ -8,7 +8,6 @@ import "./index.scss"
 import "./i18n"
 import type { Telegram } from "@twa-dev/types"
 
-
 declare global {
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
   interface Window {
