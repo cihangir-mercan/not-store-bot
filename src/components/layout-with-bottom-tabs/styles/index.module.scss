@@ -3,7 +3,7 @@ $bottom-tab-height: 60px;
 .appContainer {
   display: flex;
   flex-direction: column;
-  padding-bottom: $bottom-tab-height;
+  height: var(--tg-viewport-height);
 }
 
 .content {
