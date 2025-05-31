@@ -19,27 +19,25 @@ export const LayoutWithBottomTabs = (): JSX.Element => {
       </div>
 
       {/* bottom tab bar: always visible */}
-      <div style={{ height: `${height.toString()}px` }}>
-        <nav className={styles.bottomTabbar}>
-          <NavLink
-            to="/"
-            className={({ isActive }) => getTabClasses(isActive)}
-            end
-          >
-            {/* replace with an icon if you like */}
-            <span>🏬</span>
-            <span className="label">Store</span>
-          </NavLink>
+      <nav className={styles.bottomTabbar} style={{ height: `${height.toString()}px` }}>
+        <NavLink
+          to="/"
+          className={({ isActive }) => getTabClasses(isActive)}
+          end
+        >
+          {/* replace with an icon if you like */}
+          <span>🏬</span>
+          <span className="label">Store</span>
+        </NavLink>
 
-          <NavLink
-            to="/user"
-            className={({ isActive }) => getTabClasses(isActive)}
-          >
-            <span>👤</span>
-            <span className={styles.label}>User</span>
-          </NavLink>
-        </nav>
-      </div>
+        <NavLink
+          to="/user"
+          className={({ isActive }) => getTabClasses(isActive)}
+        >
+          <span>👤</span>
+          <span className={styles.label}>User</span>
+        </NavLink>
+      </nav>
     </div>
   )
 }

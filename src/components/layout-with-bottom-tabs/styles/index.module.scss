@@ -1,4 +1,4 @@
-$bottom-tabbar-height: 60px;
+$bottom-tab-height: 60px;
 
 .appContainer {
   height: 100%;
@@ -14,7 +14,6 @@ $bottom-tabbar-height: 60px;
 .bottomTabbar {
   width: 100%;
   display: flex;
-  height: $bottom-tabbar-height;
   border-top: 1px solid #ddd;
   background: #fff;
 
@@ -26,6 +25,7 @@ $bottom-tabbar-height: 60px;
     justify-content: center;
     text-decoration: none;
     color: #555;
+    height: $bottom-tab-height;
 
     &.tabActive {
       color: #000; /* highlight the active tab */
