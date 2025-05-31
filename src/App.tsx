@@ -1,9 +1,8 @@
 import "./App.scss"
-import { Routes, Route } from "react-router";
+import { Routes, Route } from "react-router"
 import { StorePage } from "@pages/store-page"
 import { UserPage } from "@pages/user-page"
-import {LayoutWithBottomTabs} from "@components/layout-with-bottom-tabs";
-
+import { LayoutWithBottomTabs } from "@components/layout-with-bottom-tabs"
 
 export const App = () => (
   <Routes>

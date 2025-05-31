@@ -1,0 +1,9 @@
+{
+  "storePage": {
+    "title": "Welcome to the store page",
+    "subtitle": "Choose your favorites"
+  },
+  "userPage": {
+    "title": "Welcome to the user page"
+  }
+}

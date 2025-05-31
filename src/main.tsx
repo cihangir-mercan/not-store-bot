@@ -1,10 +1,19 @@
 import { StrictMode } from "react"
 import { createRoot } from "react-dom/client"
-import { BrowserRouter } from "react-router";
+import { BrowserRouter } from "react-router"
 import { Provider } from "react-redux"
 import { App } from "./App"
 import { store } from "./app/store"
 import "./index.scss"
+import type { Telegram } from "@twa-dev/types"
+import "./i18n"
+
+declare global {
+  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
+  interface Window {
+    Telegram: Telegram
+  }
+}
 
 const container = document.getElementById("root")
 

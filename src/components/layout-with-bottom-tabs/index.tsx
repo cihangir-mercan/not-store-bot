@@ -1,16 +1,13 @@
 import type { JSX } from "react"
 import { NavLink, Outlet } from "react-router"
-import styles from "./index.module.scss";
+import styles from "./index.module.scss"
 
-const getTabClasses: (isActive: boolean) => string = (isActive) => {
+const getTabClasses: (isActive: boolean) => string = isActive => {
   // If active, return both "tab" and "tabActive"; otherwise just "tab"
-  return isActive
-    ? `${styles.tab} ${styles.tabActive}`
-    : styles.tab
+  return isActive ? `${styles.tab} ${styles.tabActive}` : styles.tab
 }
 
 export const LayoutWithBottomTabs = (): JSX.Element => {
-
   return (
     <div className={styles.appContainer}>
       {/* this is where the active page will render */}
