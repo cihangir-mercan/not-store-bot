@@ -1,6 +1,7 @@
-$bottom-tab-height: 60px;
+$bottom-tabbar-height: 60px;
 
 .appContainer {
+  height: 100%;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -16,7 +17,7 @@ $bottom-tab-height: 60px;
   bottom: 0;
   left: 0;
   right: 0;
-  height: $bottom-tab-height;
+  height: $bottom-tabbar-height;
   z-index: 55555;
   background: #fff;
   box-shadow: 0 -2px 8px 0 rgba(0, 0, 0, .1);
