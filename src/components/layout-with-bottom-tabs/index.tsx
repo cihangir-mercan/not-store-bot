@@ -12,7 +12,7 @@ export const LayoutWithBottomTabs = (): JSX.Element => {
   const height = 60 + tg.safeAreaInset.bottom;
 
   return (
-    <div className={styles.appContainer}>
+    <div className={styles.appContainer} style={{height: `${tg.viewportStableHeight.toString()}px`}}>
       {/* this is where the active page will render */}
       <div className={styles.content}>
         <Outlet />
