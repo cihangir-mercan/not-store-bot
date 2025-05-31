@@ -5,7 +5,6 @@ $bottom-tabbar-height: 60px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  overscroll-behavior-y: none;
 
   :global(.light) & {
     background-color: #ffffff;
