@@ -1,0 +1,1 @@
+export const BOTTOM_TABBAR_HEIGHT = 60
