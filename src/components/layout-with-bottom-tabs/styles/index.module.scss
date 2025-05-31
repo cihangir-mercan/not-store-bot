@@ -16,7 +16,7 @@ $bottom-tabbar-height: 60px;
   position: fixed;
   left: 0;
   right: 0;
-  height: $bottom-tabbar-height;
+  bottom: 0;
   z-index: 55555;
   background: #fff;
   border-top: 1px solid #ddd;
@@ -27,8 +27,8 @@ $bottom-tabbar-height: 60px;
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     text-decoration: none;
+    padding-top: 8px;
     color: #555;
 
     &.tabActive {

@@ -10,12 +10,12 @@ const getTabClasses = (isActive: boolean): string =>
 export const LayoutWithBottomTabs = (): JSX.Element => {
   const tgWebApp = window.Telegram.WebApp;
   const bottomInset = tgWebApp.safeAreaInset.bottom;
-  const paddingBottom = BOTTOM_TABBAR_HEIGHT + bottomInset;
+  const offset = BOTTOM_TABBAR_HEIGHT + bottomInset;
 
   return (
     <div
       className={styles.appContainer}
-      style={{paddingBottom: paddingBottom}}
+      style={{paddingBottom: offset}}
     >
       {/* this is where the active page will render */}
       <div className={styles.content}>
@@ -25,7 +25,7 @@ export const LayoutWithBottomTabs = (): JSX.Element => {
       {/* bottom tab bar: always visible */}
       <nav
         className={styles.bottomTabbar}
-        style={{bottom: bottomInset}}
+        style={{height: offset}}
       >
         <NavLink
           to="/"
