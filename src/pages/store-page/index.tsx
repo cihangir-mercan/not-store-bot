@@ -2,9 +2,11 @@ import { useEffect, useState } from "react"
 import type { JSX } from "react"
 import styles from "./index.module.scss"
 import { useTranslation } from "react-i18next"
+import type { WebApp } from "@twa-dev/types"
 
 export const StorePage = (): JSX.Element => {
   const { t } = useTranslation()
+  const [tg, setTg] = useState<WebApp | null>(null)
   const [theme, setTheme] = useState<string | null>(null)
 
   useEffect(() => {
@@ -13,109 +15,17 @@ export const StorePage = (): JSX.Element => {
     tg.onEvent("themeChanged", () => {
       setTheme(tg.colorScheme)
     })
+    setTg(tg);
   }, [])
 
   return (
     <div>
       <div>{t("storePage.title")}</div>
       <div>
-        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
+        Current Theme : <strong>{JSON.stringify(theme)}</strong>
       </div>
       <div>
-        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
-      </div>
-      <div>
-        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
-      </div>
-      <div>
-        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
-      </div>
-      <div>
-        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
-      </div>
-      <div>
-        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
-      </div>
-      <div>
-        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
-      </div>
-      <div>
-        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
-      </div>
-      <div>
-        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
-      </div>
-      <div>
-        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
-      </div>
-      <div>
-        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
-      </div>
-      <div>
-        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
-      </div>
-      <div>
-        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
-      </div>
-      <div>
-        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
-      </div>
-      <div>
-        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
-      </div>
-      <div>
-        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
-      </div>
-      <div>
-        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
-      </div>
-      <div>
-        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
-      </div>
-      <div>
-        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
-      </div>
-      <div>
-        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
-      </div>
-      <div>
-        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
-      </div>
-      <div>
-        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
-      </div>
-      <div>
-        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
-      </div>
-      <div>
-        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
-      </div>
-      <div>
-        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
-      </div>
-      <div>
-        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
-      </div>
-      <div>
-        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
-      </div>
-      <div>
-        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
-      </div>
-      <div>
-        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
-      </div>
-      <div>
-        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
-      </div>
-      <div>
-        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
-      </div>
-      <div>
-        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
-      </div>
-      <div>
-        Current Telegram Theme: <strong>{theme ?? "Unknown"}</strong>
+        Current Telegram : <strong>{JSON.stringify(tg)}</strong>
       </div>
       <div className={styles.links}>
         <span>Learn </span>
