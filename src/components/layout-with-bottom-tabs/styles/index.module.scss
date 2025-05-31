@@ -3,7 +3,7 @@ $bottom-tab-height: 60px;
 .appContainer {
   display: flex;
   flex-direction: column;
-  height: var(--tg-viewport-height);
+  overflow: hidden;
 }
 
 .content {
