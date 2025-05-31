@@ -1,5 +1,5 @@
 import type { JSX } from "react"
-import styles from "./styles/index.module.scss"
+import styles from "./index.module.scss"
 import { Counter } from "@components/counter"
 
 export const UserPage = (): JSX.Element => {
