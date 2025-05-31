@@ -5,6 +5,7 @@ import { UserPage } from "@pages/user-page"
 import { LayoutWithBottomTabs } from "@components/layout-with-bottom-tabs"
 
 export const App = () => {
+
   return (
     <Routes>
       <Route path="/" element={<LayoutWithBottomTabs />}>

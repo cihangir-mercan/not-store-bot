@@ -5,6 +5,16 @@ $bottom-tabbar-height: 60px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+
+  :global(.light) & {
+    background-color: #ffffff;
+    color: #222222;
+  }
+
+  :global(.dark) & {
+    background-color: #222222;
+    color: #eeeeee;
+  }
 }
 
 .content {
@@ -19,8 +29,17 @@ $bottom-tabbar-height: 60px;
   bottom: 0;
   z-index: 55555;
   background: #fff;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid;
   display: flex;
+
+  :global(.dark) & .bottomTabbar {
+    border-top-color: #444;
+  }
+
+  :global(.light) & .bottomTabbar {
+    border-top-color: #ccc;
+  }
+
 
   .tab {
     flex: 1;
@@ -32,7 +51,7 @@ $bottom-tabbar-height: 60px;
     color: #555;
 
     &.tabActive {
-      color: #000; /* highlight the active tab */
+      color: #000;
       font-weight: bold;
     }
 
