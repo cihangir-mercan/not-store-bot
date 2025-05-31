@@ -8,20 +8,20 @@
     <script src="https://telegram.org/js/telegram-web-app.js?57"></script>
 
     <script>
-      (function () {
+      ;(function () {
         if (window.Telegram && window.Telegram.WebApp) {
-          const tgWebApp = window.Telegram.WebApp;
-          const currentTheme = tgWebApp.colorScheme;
-          document.documentElement.classList.add(currentTheme);
+          const tgWeb = window.Telegram.WebApp
+          const currentTheme = tgWeb.colorScheme
+          document.documentElement.classList.add(currentTheme)
 
-          tgWebApp.disableVerticalSwipes();
-          tgWebApp.onEvent("themeChanged", function () {
-            const newTheme = tgWebApp.colorScheme;
-            document.documentElement.classList.remove("light", "dark");
-            document.documentElement.classList.add(newTheme);
-          });
+          tgWeb.disableVerticalSwipes()
+          tgWeb.onEvent("themeChanged", function () {
+            const newTheme = tgWeb.colorScheme
+            document.documentElement.classList.remove("light", "dark")
+            document.documentElement.classList.add(newTheme)
+          })
         }
-      })();
+      })()
     </script>
   </head>
   <body>

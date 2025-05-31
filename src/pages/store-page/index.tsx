@@ -3,6 +3,7 @@ import type { JSX } from "react"
 import styles from "./styles/index.module.scss"
 import { useTranslation } from "react-i18next"
 import type { WebApp } from "@twa-dev/types"
+import { Link } from "react-router"
 
 export const StorePage = (): JSX.Element => {
   const { t } = useTranslation()
@@ -24,55 +25,22 @@ export const StorePage = (): JSX.Element => {
       <div>
         Current Theme : <strong>{JSON.stringify(theme)}</strong>
       </div>
+      <div className={styles.links}>
+        <Link to="/product/hoodie" className={styles.productLink}>
+          Hoodie
+        </Link>
+
+        <Link to="/product/tshirt" className={styles.productLink}>
+          Tshirt
+        </Link>
+
+        <Link to="/product/cap" className={styles.productLink}>
+          Cap
+        </Link>
+      </div>
+
       <div style={{ whiteSpace: "wrap", overflowWrap: "break-word" }}>
         Current Telegram : <strong>{JSON.stringify(tg)}</strong>
-      </div>
-      <div className={styles.links}>
-        <span>Learn </span>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          React
-        </a>
-        <span>, </span>
-        <a
-          className="App-link"
-          href="https://redux.js.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Redux
-        </a>
-        <span>, </span>
-        <a
-          className="App-link"
-          href="https://redux-toolkit.js.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Redux Toolkit
-        </a>
-        <span>, </span>
-        <a
-          className="App-link"
-          href="https://react-redux.js.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          React Redux
-        </a>
-        ,<span> and </span>
-        <a
-          className="App-link"
-          href="https://reselect.js.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Reselect
-        </a>
       </div>
     </div>
   )
