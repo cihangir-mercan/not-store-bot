@@ -28,6 +28,8 @@ export function useScrollRestoreForStore(
     }
 
     el.addEventListener("scroll", onScroll)
-    return () => { el.removeEventListener("scroll", onScroll); }
+    return () => {
+      el.removeEventListener("scroll", onScroll)
+    }
   }, [id, key])
 }
