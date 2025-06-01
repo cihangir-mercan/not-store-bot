@@ -30,22 +30,21 @@ export const itemsApiSlice = createApi({
         return {
           ...response,
           data: response.data.map((item, index) => {
-            const images = [...item.images];
+            const images = [...item.images]
             if (images.length > index) {
-              const [targetImage] = images.splice(index, 1);
-              images.unshift(targetImage);
+              const [targetImage] = images.splice(index, 1)
+              images.unshift(targetImage)
             }
             return {
               ...item,
               images,
-            };
+            }
           }),
-        };
+        }
       },
       providesTags: () => [{ type: "Items", id: "LIST" }],
     }),
   }),
-});
-
+})
 
 export const { useGetItemsQuery } = itemsApiSlice

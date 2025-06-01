@@ -7,7 +7,6 @@ import { useGetItemsQuery } from "@app/slices/itemsApiSlice"
 import type { ProductItem } from "@app/slices/itemsApiSlice"
 import { ProductCard } from "@components/product-card"
 
-
 export const StorePage = (): JSX.Element => {
   const [cartOpen, setCartOpen] = useState(false)
   const { data: apiResponse, isLoading, isError } = useGetItemsQuery(null)

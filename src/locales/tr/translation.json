@@ -2,5 +2,8 @@
   "storePage": {
     "title": "Not Store"
   },
-  "userPage": {}
+  "productPage": {
+    "addToCart": "Sepete Ekle",
+    "buyNow": "Şimdi Al"
+  }
 }

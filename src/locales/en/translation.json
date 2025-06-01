@@ -2,5 +2,8 @@
   "storePage": {
     "title": "Not Store"
   },
-  "userPage": {}
+  "productPage": {
+    "addToCart": "Add to Cart",
+    "buyNow": "Buy Now"
+  }
 }

@@ -1,2 +1,2 @@
-export const DEFAULT_PADDING_BOTTOM = 16;
-export const DEFAULT_FIXED_HEIGHT = 190;
+export const DEFAULT_PADDING_BOTTOM = 16
+export const DEFAULT_FIXED_HEIGHT = 190

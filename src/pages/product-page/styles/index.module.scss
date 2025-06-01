@@ -75,7 +75,7 @@
   display: flex;
   gap: 12px;
 
-  button {
+  & > button {
     flex: 1;
     padding: 14px 0;
     font-size: 17px;
@@ -100,10 +100,13 @@
   margin-right: 8px;
 }
 
-
 .quantityControls {
+  flex: 1;
   display: flex;
   align-items: center;
+  justify-content: center;
+  background-color: #141414;
+  border-radius: 12px;
 }
 
 .decrementButton,
@@ -111,16 +114,33 @@
   width: 32px;
   height: 32px;
   border: none;
-  background: #000;
+  background: transparent;
   color: #fff;
   border-radius: 4px;
   font-size: 18px;
   cursor: pointer;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  transition:
+    opacity 0.2s,
+    background 0.2s;
+}
+
+.incrementButton {
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: transparent;
+  }
 }
 
 .quantityLabel {
   margin: 0 8px;
-  font-size: 16px;
+  font-size: 20px;
   min-width: 24px;
+  line-height: 24px;
+  font-weight: 600;
   text-align: center;
 }
