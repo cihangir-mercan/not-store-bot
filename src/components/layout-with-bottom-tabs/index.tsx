@@ -1,15 +1,11 @@
 import type { JSX } from "react"
-import { NavLink, useLocation } from "react-router"
+import { useLocation } from "react-router"
 import styles from "./styles/index.module.scss"
-import clsx from "clsx"
 import { BOTTOM_TABBAR_HEIGHT } from "@components/layout-with-bottom-tabs/constants"
 import { StorePage } from "@pages/store-page"
 import { UserPage } from "@pages/user-page"
 import { useScrollRestoreOnActive } from "@components/layout-with-bottom-tabs/hooks/useScrollRestoreOnActive.tsx"
-
-const getTabClasses = (isActive: boolean): string =>
-  clsx(styles.tab, isActive && styles.tabActive)
-
+import { BottomTabBar } from "@components/bottom-tab-bar"
 
 export const LayoutWithBottomTabs = (): JSX.Element => {
   const location = useLocation()
@@ -42,24 +38,7 @@ export const LayoutWithBottomTabs = (): JSX.Element => {
         </div>
       </div>
 
-      <nav className={styles.bottomTabbar} style={{ height: offset }}>
-        <NavLink
-          to="/"
-          className={({ isActive }) => getTabClasses(isActive)}
-          end
-        >
-          <span>🏬</span>
-          <span className="label">Store</span>
-        </NavLink>
-
-        <NavLink
-          to="/user"
-          className={({ isActive }) => getTabClasses(isActive)}
-        >
-          <span>👤</span>
-          <span className={styles.label}>User</span>
-        </NavLink>
-      </nav>
+      <BottomTabBar />
     </div>
   )
 }
