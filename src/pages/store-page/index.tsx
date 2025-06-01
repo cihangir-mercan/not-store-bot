@@ -26,12 +26,8 @@ export const StorePage = ({ isStoreActive }: StorePageProps): JSX.Element => {
         <div className={styles.status}>Error loading products.</div>
       ) : (
         <div className={styles.links}>
-          {items.map((item) => (
-            <ProductCard
-              key={item.id}
-              item={item}
-              isActive={isStoreActive}
-            />
+          {items.map(item => (
+            <ProductCard key={item.id} item={item} isActive={isStoreActive} />
           ))}
         </div>
       )}

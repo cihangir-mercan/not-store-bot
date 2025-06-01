@@ -14,19 +14,12 @@ export const BottomTabBar = (): JSX.Element => {
 
   return (
     <nav className={styles.bottomTabbar} style={{ height: offset }}>
-      <NavLink
-        to="/"
-        className={({ isActive }) => getTabClasses(isActive)}
-        end
-      >
+      <NavLink to="/" className={({ isActive }) => getTabClasses(isActive)} end>
         <span>🏬</span>
         <span className="label">Store</span>
       </NavLink>
 
-      <NavLink
-        to="/user"
-        className={({ isActive }) => getTabClasses(isActive)}
-      >
+      <NavLink to="/user" className={({ isActive }) => getTabClasses(isActive)}>
         <span>👤</span>
         <span className={styles.label}>User</span>
       </NavLink>

@@ -10,7 +10,7 @@ import { BottomTabBar } from "@components/bottom-tab-bar"
 export const LayoutWithBottomTabs = (): JSX.Element => {
   const location = useLocation()
   const tgWebApp = window.Telegram.WebApp
-  const bottomInset = tgWebApp.safeAreaInset.bottom;
+  const bottomInset = tgWebApp.safeAreaInset.bottom
   const offset = BOTTOM_TABBAR_HEIGHT + bottomInset
 
   const isStore = location.pathname === "/"

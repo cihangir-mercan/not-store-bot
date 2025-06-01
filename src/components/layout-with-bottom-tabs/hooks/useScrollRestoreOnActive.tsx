@@ -9,7 +9,11 @@ const scrollPositions = new Map<string, number>()
  * @param isActive - Whether the tab is currently active
  * @param key - Unique key to track scroll (e.g., location.pathname)
  */
-export function useScrollRestoreOnActive(id: string, isActive: boolean, key: string) {
+export function useScrollRestoreOnActive(
+  id: string,
+  isActive: boolean,
+  key: string,
+) {
   // Restore scroll when it becomes active
   useEffect(() => {
     const el = document.getElementById(id)

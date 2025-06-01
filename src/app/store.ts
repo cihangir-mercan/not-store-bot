@@ -8,7 +8,12 @@ import { historyApiSlice } from "@app/slices/historyApiSlice.ts"
 
 // `combineSlices` automatically combines the reducers using
 // their `reducerPath`s, therefore we no longer need to call `combineReducers`.
-const rootReducer = combineSlices(counterSlice, quotesApiSlice, itemsApiSlice, historyApiSlice)
+const rootReducer = combineSlices(
+  counterSlice,
+  quotesApiSlice,
+  itemsApiSlice,
+  historyApiSlice,
+)
 
 // Infer the `RootState` type from the root reducer
 export type RootState = ReturnType<typeof rootReducer>
