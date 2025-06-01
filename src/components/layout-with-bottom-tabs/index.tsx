@@ -17,9 +17,6 @@ export const LayoutWithBottomTabs = (): JSX.Element => {
 
   return (
     <div className={styles.appContainer} style={{ paddingBottom: offset }}>
-      <div>
-        data: {tgWebApp.initDataUnsafe.start_param}
-      </div>
       <div className={styles.content}>
         <div className={styles.tabContent} data-active={isStore}>
           <StorePage />
