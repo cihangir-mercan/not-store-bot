@@ -7,30 +7,14 @@ import {
   DEFAULT_FIXED_HEIGHT,
   DEFAULT_PADDING_BOTTOM,
 } from "@pages/product-page/constants"
-import { useAppDispatch, useAppSelector } from "@app/hooks"
-import {
-  addToCart,
-  decrementQuantity,
-  incrementQuantity,
-  selectQuantityById,
-} from "@app/slices/cartSlice.ts"
-import Plus from "@icons/plus.svg?react"
-import Minus from "@icons/minus.svg?react"
-import { useTranslation } from "react-i18next"
 import { ThumbnailCarousel } from "@components/thumbnail-carousel"
+import { ProductActions } from "@components/product-actions"
 
 export const ProductPage: React.FC = () => {
-  const { t } = useTranslation()
   const { productId } = useParams<{ productId: string }>()
   const navigate = useNavigate()
   const { data } = useGetItemsQuery(null)
   const [selectedIndex, setSelectedIndex] = useState(0)
-
-  // ← NEW: setup dispatch + read current quantity for this product
-  const dispatch = useAppDispatch()
-  const qtyInCart = useAppSelector(state =>
-    selectQuantityById(state)(Number(productId)),
-  )
 
   const tgWeb = window.Telegram.WebApp
   const bottomInset = tgWeb.safeAreaInset.bottom
@@ -53,8 +37,6 @@ export const ProductPage: React.FC = () => {
 
   const product = data?.data.find(p => p.id === Number(productId))
   if (!product) return <div className={styles.status}>Product not found.</div>
-
-  const canAddMore = qtyInCart < product.left
 
   return (
     <div className={styles.pageWrapper}>
@@ -92,45 +74,13 @@ export const ProductPage: React.FC = () => {
           onSelect={setSelectedIndex}
         />
 
-        <div className={styles.actions}>
-          {qtyInCart > 0 ? (
-            <div className={styles.quantityControls}>
-              <button
-                className={styles.decrementButton}
-                onClick={() =>
-                  dispatch(decrementQuantity({ id: Number(productId) }))
-                }
-              >
-                <Minus />
-              </button>
-
-              <span className={styles.quantityLabel}>{qtyInCart}</span>
-
-              <button
-                className={styles.incrementButton}
-                onClick={() =>
-                  canAddMore &&
-                  dispatch(incrementQuantity({ id: Number(productId) }))
-                }
-                disabled={!canAddMore}
-              >
-                <Plus />
-              </button>
-            </div>
-          ) : (
-            <button
-              className={styles.addToCart}
-              onClick={() =>
-                canAddMore && dispatch(addToCart({ id: Number(productId) }))
-              }
-              disabled={!canAddMore}
-            >
-              {t("productPage.addToCart")}
-            </button>
-          )}
-
-          <button className={styles.buyNow}>{t("productPage.buyNow")}</button>
-        </div>
+        <ProductActions
+          productId={Number(productId)}
+          maxAllowed={product.left}
+          onBuy={() => {
+            /* existing “Buy now” logic here, if any */
+          }}
+        />
       </div>
     </div>
   )

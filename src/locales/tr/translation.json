@@ -3,7 +3,8 @@
     "title": "Not Store"
   },
   "productPage": {
-    "addToCart": "Sepete Ekle",
-    "buyNow": "Şimdi Al"
+    "addToCart": "Sepete ekle",
+    "buyNow": "Şimdi Al",
+    "outOfStock": "Stoklar tükendi"
   }
 }

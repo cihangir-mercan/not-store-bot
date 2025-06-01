@@ -3,7 +3,8 @@
     "title": "Not Store"
   },
   "productPage": {
-    "addToCart": "Add to Cart",
-    "buyNow": "Buy Now"
+    "addToCart": "Add to cart",
+    "buyNow": "Buy Now",
+    "outOfStock": "Out of stock"
   }
 }
