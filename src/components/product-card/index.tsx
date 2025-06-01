@@ -11,18 +11,15 @@ type ProductCardProps = {
 
 export const ProductCard: FC<ProductCardProps> = ({ item, isActive }) => {
   const productUrl = `/product/${item.id.toString()}`
+  console.log(isActive)
 
   return (
     <div className={styles.productCard}>
-      {isActive ? (
-        <ProductSwiper
-          images={item.images}
-          linkTo={productUrl}
-          altText={item.name}
-        />
-      ) : (
-        <div className={styles.productImagePlaceholder} />
-      )}
+      <ProductSwiper
+        images={item.images}
+        linkTo={productUrl}
+        altText={item.name}
+      />
 
       <Link to={productUrl} className={styles.productLink}>
         {item.name}
