@@ -5,6 +5,8 @@
   "productPage": {
     "addToCart": "Add to cart",
     "buyNow": "Buy Now",
-    "outOfStock": "Out of stock"
+    "outOfStock": "Out of stock",
+    "incrementQuantity": "Increment quantity",
+    "decrementQuantity": "Decrement quantity"
   }
 }

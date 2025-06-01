@@ -5,6 +5,8 @@
   "productPage": {
     "addToCart": "Sepete ekle",
     "buyNow": "Şimdi Al",
-    "outOfStock": "Stoklar tükendi"
+    "outOfStock": "Stoklar tükendi",
+    "incrementQuantity": "Miktarı artır",
+    "decrementQuantity": "Miktarı azalt"
   }
 }
