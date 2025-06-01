@@ -4,8 +4,9 @@ import { useParams, useNavigate } from "react-router"
 import { useGetItemsQuery } from "@app/slices/itemsApiSlice"
 import styles from "./styles/index.module.scss"
 import {
+  BASE_URL_FOR_SHARE,
   DEFAULT_FIXED_HEIGHT,
-  DEFAULT_PADDING_BOTTOM,
+  DEFAULT_PADDING_BOTTOM
 } from "@pages/product-page/constants"
 import { ThumbnailCarousel } from "@components/thumbnail-carousel"
 import { ProductActions } from "@components/product-actions"
@@ -26,7 +27,17 @@ export const ProductPage: React.FC = () => {
     tgWeb.BackButton.show()
 
     const onBackButton = () => {
-      void navigate(-1)
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      const canGoBack =
+        (window.history.length && window.history.length > 1) ||
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+        (window.history.state && window.history.state.idx > 0)
+
+      if (canGoBack) {
+        void navigate(-1)
+      } else {
+        void navigate("/", { replace: true })
+      }
     }
 
     tgWeb.BackButton.onClick(onBackButton)
@@ -40,10 +51,14 @@ export const ProductPage: React.FC = () => {
   if (!product) return <div className={styles.status}>Product not found.</div>
 
   const handleShare = () => {
-    const pageUrl = encodeURIComponent(window.location.href);
-    const text = encodeURIComponent(product.name);
-    const shareLink = `https://t.me/share/url?url=${pageUrl}&text=${text}`;
-    tgWeb.openLink(shareLink);
+    const link = `${BASE_URL_FOR_SHARE}${product.id.toString()}`;
+    const text = `Check this product ${product.name}`;
+    const telegramShareUrl =
+      `https://t.me/share/url?` +
+      `url=${encodeURIComponent(link)}` +
+      `&text=${encodeURIComponent(text)}`;
+
+    tgWeb.openLink(telegramShareUrl);
   };
 
   return (

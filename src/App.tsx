@@ -9,10 +9,11 @@ export const App = () => {
 
   useEffect(() => {
     const tg = window.Telegram.WebApp;
-
     const param = tg.initDataUnsafe.start_param;
-    if (param) {
-      void navigate(`/product/${param}`);
+
+    if (param?.startsWith("product_")) {
+      const trimmed = param.split("_")[1];
+      void navigate(`/product/${trimmed}`);
     }
   }, [navigate]);
 
