@@ -23,11 +23,11 @@ $bottom-tabbar-height: 60px;
   overflow: hidden;
 }
 
-// ⬇️ NEW tab container style for StorePage & UserPage
 .tabContent {
   position: absolute;
   inset: 0;
   overflow-y: auto;
+  height: 100%;
   transition: opacity 0.2s ease;
   opacity: 0;
   pointer-events: none;
@@ -38,6 +38,7 @@ $bottom-tabbar-height: 60px;
     z-index: 1;
   }
 }
+
 
 .bottomTabbar {
   position: fixed;
