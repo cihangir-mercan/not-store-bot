@@ -9,6 +9,7 @@ import {
 } from "@pages/product-page/constants"
 import { ThumbnailCarousel } from "@components/thumbnail-carousel"
 import { ProductActions } from "@components/product-actions"
+import Share from "@icons/share.svg?react"
 
 export const ProductPage: React.FC = () => {
   const { productId } = useParams<{ productId: string }>()
@@ -38,6 +39,13 @@ export const ProductPage: React.FC = () => {
   const product = data?.data.find(p => p.id === Number(productId))
   if (!product) return <div className={styles.status}>Product not found.</div>
 
+  const handleShare = () => {
+    const pageUrl = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent(product.name);
+    const shareLink = `https://t.me/share/url?url=${pageUrl}&text=${text}`;
+    tgWeb.openLink(shareLink);
+  };
+
   return (
     <div className={styles.pageWrapper}>
       <div
@@ -45,7 +53,16 @@ export const ProductPage: React.FC = () => {
         style={{ paddingBottom: fixedHeight }}
       >
         <div className={styles.topSection}>
-          <h1 className={styles.title}>{product.name}</h1>
+          <div className={styles.titleRow}>
+            <h1 className={styles.title}>{product.name}</h1>
+            <button
+              className={styles.shareButton}
+              onClick={handleShare}
+              aria-label="Share this product"
+            >
+              <Share />
+            </button>
+          </div>
           <p className={styles.description}>{product.description}</p>
           <div className={styles.tags}>
             <span className={styles.tag}>

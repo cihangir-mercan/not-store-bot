@@ -21,3 +21,15 @@
   border: none;
   cursor: pointer;
 }
+
+.cartButton {
+  svg {
+    fill: white;
+  }
+
+  :global(.light) & {
+    svg {
+      fill: #222;
+    }
+  }
+}

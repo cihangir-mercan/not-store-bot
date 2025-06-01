@@ -90,6 +90,17 @@
   :global(.light) & {
     color: #000;
   }
+
+  svg {
+    fill: white;
+  }
+
+
+  :global(.light) & {
+    svg {
+      fill: #222;
+    }
+  }
 }
 
 .incrementButton {
@@ -106,6 +117,16 @@
       cursor: not-allowed;
       background: transparent;
       color: #666;
+    }
+  }
+
+  svg {
+    fill: white;
+  }
+
+  :global(.light) & {
+    svg {
+      fill: #222;
     }
   }
 }
