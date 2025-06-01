@@ -17,7 +17,6 @@ export type ItemsApiResponse = {
   data: ProductItem[]
 }
 
-// We name this slice "itemsApi" and give it a reducerPath of "itemsApi".
 export const itemsApiSlice = createApi({
   reducerPath: "itemsApi",
   baseQuery: fetchBaseQuery({
@@ -27,10 +26,26 @@ export const itemsApiSlice = createApi({
   endpoints: build => ({
     getItems: build.query<ItemsApiResponse, unknown>({
       query: () => `items.json`,
+      transformResponse: (response: ItemsApiResponse): ItemsApiResponse => {
+        return {
+          ...response,
+          data: response.data.map((item, index) => {
+            const images = [...item.images];
+            if (images.length > index) {
+              const [targetImage] = images.splice(index, 1);
+              images.unshift(targetImage);
+            }
+            return {
+              ...item,
+              images,
+            };
+          }),
+        };
+      },
       providesTags: () => [{ type: "Items", id: "LIST" }],
     }),
   }),
-})
+});
 
-// Auto-generated hook: useGetItemsQuery
+
 export const { useGetItemsQuery } = itemsApiSlice
