@@ -27,17 +27,7 @@ export const ProductPage: React.FC = () => {
     tgWeb.BackButton.show()
 
     const onBackButton = () => {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      const canGoBack =
-        (window.history.length && window.history.length > 1) ||
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-        (window.history.state && window.history.state.idx > 0)
-
-      if (canGoBack) {
-        void navigate(-1)
-      } else {
-        void navigate("/", { replace: true })
-      }
+      void navigate("/", { replace: true })
     }
 
     tgWeb.BackButton.onClick(onBackButton)
