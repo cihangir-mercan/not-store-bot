@@ -5,12 +5,21 @@ import { useGetItemsQuery } from "@app/slices/itemsApiSlice"
 import styles from "./styles/index.module.scss"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { DEFAULT_FIXED_HEIGHT, DEFAULT_PADDING_BOTTOM } from "@pages/product-page/constants"
+import { useAppDispatch, useAppSelector } from "@app/hooks"
+import { addToCart, decrementQuantity, incrementQuantity, selectQuantityById } from "@app/slices/cartSlice.ts"
 
 export const ProductPage: React.FC = () => {
   const { productId } = useParams<{ productId: string }>()
   const navigate = useNavigate()
   const { data } = useGetItemsQuery(null)
   const [selectedIndex, setSelectedIndex] = useState(0)
+
+  // ← NEW: setup dispatch + read current quantity for this product
+  const dispatch = useAppDispatch();
+  const qtyInCart = useAppSelector((state) =>
+    selectQuantityById(state)(Number(productId))
+  );
+
   const tgWeb = window.Telegram.WebApp
   const bottomInset = tgWeb.safeAreaInset.bottom
   const paddingBottom = DEFAULT_PADDING_BOTTOM + bottomInset;
@@ -59,31 +68,55 @@ export const ProductPage: React.FC = () => {
         </div>
       </div>
 
-      <div className={styles.fixedBottom}
-           style={{ paddingBottom }}
-      >
-        <Swiper
-          spaceBetween={10}
-          slidesPerView="auto"
-          className={styles.thumbnailSwiper}
-        >
+      <div className={styles.fixedBottom} style={{ paddingBottom }}>
+        <Swiper spaceBetween={10} slidesPerView="auto" className={styles.thumbnailSwiper}>
           {product.images.map((img, i) => (
             <SwiperSlide key={i} className={styles.thumbnailSlide}>
               <img
                 src={img}
                 alt={`thumb-${i.toString()}`}
                 onClick={() => { setSelectedIndex(i); }}
-                className={`${styles.thumbnail} ${selectedIndex === i ? styles.active : ""}`}
+                className={`${styles.thumbnail} ${
+                  selectedIndex === i ? styles.active : ""
+                }`}
               />
             </SwiperSlide>
           ))}
         </Swiper>
 
         <div className={styles.actions}>
-          <button className={styles.addToCart}>Add to cart</button>
+          {qtyInCart > 0 ? (
+            <div className={styles.quantityControls}>
+              <button
+                className={styles.decrementButton}
+                onClick={() =>
+                  dispatch(decrementQuantity({ id: Number(productId) }))
+                }
+              >
+                –
+              </button>
+              <span className={styles.quantityLabel}>{qtyInCart}</span>
+              <button
+                className={styles.incrementButton}
+                onClick={() =>
+                  dispatch(incrementQuantity({ id: Number(productId) }))
+                }
+              >
+                +
+              </button>
+            </div>
+          ) : (
+            <button
+              className={styles.addToCart}
+              onClick={() => dispatch(addToCart({ id: Number(productId) }))}
+            >
+              Add to cart
+            </button>
+          )}
+
           <button className={styles.buyNow}>Buy now</button>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
