@@ -4,7 +4,7 @@ import styles from "./styles/index.module.scss"
 import { BOTTOM_TABBAR_HEIGHT } from "@components/layout-with-bottom-tabs/constants"
 import { StorePage } from "@pages/store-page"
 import { UserPage } from "@pages/user-page"
-import { useScrollRestoreOnActive } from "@components/layout-with-bottom-tabs/hooks/useScrollRestoreOnActive.tsx"
+import { useScrollRestoreForStore } from "@components/layout-with-bottom-tabs/hooks/useScrollRestoreForStore.tsx"
 import { BottomTabBar } from "@components/bottom-tab-bar"
 
 export const LayoutWithBottomTabs = (): JSX.Element => {
@@ -16,8 +16,7 @@ export const LayoutWithBottomTabs = (): JSX.Element => {
   const isStore = location.pathname === "/"
   const isUser = location.pathname === "/user"
 
-  useScrollRestoreOnActive("store-scroll", isStore, "/")
-  useScrollRestoreOnActive("user-scroll", isUser, "/user")
+  useScrollRestoreForStore("store-scroll", isStore, "/")
 
   return (
     <div className={styles.appContainer} style={{ paddingBottom: offset }}>
@@ -30,7 +29,6 @@ export const LayoutWithBottomTabs = (): JSX.Element => {
           <StorePage isStoreActive={isStore} />
         </div>
         <div
-          id="user-scroll"
           className={styles.tabContent}
           data-active={isUser}
         >

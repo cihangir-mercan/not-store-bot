@@ -1,36 +1,37 @@
-import type { CSSProperties, JSX, RefObject } from "react"
-import { FixedSizeList as List, type ListOnScrollProps } from "react-window"
-import AutoSizer from "react-virtualized-auto-sizer"
-import styles from "./styles/index.module.scss"
-import dayjs from "dayjs"
-import type { ProductItem } from "@app/slices/itemsApiSlice"
-import type { HistoryItem } from "@app/slices/historyApiSlice"
+import type { CSSProperties, JSX, RefObject } from "react";
+import type { ListOnScrollProps } from "react-window";
+import { FixedSizeList as List } from "react-window"
+import AutoSizer from "react-virtualized-auto-sizer";
+import styles from "./styles/index.module.scss";
+import dayjs from "dayjs";
+import type { ProductItem } from "@app/slices/itemsApiSlice";
+import type { HistoryItem } from "@app/slices/historyApiSlice";
 
 type Props = {
-  history: HistoryItem[]
-  itemMap: Map<number, ProductItem>
-  isActiveTab: boolean
-  onScroll: (props: ListOnScrollProps) => void
-  listRef: RefObject<List | null>
-}
+  history: HistoryItem[];
+  itemMap: Map<number, ProductItem>;
+  isActiveTab: boolean;
+  onScroll: (props: ListOnScrollProps) => void;
+  listRef: RefObject<List | null>;
+};
 
 export const UserHistoryList = ({
-  history,
-  itemMap,
-  isActiveTab,
-  onScroll,
-  listRef,
-}: Props): JSX.Element => {
+                                  history,
+                                  itemMap,
+                                  isActiveTab,
+                                  onScroll,
+                                  listRef,
+                                }: Props): JSX.Element => {
   const Row = ({
-    index,
-    style,
-  }: {
-    index: number
-    style: CSSProperties
+                 index,
+                 style,
+               }: {
+    index: number;
+    style: CSSProperties;
   }): JSX.Element | null => {
-    const purchase = history[index]
-    const item = itemMap.get(purchase.id)
-    if (!item) return null
+    const purchase = history[index];
+    const item = itemMap.get(purchase.id);
+    if (!item) return null;
 
     return (
       <div
@@ -61,8 +62,8 @@ export const UserHistoryList = ({
           </div>
         </div>
       </div>
-    )
-  }
+    );
+  };
 
   return (
     <AutoSizer>
@@ -79,5 +80,5 @@ export const UserHistoryList = ({
         </List>
       )}
     </AutoSizer>
-  )
-}
+  );
+};

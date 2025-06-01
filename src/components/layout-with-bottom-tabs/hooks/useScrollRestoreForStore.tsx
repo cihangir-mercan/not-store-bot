@@ -2,14 +2,7 @@ import { useEffect } from "react"
 
 const scrollPositions = new Map<string, number>()
 
-/**
- * Preserves scroll for tab-based layouts where elements are always mounted.
- *
- * @param id - DOM id of scrollable container (e.g., "store-scroll")
- * @param isActive - Whether the tab is currently active
- * @param key - Unique key to track scroll (e.g., location.pathname)
- */
-export function useScrollRestoreOnActive(
+export function useScrollRestoreForStore(
   id: string,
   isActive: boolean,
   key: string,
@@ -35,6 +28,6 @@ export function useScrollRestoreOnActive(
     }
 
     el.addEventListener("scroll", onScroll)
-    return () => el.removeEventListener("scroll", onScroll)
+    return () => { el.removeEventListener("scroll", onScroll); }
   }, [id, key])
 }
