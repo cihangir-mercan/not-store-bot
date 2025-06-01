@@ -2,27 +2,26 @@ import "./App.scss"
 import { Routes, Route, useNavigate } from "react-router"
 import { LayoutWithBottomTabs } from "@components/layout-with-bottom-tabs"
 import { ProductPage } from "@pages/product-page"
-import { useEffect } from "react"
+import { useEffect, useRef } from "react"
 
 export const App = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
+  const didNavigateRef = useRef(false)
 
   useEffect(() => {
-    const tg = window.Telegram.WebApp;
-    const param = tg.initDataUnsafe.start_param;
+    const tg = window.Telegram.WebApp
+    const param = tg.initDataUnsafe.start_param
 
-    if (param?.startsWith("product_")) {
-      const trimmed = param.split("_")[1];
+    if (param?.startsWith("product_") && !didNavigateRef.current) {
+      didNavigateRef.current = true
 
-      // 2 saniye sonra navigasyonu gerçekleştir
-      const timeoutId = setTimeout(() => {
-        void navigate(`/product/${trimmed}`);
-      }, 1000);
+      const trimmed = param.split("_")[1]
 
-      // Cleanup: component unmount olduğunda timeout'ı temizle
-      return () => { clearTimeout(timeoutId); };
+      void navigate(`/product/${trimmed}`)
+
     }
-  }, [navigate]);
+    return
+  }, [navigate])
 
   return (
     <Routes>
