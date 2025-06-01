@@ -18,6 +18,8 @@ declare global {
   }
 }
 
+const manifestUrl = "https://not-store-bot.vercel.app/tonconnect-manifest.json";
+
 const container = document.getElementById("root")
 
 if (container) {
@@ -27,7 +29,7 @@ if (container) {
     <StrictMode>
       <BrowserRouter>
         <Provider store={store}>
-          <TonConnectUIProvider>
+          <TonConnectUIProvider manifestUrl={manifestUrl}>
             <App />
           </TonConnectUIProvider>
         </Provider>
