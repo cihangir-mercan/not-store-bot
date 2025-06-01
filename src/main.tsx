@@ -1,10 +1,12 @@
+import "./index.scss"
+import "swiper/css";
+import "swiper/css/pagination";
 import { StrictMode } from "react"
 import { createRoot } from "react-dom/client"
 import { BrowserRouter } from "react-router"
 import { Provider } from "react-redux"
 import { App } from "./App"
 import { store } from "./app/store"
-import "./index.scss"
 import "./i18n"
 import type { Telegram } from "@twa-dev/types"
 
