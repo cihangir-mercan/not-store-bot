@@ -1,8 +1,5 @@
 {
-  "name": "Not Store Bot DApp",
-  "description": "This DApp allows users to connect their TON wallet when purchasing products.",
   "url": "https://not-store-bot.vercel.app",
-  "icons": [
-    "https://not-store-bot.vercel.app/assets/not-CFpqFs8L.svg"
-  ]
+  "name": "Not Store Bot DApp",
+  "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYZj-DMMnqn9g6BhKeZ4gVtiu7U6Xv9maoxQ&usqp=CAU"
 }
