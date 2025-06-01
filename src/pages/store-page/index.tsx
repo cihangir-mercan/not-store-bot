@@ -6,10 +6,8 @@ import { CartDrawer } from "@components/cart-drawer"
 import { useGetItemsQuery } from "@app/slices/itemsApiSlice"
 import type { ProductItem } from "@app/slices/itemsApiSlice"
 import {ProductCard} from "@components/product-card";
-import {useScrollRestoration} from "@pages/store-page/hooks/useScrollRestoration.tsx";
 
 export const StorePage = (): JSX.Element => {
-  useScrollRestoration();
   const [cartOpen, setCartOpen] = useState(false)
   const { data: apiResponse, isLoading, isError } = useGetItemsQuery(null)
   const items: ProductItem[] = apiResponse?.data ?? []
