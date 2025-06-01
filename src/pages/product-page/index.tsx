@@ -14,7 +14,7 @@ export const ProductPage: React.FC = () => {
   const tgWeb = window.Telegram.WebApp
   const bottomInset = tgWeb.safeAreaInset.bottom
   const paddingBottom = DEFAULT_PADDING_BOTTOM + bottomInset;
-  const fixedHeight = DEFAULT_FIXED_HEIGHT;
+  const fixedHeight = DEFAULT_FIXED_HEIGHT + bottomInset;
 
   useEffect(() => {
     tgWeb.BackButton.show()
