@@ -88,7 +88,7 @@ export const ProductPage: React.FC = () => {
 
       <div className={styles.fixedBottom} style={{ paddingBottom }}>
         <Swiper
-          spaceBetween={10}
+          spaceBetween={8}
           slidesPerView="auto"
           className={styles.thumbnailSwiper}
         >
