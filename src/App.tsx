@@ -18,7 +18,6 @@ export const App = () => {
       const trimmed = param.split("_")[1]
 
       void navigate(`/product/${trimmed}`)
-
     }
     return
   }, [navigate])

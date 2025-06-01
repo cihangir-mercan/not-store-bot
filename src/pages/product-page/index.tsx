@@ -6,7 +6,7 @@ import styles from "./styles/index.module.scss"
 import {
   BASE_URL_FOR_SHARE,
   DEFAULT_FIXED_HEIGHT,
-  DEFAULT_PADDING_BOTTOM
+  DEFAULT_PADDING_BOTTOM,
 } from "@pages/product-page/constants"
 import { ThumbnailCarousel } from "@components/thumbnail-carousel"
 import { ProductActions } from "@components/product-actions"
@@ -41,15 +41,15 @@ export const ProductPage: React.FC = () => {
   if (!product) return <div className={styles.status}>Product not found.</div>
 
   const handleShare = () => {
-    const link = `${BASE_URL_FOR_SHARE}${product.id.toString()}`;
-    const text = `Check this product ${product.name}`;
+    const link = `${BASE_URL_FOR_SHARE}${product.id.toString()}`
+    const text = `Check this product ${product.name}`
     const telegramShareUrl =
       `https://t.me/share/url?` +
-      `url=${encodeURI(link)}` +
-      `&text=${encodeURIComponent(text)}`;
+      `url=${encodeURIComponent(link)}` +
+      `&text=${encodeURIComponent(text)}`
 
-    tgWeb.openLink(telegramShareUrl);
-  };
+    tgWeb.openLink(telegramShareUrl)
+  }
 
   return (
     <div className={styles.pageWrapper}>
