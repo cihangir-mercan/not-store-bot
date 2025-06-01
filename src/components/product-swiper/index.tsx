@@ -26,7 +26,11 @@ export const ProductSwiper: FC<ProductSwiperProps> = ({
       >
         {images.map((url, idx) => (
           <SwiperSlide key={idx}>
-            <img src={url} alt={altText} className={styles.productImage} />
+            <img
+              src={url}
+              alt={altText}
+              className={styles.productImage}
+            />
           </SwiperSlide>
         ))}
       </Swiper>

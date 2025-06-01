@@ -1,6 +1,6 @@
 import "./index.scss"
-import "swiper/css"
-import "swiper/css/pagination"
+import "swiper/scss"
+import "swiper/scss/pagination"
 import { StrictMode } from "react"
 import { createRoot } from "react-dom/client"
 import { BrowserRouter } from "react-router"
