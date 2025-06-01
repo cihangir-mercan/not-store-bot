@@ -13,7 +13,14 @@ export const App = () => {
 
     if (param?.startsWith("product_")) {
       const trimmed = param.split("_")[1];
-      void navigate(`/product/${trimmed}`);
+
+      // 2 saniye sonra navigasyonu gerçekleştir
+      const timeoutId = setTimeout(() => {
+        void navigate(`/product/${trimmed}`, { replace: true, state: { fromStart: true } });
+      }, 2000);
+
+      // Cleanup: component unmount olduğunda timeout'ı temizle
+      return () => { clearTimeout(timeoutId); };
     }
   }, [navigate]);
 
