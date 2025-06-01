@@ -45,7 +45,7 @@ export const ProductPage: React.FC = () => {
     const text = `Check this product ${product.name}`;
     const telegramShareUrl =
       `https://t.me/share/url?` +
-      `url=${link}` +
+      `url=${encodeURI(link)}` +
       `&text=${encodeURIComponent(text)}`;
 
     tgWeb.openLink(telegramShareUrl);
