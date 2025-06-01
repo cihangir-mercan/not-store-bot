@@ -11,11 +11,7 @@ import {
 import ScrollUp from "@icons/scrollUp.svg?react"
 import type { FixedSizeList as List } from "react-window"
 
-type UserPageProps = {
-  isActiveTab: boolean
-}
-
-export const UserPage = ({ isActiveTab }: UserPageProps): JSX.Element => {
+export const UserPage = (): JSX.Element => {
   const { data: historyData, isLoading: isHistoryLoading } =
     useGetHistoryQuery(null)
   const { data: itemsData, isLoading: isItemsLoading } = useGetItemsQuery(null)
@@ -29,12 +25,7 @@ export const UserPage = ({ isActiveTab }: UserPageProps): JSX.Element => {
   const offset = BOTTOM_TABBAR_HEIGHT + bottomInset + SCROLL_TO_TOP_MARGIN
 
   // Hook returns onScroll handler bound to react-window list and scroll storage
-  const onScroll = useScrollRestoreForList(
-    "user-history",
-    isActiveTab,
-    listRef,
-    setShowScrollToTop,
-  )
+  const onScroll = useScrollRestoreForList(listRef, setShowScrollToTop)
 
   if (isHistoryLoading || isItemsLoading) return <div>Loading…</div>
 

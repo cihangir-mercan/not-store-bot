@@ -1,30 +1,32 @@
-import type { RefObject } from "react"
+import type React from "react"
 import { useEffect } from "react"
+import { useLocation } from "react-router"
 import type { ListOnScrollProps } from "react-window"
 import type { FixedSizeList as List } from "react-window"
 
 const scrollPositions = new Map<string, number>()
 
 export function useScrollRestoreForList(
-  key: string,
-  isActive: boolean,
-  listRef: RefObject<List | null>,
+  listRef: React.RefObject<List | null>,
   setShowScrollToTop: (visible: boolean) => void,
 ) {
-  // Restore scroll when tab becomes active
-  useEffect(() => {
-    if (!isActive) return
+  const location = useLocation()
+  const key = location.pathname // e.g. "/user"
 
+  // Restore scroll when this component mounts (i.e. tab is active).
+  useEffect(() => {
     const savedOffset = scrollPositions.get(key) ?? 0
-    if (listRef.current) {
-      listRef.current.scrollTo(savedOffset)
+    const list = listRef.current
+    if (list) {
+      list.scrollTo(savedOffset)
       setShowScrollToTop(savedOffset > 300)
     }
-  }, [key, isActive, listRef, setShowScrollToTop])
+  }, [key, listRef, setShowScrollToTop])
 
-  // Save scroll position on react-window onScroll
+  // Return an onScroll handler for react-window
   return ({ scrollOffset }: ListOnScrollProps) => {
-    if (!isActive) return
+    const list = listRef.current
+    if (!list) return
 
     scrollPositions.set(key, scrollOffset)
     setShowScrollToTop(scrollOffset > 300)

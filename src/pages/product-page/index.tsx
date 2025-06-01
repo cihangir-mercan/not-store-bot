@@ -3,7 +3,6 @@ import { useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router"
 import { useGetItemsQuery } from "@app/slices/itemsApiSlice"
 import styles from "./styles/index.module.scss"
-import { Swiper, SwiperSlide } from "swiper/react"
 import {
   DEFAULT_FIXED_HEIGHT,
   DEFAULT_PADDING_BOTTOM,
@@ -18,7 +17,7 @@ import {
 import Plus from "@icons/plus.svg?react"
 import Minus from "@icons/minus.svg?react"
 import { useTranslation } from "react-i18next"
-import clsx from "clsx"
+import { ThumbnailCarousel } from "@components/thumbnail-carousel"
 
 export const ProductPage: React.FC = () => {
   const { t } = useTranslation()
@@ -87,27 +86,11 @@ export const ProductPage: React.FC = () => {
       </div>
 
       <div className={styles.fixedBottom} style={{ paddingBottom }}>
-        <Swiper
-          spaceBetween={8}
-          slidesPerView="auto"
-          className={styles.thumbnailSwiper}
-        >
-          {product.images.map((img, i) => (
-            <SwiperSlide key={i} className={styles.thumbnailSlide}>
-              <img
-                src={img}
-                alt={`thumb-${i.toString()}`}
-                onClick={() => {
-                  setSelectedIndex(i)
-                }}
-                className={clsx(
-                  styles.thumbnail,
-                  selectedIndex === i && styles.active,
-                )}
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+        <ThumbnailCarousel
+          images={product.images}
+          selectedIndex={selectedIndex}
+          onSelect={setSelectedIndex}
+        />
 
         <div className={styles.actions}>
           {qtyInCart > 0 ? (

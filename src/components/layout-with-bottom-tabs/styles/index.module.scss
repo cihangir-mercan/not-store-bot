@@ -26,8 +26,7 @@ $bottom-tabbar-height: 60px;
 .tabContent {
   position: absolute;
   inset: 0;
-  overflow-y: auto;
-  height: 100%;
+  overflow: hidden;
   transition: opacity 0.2s ease;
   opacity: 0;
   pointer-events: none;

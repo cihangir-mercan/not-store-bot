@@ -48,29 +48,6 @@
   padding-left: 16px;
 }
 
-.thumbnailSwiper {
-  margin-bottom: 16px;
-  margin-top: 8px;
-}
-
-.thumbnailSlide {
-  width: auto !important;
-}
-
-.thumbnail {
-  width: 100px;
-  height: 100px;
-  border-radius: 12px;
-  object-fit: cover;
-  cursor: pointer;
-  border: 2px solid transparent;
-  transition: border-color 0.2s;
-}
-
-.thumbnail.active {
-  border-color: white;
-}
-
 .actions {
   display: flex;
   gap: 12px;

@@ -1,24 +1,25 @@
+// hooks/useScrollRestoreForStore.tsx
 import { useEffect } from "react"
+import { useLocation } from "react-router"
 
 const scrollPositions = new Map<string, number>()
 
-export function useScrollRestoreForStore(
-  id: string,
-  isActive: boolean,
-  key: string,
-) {
-  // Restore scroll when it becomes active
+export function useScrollRestoreForStore(id: string) {
+  const location = useLocation()
+  const key = location.pathname // use pathname as our “restore key”
+
+  // Restore scroll on mount (after render)
   useEffect(() => {
     const el = document.getElementById(id)
-    if (!el || !isActive) return
+    if (!el) return
 
     requestAnimationFrame(() => {
       const saved = scrollPositions.get(key) ?? 0
       el.scrollTo(0, saved)
     })
-  }, [id, isActive, key])
+  }, [id, key])
 
-  // Save scroll on scroll
+  // Save scroll whenever the container scrolls (or on unmount)
   useEffect(() => {
     const el = document.getElementById(id)
     if (!el) return
