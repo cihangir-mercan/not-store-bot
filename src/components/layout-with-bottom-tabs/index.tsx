@@ -27,7 +27,7 @@ export const LayoutWithBottomTabs = (): JSX.Element => {
           className={styles.tabContent}
           data-active={isStore}
         >
-          <StorePage />
+          <StorePage isStoreActive={isStore} />
         </div>
         <div
           id="user-scroll"

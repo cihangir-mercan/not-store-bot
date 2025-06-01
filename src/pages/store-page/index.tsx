@@ -5,9 +5,13 @@ import { StoreHeader } from "@components/store-header"
 import { CartDrawer } from "@components/cart-drawer"
 import { useGetItemsQuery } from "@app/slices/itemsApiSlice"
 import type { ProductItem } from "@app/slices/itemsApiSlice"
-import {ProductCard} from "@components/product-card";
+import { ProductCard } from "@components/product-card"
 
-export const StorePage = (): JSX.Element => {
+type StorePageProps = {
+  isStoreActive: boolean
+}
+
+export const StorePage = ({ isStoreActive }: StorePageProps): JSX.Element => {
   const [cartOpen, setCartOpen] = useState(false)
   const { data: apiResponse, isLoading, isError } = useGetItemsQuery(null)
   const items: ProductItem[] = apiResponse?.data ?? []
@@ -23,7 +27,11 @@ export const StorePage = (): JSX.Element => {
       ) : (
         <div className={styles.links}>
           {items.map((item) => (
-            <ProductCard key={item.id} item={item} />
+            <ProductCard
+              key={item.id}
+              item={item}
+              isActive={isStoreActive}
+            />
           ))}
         </div>
       )}

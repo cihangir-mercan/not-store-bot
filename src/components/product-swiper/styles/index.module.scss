@@ -1,3 +1,5 @@
+$card-height: 173px;
+
 .imageLink {
   display: block;
   text-decoration: none;
@@ -5,7 +7,8 @@
 
 .imageWrapper {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  height: $card-height;
+  aspect-ratio: unset;
   overflow: hidden;
 }
 

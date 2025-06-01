@@ -6,14 +6,19 @@ import { ProductSwiper } from "@components/product-swiper"
 
 type ProductCardProps = {
   item: ProductItem;
-}
+  isActive: boolean;
+};
 
-export const ProductCard: FC<ProductCardProps> = ({ item }) => {
+export const ProductCard: FC<ProductCardProps> = ({ item, isActive }) => {
   const productUrl = `/product/${item.id.toString()}`;
 
   return (
     <div className={styles.productCard}>
-      <ProductSwiper images={item.images} linkTo={productUrl} altText={item.name} />
+      {isActive ? (
+        <ProductSwiper images={item.images} linkTo={productUrl} altText={item.name} />
+      ) : (
+        <div className={styles.productImagePlaceholder} />
+      )}
 
       <Link to={productUrl} className={styles.productLink}>
         {item.name}
@@ -25,3 +30,4 @@ export const ProductCard: FC<ProductCardProps> = ({ item }) => {
     </div>
   );
 };
+
