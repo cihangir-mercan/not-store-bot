@@ -2,13 +2,13 @@
 import type { JSX } from "react";
 import { useState } from "react";
 import styles from "./styles/index.module.scss";
-import { Link } from "react-router";
+// import { Link } from "react-router";
 import { StoreHeader } from "@components/store-header";
 import { CartDrawer } from "@components/cart-drawer";
 
 // Swiper imports
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
+// import { Swiper, SwiperSlide } from "swiper/react";
+// import { Pagination } from "swiper/modules";
 
 // Swiper CSS
 import "swiper/css";
