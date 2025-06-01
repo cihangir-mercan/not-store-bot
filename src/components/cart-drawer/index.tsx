@@ -1,5 +1,4 @@
 import type React from "react";
-import { useEffect } from "react"
 import type { Dispatch, SetStateAction } from "react"
 import styles from "./styles/index.module.scss"
 import { Drawer } from "vaul"
@@ -18,10 +17,6 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
       setCartOpen(false);
     }
   };
-
-  useEffect(() => {
-    console.log("cartOpen: ", cartOpen)
-  }, [cartOpen])
 
   return (
     <Drawer.Root open={cartOpen} onOpenChange={handleOpenChange}>
