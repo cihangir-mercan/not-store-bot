@@ -1,25 +1,30 @@
 .userPage {
-  padding: 1rem;
-  color: white;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .title {
   font-size: 1.25rem;
   font-weight: 600;
-  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+.listContainer {
+  flex: 1;
 }
 
 .item {
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
 }
 
 .itemImage {
   width: 48px;
   height: 48px;
-  object-fit: cover;
   border-radius: 8px;
+  object-fit: cover;
   margin-right: 1rem;
 }
 
@@ -57,4 +62,23 @@
 .price {
   font-size: 1rem;
   font-weight: 500;
+}
+
+.scrollToTop {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  z-index: 999;
+  background: #666;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
