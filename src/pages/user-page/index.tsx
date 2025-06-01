@@ -46,7 +46,6 @@ export const UserPage = ({ isActiveTab }: UserPageProps): JSX.Element => {
         <UserHistoryList
           history={history}
           itemMap={itemMap}
-          isActiveTab={isActiveTab}
           onScroll={onScroll}
           listRef={listRef}
         />

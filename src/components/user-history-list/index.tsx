@@ -10,7 +10,6 @@ import type { HistoryItem } from "@app/slices/historyApiSlice"
 type Props = {
   history: HistoryItem[]
   itemMap: Map<number, ProductItem>
-  isActiveTab: boolean
   onScroll: (props: ListOnScrollProps) => void
   listRef: RefObject<List | null>
 }
@@ -18,7 +17,6 @@ type Props = {
 export const UserHistoryList = ({
   history,
   itemMap,
-  isActiveTab,
   onScroll,
   listRef,
 }: Props): JSX.Element => {
@@ -39,16 +37,12 @@ export const UserHistoryList = ({
         key={[purchase.id, purchase.timestamp, index].join("-")}
         style={style}
       >
-        {isActiveTab ? (
-          <img
-            src={item.images[0]}
-            alt={item.name}
-            className={styles.itemImage}
-            loading="lazy"
-          />
-        ) : (
-          <div className={styles.placeholderImage} />
-        )}
+        <img
+          src={item.images[0]}
+          alt={item.name}
+          className={styles.itemImage}
+          loading="lazy"
+        />
         <div className={styles.itemDetails}>
           <div className={styles.category}>{item.category}</div>
           <div className={styles.name}>{item.name}</div>

@@ -6,12 +6,10 @@ import { ProductSwiper } from "@components/product-swiper"
 
 type ProductCardProps = {
   item: ProductItem
-  isActive: boolean
 }
 
-export const ProductCard: FC<ProductCardProps> = ({ item, isActive }) => {
+export const ProductCard: FC<ProductCardProps> = ({ item }) => {
   const productUrl = `/product/${item.id.toString()}`
-  console.log(isActive)
 
   return (
     <div className={styles.productCard}>
