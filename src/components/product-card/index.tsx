@@ -9,7 +9,7 @@ type ProductCardProps = {
 }
 
 export const ProductCard: FC<ProductCardProps> = ({ item }) => {
-  const productUrl = `/product/${item.category}/${item.id.toString()}`;
+  const productUrl = `/product/${item.id.toString()}`;
 
   return (
     <div className={styles.productCard}>
