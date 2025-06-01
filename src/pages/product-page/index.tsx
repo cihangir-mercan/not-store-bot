@@ -27,7 +27,7 @@ export const ProductPage: React.FC = () => {
     tgWeb.BackButton.show()
 
     const onBackButton = () => {
-      void navigate("/", { replace: true })
+      void navigate(-1)
     }
 
     tgWeb.BackButton.onClick(onBackButton)

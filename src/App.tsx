@@ -17,7 +17,7 @@ export const App = () => {
       // 2 saniye sonra navigasyonu gerçekleştir
       const timeoutId = setTimeout(() => {
         void navigate(`/product/${trimmed}`, { replace: true, state: { fromStart: true } });
-      }, 2000);
+      }, 200);
 
       // Cleanup: component unmount olduğunda timeout'ı temizle
       return () => { clearTimeout(timeoutId); };
