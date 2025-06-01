@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.6.1",
+    "@tonconnect/ui-react": "^2.1.0",
     "@twa-dev/types": "^8.0.2",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.13",

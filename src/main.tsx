@@ -9,6 +9,7 @@ import { App } from "./App"
 import { store } from "./app/store"
 import "./i18n"
 import type { Telegram } from "@twa-dev/types"
+import { TonConnectUIProvider } from "@tonconnect/ui-react"
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
@@ -26,7 +27,9 @@ if (container) {
     <StrictMode>
       <BrowserRouter>
         <Provider store={store}>
-          <App />
+          <TonConnectUIProvider>
+            <App />
+          </TonConnectUIProvider>
         </Provider>
       </BrowserRouter>
     </StrictMode>,
