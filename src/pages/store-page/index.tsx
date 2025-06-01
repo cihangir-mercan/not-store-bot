@@ -1,47 +1,76 @@
-import { useEffect, useState } from "react"
-import type { JSX } from "react"
-import styles from "./styles/index.module.scss"
-import { useTranslation } from "react-i18next"
-import type { WebApp } from "@twa-dev/types"
-import { Link } from "react-router"
+// src/pages/StorePage.tsx
+import type { JSX } from "react";
+import { useState } from "react";
+import styles from "./styles/index.module.scss";
+import { Link } from "react-router";
+import { StoreHeader } from "@components/store-header";
+import { CartDrawer } from "@components/cart-drawer";
+
+// Swiper imports
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
+
+// Swiper CSS
+import "swiper/css";
+import "swiper/css/pagination";
+
+import { useGetItemsQuery } from "@app/slices/itemsApiSlice";
+import type { ProductItem } from "@app/slices/itemsApiSlice";
 
 export const StorePage = (): JSX.Element => {
-  const { t } = useTranslation()
-  const [tg, setTg] = useState<WebApp | null>(null)
-  const [theme, setTheme] = useState<string | null>(null)
-
-  useEffect(() => {
-    const tg = window.Telegram.WebApp
-    setTheme(tg.colorScheme)
-    tg.onEvent("themeChanged", () => {
-      setTheme(tg.colorScheme)
-    })
-    setTg(tg)
-  }, [])
+  const [cartOpen, setCartOpen] = useState(false);
+  const { data: apiResponse, isLoading, isError } = useGetItemsQuery(null);
+  const items: ProductItem[] = apiResponse?.data ?? [];
 
   return (
-    <div>
-      <div>{t("storePage.title")}</div>
-      <div>
-        Current Theme : <strong>{JSON.stringify(theme)}</strong>
-      </div>
+    <div className={styles.storeContainer}>
+      <StoreHeader setCartOpen={setCartOpen} />
+
       <div className={styles.links}>
-        <Link to="/product/hoodie" className={styles.productLink}>
-          Hoodie
-        </Link>
+        {isLoading && <div className={styles.status}>Loading…</div>}
+        {isError && <div className={styles.status}>Error loading products.</div>}
 
-        <Link to="/product/tshirt" className={styles.productLink}>
-          Tshirt
-        </Link>
+        {!isLoading && !isError && (
+          <div className={styles.productsGrid}>
+            {items.length}
+            {/*{items.map((item) => (*/}
+            {/*  <div key={item.id} className={styles.productCard}>*/}
+            {/*    <div className={styles.imageWrapper}>*/}
+            {/*      <Swiper*/}
+            {/*        modules={[Pagination]}*/}
+            {/*        pagination={{ clickable: true }}*/}
+            {/*        spaceBetween={0}*/}
+            {/*        slidesPerView={1}*/}
+            {/*        className={styles.swiper}*/}
+            {/*      >*/}
+            {/*        {item.images.map((url, idx) => (*/}
+            {/*          <SwiperSlide key={idx}>*/}
+            {/*            <img*/}
+            {/*              src={url}*/}
+            {/*              alt={item.name}*/}
+            {/*              className={styles.productImage}*/}
+            {/*            />*/}
+            {/*          </SwiperSlide>*/}
+            {/*        ))}*/}
+            {/*      </Swiper>*/}
+            {/*    </div>*/}
 
-        <Link to="/product/cap" className={styles.productLink}>
-          Cap
-        </Link>
+            {/*    <Link*/}
+            {/*      to={`/product/${item.category}/${item.id.toString()}`}*/}
+            {/*      className={styles.productLink}*/}
+            {/*    >*/}
+            {/*      {item.name}*/}
+            {/*    </Link>*/}
+            {/*    <p className={styles.price}>*/}
+            {/*      {item.price} <span className={styles.currency}>{item.currency}</span>*/}
+            {/*    </p>*/}
+            {/*  </div>*/}
+            {/*))}*/}
+          </div>
+        )}
       </div>
 
-      <div style={{ whiteSpace: "wrap", overflowWrap: "break-word" }}>
-        Current Telegram : <strong>{JSON.stringify(tg)}</strong>
-      </div>
+      <CartDrawer cartOpen={cartOpen} setCartOpen={setCartOpen} />
     </div>
-  )
-}
+  );
+};

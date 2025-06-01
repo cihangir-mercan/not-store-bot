@@ -1,9 +1,7 @@
 {
   "storePage": {
-    "title": "Hoşgeldiniz store page",
-    "subtitle": "Favorilerinizi seçin"
+    "title": "Not Store"
   },
   "userPage": {
-    "title": "Hoşgeldiniz user page"
   }
 }

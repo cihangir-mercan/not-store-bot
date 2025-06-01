@@ -72,6 +72,15 @@ h6 {
   isolation: isolate;
 }
 
+button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  background: transparent;
+}
+
 html,
 body,
 #root {

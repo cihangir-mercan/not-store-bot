@@ -14,19 +14,16 @@ export const LayoutWithBottomTabs = (): JSX.Element => {
 
   return (
     <div className={styles.appContainer} style={{ paddingBottom: offset }}>
-      {/* this is where the active page will render */}
       <div className={styles.content}>
         <Outlet />
       </div>
 
-      {/* bottom tab bar: always visible */}
       <nav className={styles.bottomTabbar} style={{ height: offset }}>
         <NavLink
           to="/"
           className={({ isActive }) => getTabClasses(isActive)}
           end
         >
-          {/* replace with an icon if you like */}
           <span>🏬</span>
           <span className="label">Store</span>
         </NavLink>

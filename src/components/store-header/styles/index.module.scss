@@ -1,0 +1,23 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.logo {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.headerButtons {
+  display: flex;
+  gap: 1rem;
+}
+
+.searchButton,
+.cartButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
