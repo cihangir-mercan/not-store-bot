@@ -15,8 +15,16 @@
   cursor: pointer;
   border: 2px solid transparent;
   transition: border-color 0.2s;
+
+  :global(.light) & {
+    border-color: transparent;
+  }
 }
 
 .thumbnail.active {
   border-color: white;
+
+  :global(.light) & {
+    border-color: black;
+  }
 }

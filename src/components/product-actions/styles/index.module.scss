@@ -10,6 +10,11 @@
     letter-spacing: -0.4px;
     font-weight: 590;
     border-radius: 12px;
+    border: none;
+    transition:
+      opacity 0.2s,
+      background 0.2s,
+      color 0.2s;
   }
 
   .addToCart {
@@ -22,11 +27,28 @@
       background: #555;
       color: #ccc;
     }
+
+    :global(.light) & {
+      background: rgb(235, 235, 235);
+      color: #000;
+
+      &:disabled {
+        background: #eee;
+        color: #999;
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
   }
 
   .buyNow {
     background: white;
     color: black;
+
+    :global(.light) & {
+      background: #000;
+      color: #fff;
+    }
   }
 }
 
@@ -37,6 +59,13 @@
   justify-content: center;
   background-color: #141414;
   border-radius: 12px;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+
+  :global(.light) & {
+    background-color: #f0f0f0;
+  }
 }
 
 .decrementButton,
@@ -55,7 +84,12 @@
   flex-wrap: wrap;
   transition:
     opacity 0.2s,
-    background 0.2s;
+    background 0.2s,
+    color 0.2s;
+
+  :global(.light) & {
+    color: #000;
+  }
 }
 
 .incrementButton {
@@ -63,6 +97,16 @@
     opacity: 0.5;
     cursor: not-allowed;
     background: transparent;
+  }
+
+  /* Light‐theme disabled styling */
+  :global(.light) & {
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      background: transparent;
+      color: #666;
+    }
   }
 }
 
@@ -73,4 +117,10 @@
   line-height: 24px;
   font-weight: 600;
   text-align: center;
+  color: #fff;
+  transition: color 0.2s;
+
+  :global(.light) & {
+    color: #000;
+  }
 }
