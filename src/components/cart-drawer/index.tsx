@@ -6,6 +6,7 @@ import { useGetItemsQuery } from "@app/slices/itemsApiSlice"
 import { Drawer } from "vaul"
 import styles from "./styles/index.module.scss"
 import Minus from "@icons/minus.svg?react"
+import Close from "@icons/close.svg?react"
 
 type CartDrawerProps = {
   cartOpen: boolean
@@ -45,15 +46,17 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
           <Drawer.Handle className={styles.vaulHandle} />
 
           <header className={styles.header}>
-            {!hasZeroLength && <h2>Cart</h2>}
+            {!hasZeroLength && <h2 className={styles.headerTitle}>Cart</h2>}
             <Drawer.Close asChild>
-              <button className={styles.closeButton}>✕</button>
+              <button className={styles.closeButton}>
+                <Close />
+              </button>
             </Drawer.Close>
           </header>
 
           <div className={hasZeroLength ? styles.noDataBody : styles.body}>
             {hasZeroLength ? (
-              <div>
+              <div className={styles.noDataWrapper}>
                 <p className={styles.noItemTitle}>Cart’s cold</p>
                 <p className={styles.noItemContent}>No items yet</p>
               </div>
