@@ -11,6 +11,7 @@ export const BottomTabBar = (): JSX.Element => {
   const tgWebApp = window.Telegram.WebApp
   const bottomInset = tgWebApp.safeAreaInset.bottom
   const offset = BOTTOM_TABBAR_HEIGHT + bottomInset
+  const userPp = tgWebApp.initDataUnsafe.user?.photo_url;
 
   return (
     <nav className={styles.bottomTabbar} style={{ height: offset }}>
@@ -21,7 +22,7 @@ export const BottomTabBar = (): JSX.Element => {
 
       <NavLink to="/user" className={({ isActive }) => getTabClasses(isActive)}>
         <span>👤</span>
-        <span className={styles.label}>User</span>
+        <span className={styles.label}>{userPp}</span>
       </NavLink>
     </nav>
   )
