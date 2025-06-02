@@ -23,6 +23,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   }
 
   const cartItems = useAppSelector(selectCart)
+  const hasZeroLength = cartItems.length === 0
   const dispatch = useAppDispatch()
   const { data: itemsData } = useGetItemsQuery(null)
 
@@ -44,15 +45,18 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
           <Drawer.Handle className={styles.vaulHandle} />
 
           <header className={styles.header}>
-            <h2>Cart</h2>
+            {!hasZeroLength && <h2>Cart</h2>}
             <Drawer.Close asChild>
               <button className={styles.closeButton}>✕</button>
             </Drawer.Close>
           </header>
 
-          <div className={styles.body}>
-            {cartItems.length === 0 ? (
-              <p>No items yet</p>
+          <div className={hasZeroLength ? styles.noDataBody : styles.body}>
+            {hasZeroLength ? (
+              <div>
+                <p className={styles.noItemTitle}>Cart’s cold</p>
+                <p className={styles.noItemContent}>No items yet</p>
+              </div>
             ) : (
               cartItems.map(cartItem => {
                 const product = idToItem.get(cartItem.id)
@@ -105,13 +109,21 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
             )}
           </div>
 
-          {cartItems.length > 0 && (
-            <footer className={styles.footer}>
+          <footer className={styles.footer}>
+            {cartItems.length > 0 ? (
               <button className={styles.buyButton}>
-                <div className={styles.buttonText}>Buy for {totalPrice} NOT</div>
+                <div className={styles.buttonText}>
+                  Buy for {totalPrice} NOT
+                </div>
               </button>
-            </footer>
-          )}
+            ) : (
+              <Drawer.Close asChild>
+                <button className={styles.okButton} aria-label="OK">
+                  <div className={styles.buttonText}>OK</div>
+                </button>
+              </Drawer.Close>
+            )}
+          </footer>
         </Drawer.Content>
       </Drawer.Portal>
     </Drawer.Root>

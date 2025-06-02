@@ -1,9 +1,13 @@
 .vaulOverlay {
   position: fixed;
   inset: 0;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(8px);
   z-index: 1000;
+
+  :global(.dark) & {
+    background: rgba(255, 255, 255, 0.3);
+  }
 }
 
 .vaulContent {
@@ -12,21 +16,29 @@
   left: 0;
   width: 100%;
   max-width: 480px;
-  background: #fff;
+  background: white;
   border-radius: 16px 16px 0 0;
   box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
   padding: 16px;
   z-index: 1001;
   transition: transform 0.3s ease-out;
+
+  :global(.dark) & {
+    background: black;
+  }
 }
 
 .vaulHandle {
   width: 40px;
   height: 4px;
-  background: #ccc;
+  background: black;
   border-radius: 2px;
   margin: 0 auto 12px auto;
   cursor: grab;
+
+  :global(.dark) & {
+    background: white;
+  }
 }
 
 .header,
@@ -36,31 +48,40 @@
   align-items: center;
   margin-bottom: 16px;
   margin-top: 16px;
+  color: black;
+
+  :global(.dark) & {
+    color: white;
+  }
 }
 
 .closeButton {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+
   background: transparent;
   border: none;
   cursor: pointer;
+  color: black;
+
+  :global(.dark) & {
+    color: white;
+  }
 }
 
 .body {
-  min-height: 150px;
   text-align: center;
 }
 
-.okButton {
-  border: none;
-  padding: 12px 24px;
-  border-radius: 8px;
-  cursor: pointer;
-  background: black;
-  color: white;
-
+.noDataBody {
+  min-height: 150px;
+  display: flex;
+  align-items: center;
 }
 
-
-.buyButton {
+.buyButton,
+.okButton {
   width: 100%;
   height: 50px;
   text-align: center;
@@ -124,6 +145,11 @@
   font-size: 17px;
   line-height: 24px;
   letter-spacing: -0.7px;
+  color: black;
+
+  :global(.dark) & {
+    color: white;
+  }
 }
 
 .cartItemPricing {
@@ -136,6 +162,11 @@
 
 .cartItemQuantity {
   font-weight: 500;
+  color: black;
+
+  :global(.dark) & {
+    color: white;
+  }
 }
 
 .cartItemUnitPrice {
@@ -153,6 +184,11 @@
   font-size: 17px;
   line-height: 22px;
   letter-spacing: -0.43px;
+  color: black;
+
+  :global(.dark) & {
+    color: white;
+  }
 }
 
 .removeButton {
@@ -165,11 +201,38 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgb(20,20,20);
+  background: black;
   color: white;
+
+  :global(.dark) & {
+    background: white;
+    color: black;
+  }
 
   svg {
     fill: currentColor;
   }
 }
 
+.noItemTitle {
+  font-weight: 590;
+  font-size: 26px;
+  line-height: 32px;
+  letter-spacing: 0.38px;
+  text-align: center;
+  color: black;
+  margin-bottom: 8px;
+
+  :global(.dark) & {
+    color: white;
+  }
+}
+
+.noItemContent {
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 22px;
+  letter-spacing: -0.43px;
+  text-align: center;
+  color: rgb(128, 128, 128);
+}
