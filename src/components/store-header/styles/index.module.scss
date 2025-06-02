@@ -42,12 +42,17 @@
 .badgeWrapper {
   width: 23px;
   height: 23px;
-  background: black;
-  color: white;
   border-radius: 23px;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: white;
+  color: black;
+
+  :global(.light) & {
+    background: black;
+    color: white;
+  }
 }
 
 .cartBadge {

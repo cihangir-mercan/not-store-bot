@@ -9,7 +9,7 @@
   /* Light‐theme overrides */
   :global(.light) & {
     background: white;
-    color: #222;
+    color: black;
   }
 }
 
@@ -28,7 +28,7 @@
 
   :global(.light) & {
     background: white;
-    color: #222;
+    color: black;
   }
 }
 
@@ -67,14 +67,14 @@
 
   :global(.light) & {
     background: white;
-    color: #222;
+    color: black;
   }
 }
 
 .tag {
   margin-right: 8px;
 
-  background: #222;
+  background: black;
   color: white;
   padding: 4px 8px;
   border-radius: 4px;
@@ -103,7 +103,7 @@
   color: white;
 
   :global(.light) & {
-    color: #222;
+    color: black;
   }
 }
 
@@ -134,10 +134,10 @@
 
   :global(.light) & {
     svg {
-      fill: #222;
+      fill: black;
     }
     &:focus {
-      outline: 2px solid #222;
+      outline: 2px solid black;
     }
   }
 }
