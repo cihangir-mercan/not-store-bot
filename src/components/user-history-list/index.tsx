@@ -12,24 +12,42 @@ type Props = {
   itemMap: Map<number, ProductItem>
   onScroll: (props: ListOnScrollProps) => void
   listRef: RefObject<List | null>
+  loading?: boolean
 }
 
 export const UserHistoryList = ({
-  history,
-  itemMap,
-  onScroll,
-  listRef,
-}: Props): JSX.Element => {
+                                  history,
+                                  itemMap,
+                                  onScroll,
+                                  listRef,
+                                  loading = false,
+                                }: Props): JSX.Element => {
   const Row = ({
-    index,
-    style,
-  }: {
+                 index,
+                 style,
+               }: {
     index: number
     style: CSSProperties
-  }): JSX.Element | null => {
+  }): React.JSX.Element | null => {
+    if (loading) {
+      return (
+        <div className={styles.skeletonRow} style={style}>
+          <div className={styles.skeletonImage} />
+          <div className={styles.skeletonTextBlock}>
+            <div className={styles.skeletonCategory} />
+            <div className={styles.skeletonName} />
+          </div>
+          <div className={styles.skeletonMeta}>
+            <div className={styles.skeletonDate} />
+            <div className={styles.skeletonPrice} />
+          </div>
+        </div>
+      )
+    }
+
     const purchase = history[index]
     const item = itemMap.get(purchase.id)
-    if (!item) return null
+    if (!item) return <></>
 
     return (
       <div
@@ -66,7 +84,7 @@ export const UserHistoryList = ({
           ref={listRef}
           height={height}
           width={width}
-          itemCount={history.length}
+          itemCount={loading ? 10 : history.length}
           itemSize={72}
           onScroll={onScroll}
         >
