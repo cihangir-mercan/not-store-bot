@@ -39,7 +39,25 @@ export const StorePage = (): JSX.Element => {
       />
 
       {isLoading ? (
-        <div className={styles.status}>Loading…</div>
+        <div className={styles.links}>
+          {Array.from({ length: 6 }).map((_, i) => (
+            <ProductCard
+              key={i}
+              loading
+              item={{
+                id: i,
+                name: "",
+                price: 0,
+                currency: "",
+                images: [],
+                category: "",
+                description: "",
+                tags: { fabric: "" },
+                left: 0
+              }}
+            />
+          ))}
+        </div>
       ) : isError ? (
         <div className={styles.status}>Error loading products.</div>
       ) : filteredItems.length === 0 ? (
@@ -55,6 +73,7 @@ export const StorePage = (): JSX.Element => {
           ))}
         </div>
       )}
+
 
       <CartDrawer cartOpen={cartOpen} setCartOpen={setCartOpen} />
     </div>
