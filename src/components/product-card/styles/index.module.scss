@@ -75,26 +75,3 @@ $card-height: 173px;
     fill: currentColor;
   }
 }
-
-
-.skeletonImage {
-  width: 100%;
-  height: $card-height;
-  background: #ccc;
-  border-radius: 8px;
-}
-
-.skeletonText {
-  height: 24px;
-  width: 70%;
-  margin: 8px 0 2px 8px;
-  background: #ccc;
-  border-radius: 6px;
-}
-.skeletonPrice {
-  height: 20px;
-  width: 40%;
-  margin-left: 8px;
-  background: #ccc;
-  border-radius: 4px;
-}

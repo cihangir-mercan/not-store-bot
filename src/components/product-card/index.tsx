@@ -9,24 +9,12 @@ import { selectQuantityById } from "@app/slices/cartSlice.ts"
 
 type ProductCardProps = {
   item: ProductItem
-  loading?: boolean
 }
 
-export const ProductCard: FC<ProductCardProps> = ({ item, loading }) => {
+export const ProductCard: FC<ProductCardProps> = ({ item }) => {
   const productUrl = `/product/${item.id.toString()}`
   const quantity = useAppSelector(state => selectQuantityById(state)(item.id))
 
-
-  if (loading) {
-    return (
-      <div className={styles.productCard}>
-        <div className={styles.skeletonImage} />
-        <div className={styles.skeletonText} />
-        <div className={styles.skeletonPrice} />
-      </div>
-    )
-  }
-  
   return (
     <div className={styles.productCard}>
       <div className={styles.imageWrapper}>
