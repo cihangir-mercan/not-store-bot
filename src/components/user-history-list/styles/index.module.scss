@@ -85,7 +85,6 @@
   border-radius: 12px;
   background: #ccc;
   margin-right: 12px;
-  animation: pulse 1.5s infinite ease-in-out;
 }
 
 .skeletonTextBlock {
@@ -101,7 +100,6 @@
   background: #ccc;
   border-radius: 4px;
   margin-bottom: 4px;
-  animation: pulse 1.5s infinite ease-in-out;
 }
 
 .skeletonName {
@@ -109,7 +107,6 @@
   width: 55%;
   background: #ccc;
   border-radius: 4px;
-  animation: pulse 1.5s infinite ease-in-out;
 }
 
 .skeletonMeta {
@@ -125,7 +122,6 @@
   width: 60px;
   background: #ccc;
   border-radius: 4px;
-  animation: pulse 1.5s infinite ease-in-out;
 }
 
 .skeletonPrice {
@@ -133,19 +129,4 @@
   width: 80px;
   background: #ccc;
   border-radius: 4px;
-  animation: pulse 1.5s infinite ease-in-out;
 }
-
-
-@keyframes pulse {
-  0% {
-    background-color: #e0e0e0;
-  }
-  50% {
-    background-color: #f5f5f5;
-  }
-  100% {
-    background-color: #e0e0e0;
-  }
-}
-
