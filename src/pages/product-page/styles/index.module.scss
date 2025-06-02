@@ -102,10 +102,10 @@
   }
 
   .tagRight {
-    color: rgb(118, 118, 118);
+    color: var(--secondary-text-light);
 
     :global(.dark) & {
-      color: rgb(137, 137, 137);
+      color: var(--secondary-text-dark);
     }
   }
 }
