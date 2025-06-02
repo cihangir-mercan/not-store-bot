@@ -31,3 +31,31 @@ $card-height: 173px;
   font-size: 0.8rem;
   color: #888;
 }
+
+.imageWrapper {
+  position: relative;
+}
+
+.tick {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  z-index: 1;
+  background: black;
+  color: white;
+
+  :global(.light) & {
+    background: white;
+    color: black;
+  }
+
+  svg {
+    fill: currentColor;
+  }
+}

@@ -18,7 +18,7 @@ declare global {
   }
 }
 
-const manifestUrl = "https://not-store-bot.vercel.app/tonconnect-manifest.json";
+const manifestUrl = "https://not-store-bot.vercel.app/tonconnect-manifest.json"
 
 const container = document.getElementById("root")
 

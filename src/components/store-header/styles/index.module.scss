@@ -2,34 +2,56 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: 16px 16px 12px;
 }
 
 .logo {
-  font-size: 1.5rem;
+  font-size: 26px;
+  line-height: 32px;
+  letter-spacing: 0.38px;
+  font-weight: 600;
   margin: 0;
 }
 
 .headerButtons {
   display: flex;
-  gap: 1rem;
+  gap: 8px;
 }
 
 .searchButton,
 .cartButton {
+  height: 28px;
+  width: 28px;
   background: none;
   border: none;
   cursor: pointer;
-}
-
-.cartButton {
-  svg {
-    fill: white;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
 
   :global(.light) & {
-    svg {
-      fill: #222;
-    }
+    color: black;
   }
+
+  svg {
+    fill: currentColor;
+  }
+}
+
+.badgeWrapper {
+  width: 23px;
+  height: 23px;
+  background: black;
+  color: white;
+  border-radius: 23px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cartBadge {
+  font-size: 18px;
+  line-height: 23px;
+  font-weight: 600;
 }

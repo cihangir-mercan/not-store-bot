@@ -7,13 +7,13 @@ $bottom-tabbar-height: 60px;
   overflow: hidden;
 
   :global(.light) & {
-    background-color: #ffffff;
-    color: #222222;
+    background-color: white;
+    color: black;
   }
 
   :global(.dark) & {
-    background-color: #222222;
-    color: #eeeeee;
+    background-color: black;
+    color: white;
   }
 }
 
