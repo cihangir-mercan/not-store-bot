@@ -69,21 +69,22 @@
 
 .closeButton {
   position: absolute;
-  right: 20px;
+  right: 16px;
   top: 28px;
   width: 28px;
   height: 28px;
   border-radius: 50%;
   border: none;
   cursor: pointer;
-  color: black;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgb(235, 235, 235);
+  background: black;
+  color: white;
 
   :global(.dark) & {
-    color: white;
+    color: black;
+    background: white;
   }
 
   svg {
