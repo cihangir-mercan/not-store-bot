@@ -27,7 +27,7 @@ export const UserPage = (): JSX.Element => {
   // Hook returns onScroll handler bound to react-window list and scroll storage
   const onScroll = useScrollRestoreForList(listRef, setShowScrollToTop)
 
-  const loading = isHistoryLoading || isItemsLoading
+  if (isHistoryLoading || isItemsLoading) return <div>Loading…</div>
 
   return (
     <div className={styles.userPage}>
@@ -39,7 +39,6 @@ export const UserPage = (): JSX.Element => {
           itemMap={itemMap}
           onScroll={onScroll}
           listRef={listRef}
-          loading={loading}
         />
       </div>
 
