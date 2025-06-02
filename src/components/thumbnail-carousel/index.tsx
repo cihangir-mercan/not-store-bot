@@ -1,4 +1,4 @@
-import type React from "react";
+import type React from "react"
 import { useEffect, useRef } from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import clsx from "clsx"
@@ -16,7 +16,7 @@ export const ThumbnailCarousel: React.FC<ThumbnailCarouselProps> = ({
   images,
   selectedIndex,
   onSelect,
-  swiperRef
+  swiperRef,
 }) => {
   const thumbSwiperRef = useRef<SwiperClass | null>(null)
 
@@ -31,7 +31,9 @@ export const ThumbnailCarousel: React.FC<ThumbnailCarouselProps> = ({
       spaceBetween={8}
       slidesPerView="auto"
       className={styles.thumbnailSwiper}
-      onSwiper={(swiper) => { thumbSwiperRef.current = swiper }}
+      onSwiper={swiper => {
+        thumbSwiperRef.current = swiper
+      }}
     >
       {images.map((img, i) => (
         <SwiperSlide key={i} className={styles.thumbnailSlide}>

@@ -10,17 +10,17 @@ type ProductImageSwiperProps = {
 }
 
 export const ProductImageSwiper: React.FC<ProductImageSwiperProps> = ({
-                                                                        images,
-                                                                        setSelectedIndex,
-                                                                        swiperRef,
-                                                                      }) => {
+  images,
+  setSelectedIndex,
+  swiperRef,
+}) => {
   return (
     <div className={styles.mainImageWrapper}>
       <Swiper
-        onSwiper={(swiper) => {
+        onSwiper={swiper => {
           swiperRef.current = swiper
         }}
-        onSlideChange={(swiper) => {
+        onSlideChange={swiper => {
           setSelectedIndex(swiper.activeIndex)
         }}
         slidesPerView={1}

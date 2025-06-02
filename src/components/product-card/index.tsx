@@ -35,9 +35,7 @@ export const ProductCard: FC<ProductCardProps> = ({ item }) => {
       </Link>
 
       <div className={styles.priceWrapper}>
-        <span className={styles.price}>
-          {item.price}
-        </span>
+        <span className={styles.price}>{item.price}</span>
         <span className={styles.currency}>{item.currency}</span>
       </div>
     </div>

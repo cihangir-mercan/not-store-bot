@@ -1,4 +1,4 @@
-import type React from "react";
+import type React from "react"
 import { useRef } from "react"
 import { useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router"
@@ -45,7 +45,7 @@ export const ProductPage: React.FC = () => {
   const product = data?.data.find(p => p.id === Number(productId))
   if (!product) return <div className={styles.status}>Product not found.</div>
 
-  const feature: string = product.tags.fabric.split(' ')[1] || '';
+  const feature: string = product.tags.fabric.split(" ")[1] || ""
 
   const handleShare = () => {
     const link = `${BASE_URL_FOR_SHARE}${product.id.toString()}`

@@ -89,7 +89,7 @@
   background: rgb(235, 235, 235);
 
   :global(.dark) & {
-    background: rgb(20,20,20)
+    background: rgb(20, 20, 20);
   }
 
   .tagLeft {
@@ -105,7 +105,7 @@
     color: rgb(118, 118, 118);
 
     :global(.dark) & {
-      color: rgb(137,137,137)
+      color: rgb(137, 137, 137);
     }
   }
 }
