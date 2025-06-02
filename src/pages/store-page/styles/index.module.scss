@@ -19,3 +19,42 @@
   padding: 2rem 0;
   color: #666;
 }
+
+.noResult {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+
+  :global(.light) & {
+    color: black;
+  }
+}
+
+.duckIcon {
+  width: 72px;
+  height: 72px;
+  margin-bottom: 16px;
+}
+
+.noResultTitle {
+  font-weight: 590;
+  font-size: 26px;
+  line-height: 32px;
+  letter-spacing: 0.38px;
+  text-align: center;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+.noResultSubtitle {
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 22px;
+  letter-spacing: -0.43px;
+  text-align: center;
+  color: rgb(128, 128, 128);
+}

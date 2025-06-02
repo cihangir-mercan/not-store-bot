@@ -1,3 +1,9 @@
+.mainWrapper {
+  display: flex;
+  height: 36px;
+  align-items: center;
+  flex: 1;
+}
 .header {
   display: flex;
   justify-content: space-between;
@@ -6,6 +12,7 @@
 }
 
 .logo {
+  flex: 1;
   font-size: 26px;
   line-height: 32px;
   letter-spacing: 0.38px;
@@ -59,4 +66,102 @@
   font-size: 18px;
   line-height: 23px;
   font-weight: 600;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.inputWrapper {
+  position: relative;
+  flex: 1;
+  display: flex;
+}
+
+.searchInput {
+  flex: 1;
+  height: 36px;
+  border: none;
+  border-radius: 8px;
+  padding-left: 34px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 22px;
+  letter-spacing: -0.43px;
+  color: white;
+  background: rgb(14, 14, 14);
+
+  :global(.light) & {
+    background: rgb(241, 241, 241);
+    color: black;
+  }
+
+  &::placeholder {
+    color: rgb(169, 169, 169);
+  }
+}
+
+.clearInput,
+.cancelSearch {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.clearInput {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background: rgb(168, 168, 168);
+
+  :global(.dark) & {
+    background: rgb(87, 87, 87);
+    color: black;
+  }
+
+  svg {
+    fill: currentColor;
+  }
+}
+
+.inputIconWrapper {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(169, 169, 169);
+  background: transparent;
+
+  svg {
+    fill: currentColor;
+  }
+}
+
+.cancelSearch {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: -0.2px;
+  color: black;
+
+  :global(.dark) & {
+    color: white;
+  }
 }
