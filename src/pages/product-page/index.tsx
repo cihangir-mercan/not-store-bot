@@ -1,5 +1,5 @@
-// src/pages/product-page/index.tsx
-import type React from "react"
+import type React from "react";
+import { useRef } from "react"
 import { useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router"
 import { useGetItemsQuery } from "@app/slices/itemsApiSlice"
@@ -13,17 +13,18 @@ import { ThumbnailCarousel } from "@components/thumbnail-carousel"
 import { ProductActions } from "@components/product-actions"
 import Share from "@icons/share.svg?react"
 import { WalletModal } from "@components/wallet-modal"
+import type { Swiper as SwiperClass } from "swiper"
+import { ProductImageSwiper } from "@components/product-image-swiper"
 
 export const ProductPage: React.FC = () => {
   const { productId } = useParams<{ productId: string }>()
   const navigate = useNavigate()
   const { data } = useGetItemsQuery(null)
   const [selectedIndex, setSelectedIndex] = useState(0)
+  const swiperRef = useRef<SwiperClass | null>(null)
 
-  // 2) Modal’ın açık/kapalı durumunu tutan state
   const [isHelloPopupOpen, setIsHelloPopupOpen] = useState(false)
 
-  // Telegram WebApp back button logic
   const tgWeb = window.Telegram.WebApp
   const bottomInset = tgWeb.safeAreaInset.bottom
   const paddingBottom = DEFAULT_PADDING_BOTTOM + bottomInset
@@ -43,6 +44,8 @@ export const ProductPage: React.FC = () => {
 
   const product = data?.data.find(p => p.id === Number(productId))
   if (!product) return <div className={styles.status}>Product not found.</div>
+
+  const feature: string = product.tags.fabric.split(' ')[1] || '';
 
   const handleShare = () => {
     const link = `${BASE_URL_FOR_SHARE}${product.id.toString()}`
@@ -83,22 +86,27 @@ export const ProductPage: React.FC = () => {
           <p className={styles.description}>{product.description}</p>
           <div className={styles.tags}>
             <span className={styles.tag}>
-              {product.price} {product.currency}
+              <span className={styles.tagLeft}>{product.price}</span>
+              <span className={styles.tagRight}>{product.currency}</span>
             </span>
-            <span className={styles.tag}>{product.left} LEFT</span>
-            {product.tags.fabric && (
-              <span className={styles.tag}>{product.tags.fabric}</span>
+            <span className={styles.tag}>
+              <span className={styles.tagLeft}>{product.left}</span>
+              <span className={styles.tagRight}>LEFT</span>
+            </span>
+            {!!feature && (
+              <span className={styles.tag}>
+                <span className={styles.tagLeft}>100%</span>
+                <span className={styles.tagRight}>{feature.toUpperCase()}</span>
+              </span>
             )}
           </div>
         </div>
 
-        <div className={styles.mainImageWrapper}>
-          <img
-            src={product.images[selectedIndex]}
-            alt={`product-${selectedIndex.toString()}`}
-            className={styles.mainImage}
-          />
-        </div>
+        <ProductImageSwiper
+          images={product.images}
+          setSelectedIndex={setSelectedIndex}
+          swiperRef={swiperRef}
+        />
       </div>
 
       <div className={styles.fixedBottom} style={{ paddingBottom }}>
@@ -106,6 +114,7 @@ export const ProductPage: React.FC = () => {
           images={product.images}
           selectedIndex={selectedIndex}
           onSelect={setSelectedIndex}
+          swiperRef={swiperRef}
         />
 
         {/* “Buy Now” butonuna tıklandığında handleBuyNow çalışacak */}
