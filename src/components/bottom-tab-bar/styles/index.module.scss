@@ -6,35 +6,58 @@ $bottom-tabbar-height: 60px;
   right: 0;
   bottom: 0;
   z-index: 55555;
-  background: #fff;
-  border-top: 1px solid;
   display: flex;
+  border-top: 0.33px solid var(--system-border, #00000014);
+  background: white;
 
-  :global(.dark) & .bottomTabbar {
-    border-top-color: #444;
-  }
-
-  :global(.light) & .bottomTabbar {
-    border-top-color: #ccc;
+  :global(.dark) & {
+    background: black;
   }
 
   .tab {
     flex: 1;
     text-align: center;
     display: flex;
+    align-items: center;
     flex-direction: column;
     text-decoration: none;
-    padding-top: 8px;
-    color: #555;
+    padding-top: 7px;
+    color: rgb(0, 0, 0, 0.2);
+
+    :global(.dark) & {
+      color: rgb(255, 255, 255, 0.2);
+    }
+
 
     &.tabActive {
-      color: #000;
+      color: black;
       font-weight: bold;
+
+      :global(.dark) & {
+        background: black;
+        color: white;
+      }
     }
 
     .label {
-      font-size: 12px;
-      margin-top: 2px;
+      margin-top: 5px;
+      font-weight: 510;
+      font-size: 10px;
+      line-height: 12px;
+      letter-spacing: 0.07px;
+      text-align: center;
+    }
+
+    svg {
+      fill: currentColor;
     }
   }
+}
+
+
+.itemImage {
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  object-fit: cover;
 }
