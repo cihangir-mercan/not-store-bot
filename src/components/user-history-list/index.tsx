@@ -67,7 +67,7 @@ export const UserHistoryList = ({
           height={height}
           width={width}
           itemCount={history.length}
-          itemSize={72}
+          itemSize={76}
           onScroll={onScroll}
         >
           {Row}
