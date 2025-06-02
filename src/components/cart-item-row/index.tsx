@@ -11,7 +11,10 @@ type CartItemRowProps = {
   cartItem: CartItem
 }
 
-export const CartItemRow: React.FC<CartItemRowProps> = ({ product, cartItem }) => {
+export const CartItemRow: React.FC<CartItemRowProps> = ({
+  product,
+  cartItem,
+}) => {
   const dispatch = useAppDispatch()
 
   return (
@@ -24,18 +27,12 @@ export const CartItemRow: React.FC<CartItemRowProps> = ({ product, cartItem }) =
 
       <div className={styles.cartItemDetails}>
         <div className={styles.cartItemText}>
-          <span className={styles.cartItemCategory}>
-            {product.category}
-          </span>
-          <span className={styles.cartItemName}>
-            {product.name}
-          </span>
+          <span className={styles.cartItemCategory}>{product.category}</span>
+          <span className={styles.cartItemName}>{product.name}</span>
         </div>
 
         <div className={styles.cartItemPricing}>
-          <span className={styles.cartItemQuantity}>
-            x{cartItem.quantity}
-          </span>
+          <span className={styles.cartItemQuantity}>x{cartItem.quantity}</span>
           <span className={styles.cartItemUnitPrice}>
             {product.price} {product.currency} each
           </span>
@@ -48,9 +45,7 @@ export const CartItemRow: React.FC<CartItemRowProps> = ({ product, cartItem }) =
         </span>
         <button
           className={styles.removeButton}
-          onClick={() =>
-            dispatch(decrementQuantity({ id: product.id }))
-          }
+          onClick={() => dispatch(decrementQuantity({ id: product.id }))}
         >
           <Minus />
         </button>

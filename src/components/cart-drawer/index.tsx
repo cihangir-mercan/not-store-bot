@@ -63,7 +63,13 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
               cartItems.map(cartItem => {
                 const product = idToItem.get(cartItem.id)
                 if (!product) return null
-                return <CartItemRow key={cartItem.id} product={product} cartItem={cartItem} />
+                return (
+                  <CartItemRow
+                    key={cartItem.id}
+                    product={product}
+                    cartItem={cartItem}
+                  />
+                )
               })
             )}
           </div>
