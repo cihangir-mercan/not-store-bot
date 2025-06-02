@@ -14,7 +14,7 @@ export const BottomTabBar = (): JSX.Element => {
   const offset = BOTTOM_TABBAR_HEIGHT + bottomInset
   const user = tgWebApp.initDataUnsafe.user;
   const userPp = user?.photo_url;
-  const userName = user?.username;
+  const firstName = user?.first_name;
 
   return (
     <nav className={styles.bottomTabbar} style={{ height: offset }}>
@@ -26,11 +26,11 @@ export const BottomTabBar = (): JSX.Element => {
       <NavLink to="/user" className={({ isActive }) => getTabClasses(isActive)}>
         <img
           src={userPp}
-          alt={userName}
+          alt={firstName}
           className={styles.itemImage}
           loading="lazy"
         />
-        <span className={styles.label}>{userName ?? 'User'}</span>
+        <span className={styles.label}>{firstName ?? 'User'}</span>
       </NavLink>
     </nav>
   )

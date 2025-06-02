@@ -34,9 +34,12 @@ export const ProductCard: FC<ProductCardProps> = ({ item }) => {
         {item.name}
       </Link>
 
-      <p className={styles.price}>
-        {item.price} <span className={styles.currency}>{item.currency}</span>
-      </p>
+      <div className={styles.priceWrapper}>
+        <span className={styles.price}>
+          {item.price}
+        </span>
+        <span className={styles.currency}>{item.currency}</span>
+      </div>
     </div>
   )
 }

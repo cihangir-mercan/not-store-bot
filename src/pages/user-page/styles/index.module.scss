@@ -16,14 +16,14 @@
 
 .scrollToTop {
   position: fixed;
-  right: 20px;
+  right: 16px;
   z-index: 999;
-  background: #666;
+  background: rgb(86,86,86);
   color: white;
   border: none;
   border-radius: 50%;
-  width: 48px;
-  height: 48px;
+  width: 28px;
+  height: 28px;
   font-size: 20px;
   cursor: pointer;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);

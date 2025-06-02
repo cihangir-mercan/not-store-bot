@@ -10,6 +10,7 @@ $card-height: 173px;
   height: $card-height;
   aspect-ratio: unset;
   overflow: hidden;
+  border-radius: 16px;
 }
 
 .swiper {
@@ -26,7 +27,6 @@ $card-height: 173px;
 :global(.swiper-pagination-bullet) {
   width: 4px;
   height: 4px;
-  //background: rgba(255, 255, 255, 0.4); // light dot for inactive
   border-radius: 999px;
   transition: all 0.2s ease;
   margin: 0 3px !important;

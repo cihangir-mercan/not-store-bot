@@ -3,33 +3,50 @@ $card-height: 173px;
 .productCard {
   display: flex;
   flex-direction: column;
-  background: #fff;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 100%;
 }
 
 .productLink {
-  margin: 0.5rem 1rem 0;
-  font-size: 1rem;
-  font-weight: 600;
   text-decoration: none;
-  color: #111;
+  font-weight: 590;
+  font-size: 17px;
+  line-height: 24px;
+  letter-spacing: -0.7px;
+  margin-top: 8px;
+  margin-bottom: 2px;
+  margin-left: 8px;
+  color: black;
+
+
+  :global(.dark) & {
+    color: white;
+  }
+}
+
+.priceWrapper {
+  display: flex;
+  align-items: center;
+  margin-left: 8px;
 }
 
 .price {
-  margin: 0.25rem 1rem 1rem;
-  font-size: 0.9rem;
-  color: #444;
-  display: flex;
-  align-items: center;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.2px;
+  vertical-align: bottom;
+  margin-right: 4px;
 }
 
 .currency {
-  margin-left: 0.25rem;
-  font-size: 0.8rem;
-  color: #888;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.2px;
+  vertical-align: bottom;
+  color: rgb(128, 128, 128);
 }
 
 .imageWrapper {
