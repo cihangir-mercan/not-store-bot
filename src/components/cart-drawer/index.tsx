@@ -9,6 +9,7 @@ import styles from "./styles/index.module.scss"
 import Close from "@icons/close.svg?react"
 import { CartItemRow } from "@components/cart-item-row"
 import { WalletModal } from "@components/wallet-modal"
+import { MARGIN_BOTTOM } from "@components/cart-drawer/constants"
 
 type CartDrawerProps = {
   cartOpen: boolean
@@ -20,9 +21,10 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   setCartOpen,
 }) => {
   const [isWalletModalOpen, setIsWalletModalOpen] = useState(false)
+  const tgWebApp = window.Telegram.WebApp
+  const bottomInset = tgWebApp.safeAreaInset.bottom
+  const marginBottom = MARGIN_BOTTOM + bottomInset
 
-  // ⚠️ Burada handleOpenChange'i güncelliyoruz:
-  // “isWalletModalOpen” true ise, çekmeceyi kapatma (setCartOpen(false)) kısmını atlıyoruz.
   const handleOpenChange = (isOpen: boolean) => {
     if (!isOpen && !isWalletModalOpen) {
       setCartOpen(false)
@@ -40,7 +42,6 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
     return sum + (product?.price ?? 0) * cartItem.quantity
   }, 0)
 
-  // “Satın Al” butonuna tıklandığında artık sadece modal açılıyor, çekmece kapanmıyor:
   const handleBuyClick = () => {
     setIsWalletModalOpen(true)
   }
@@ -92,7 +93,10 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
               )}
             </div>
 
-            <footer className={styles.footer}>
+            <footer
+              className={styles.footer}
+              style={{marginBottom}}
+            >
               {cartItems.length > 0 ? (
                 <button className={styles.buyButton} onClick={handleBuyClick}>
                   <div className={styles.buttonText}>
@@ -111,7 +115,6 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
         </Drawer.Portal>
       </Drawer.Root>
 
-      {/* WalletModal portal ile body’ye çıktı; çekmece açık kalsın */}
       <WalletModal isOpen={isWalletModalOpen} onClose={closeWalletModal} />
     </>
   )
