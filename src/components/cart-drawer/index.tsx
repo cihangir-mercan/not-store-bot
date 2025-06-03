@@ -106,7 +106,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
         detent="content-height"
         style={{ zIndex: 800 }}
       >
-        <Sheet.Container>
+        <Sheet.Container className={styles.sheetContainer}>
           <Sheet.Content className={styles.sheetContent}>
             <header className={styles.header}>
               {!hasZeroLength && <h2 className={styles.headerTitle}>Cart</h2>}
@@ -120,28 +120,26 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
               </button>
             </header>
 
-
-              <div className={hasZeroLength ? styles.noDataBody : styles.body}>
-                {hasZeroLength ? (
-                  <div className={styles.noDataWrapper}>
-                    <p className={styles.noItemTitle}>Cart’s cold</p>
-                    <p className={styles.noItemContent}>No items yet</p>
-                  </div>
-                ) : (
-                  cartItems.map(cartItem => {
-                    const product = idToItem.get(cartItem.id)
-                    if (!product) return null
-                    return (
-                      <CartItemRow
-                        key={cartItem.id}
-                        product={product}
-                        cartItem={cartItem}
-                      />
-                    )
-                  })
-                )}
-              </div>
-
+            <div className={hasZeroLength ? styles.noDataBody : styles.body}>
+              {hasZeroLength ? (
+                <div className={styles.noDataWrapper}>
+                  <p className={styles.noItemTitle}>Cart’s cold</p>
+                  <p className={styles.noItemContent}>No items yet</p>
+                </div>
+              ) : (
+                cartItems.map(cartItem => {
+                  const product = idToItem.get(cartItem.id)
+                  if (!product) return null
+                  return (
+                    <CartItemRow
+                      key={cartItem.id}
+                      product={product}
+                      cartItem={cartItem}
+                    />
+                  )
+                })
+              )}
+            </div>
 
             <footer className={styles.footer} style={{ marginBottom }}>
               {cartItems.length > 0 ? (

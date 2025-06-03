@@ -1,11 +1,19 @@
+.sheetContainer {
+  background: var(--primary-bg-light) !important;
+
+  :global(.dark) & {
+    background: var(--primary-bg-dark) !important;
+  }
+}
+
 .sheetContent {
-  background: var(--primary-bg-light);
   border-radius: 20px 20px 0 0;
   padding: 16px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   touch-action: manipulation;
+  background: var(--primary-bg-light);
 
   :global(.dark) & {
     background: var(--primary-bg-dark);
