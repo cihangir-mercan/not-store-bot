@@ -118,7 +118,7 @@
   color: var(--primary-text-dark);
 
   :global(.dark) & {
-    background-color: var(--primary-text-dark);
+    background: var(--primary-text-dark);
     color: var(--primary-text-light);
   }
 }

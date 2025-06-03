@@ -1,9 +1,9 @@
 .backdrop {
   position: fixed;
   inset: 0;
-  background-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px); /* Safari uyumluluğu */
+  -webkit-backdrop-filter: blur(12px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -45,8 +45,8 @@
   padding: 12px 24px;
   font-size: 16px;
   border-radius: 8px;
-  background-color: #007aff;
-  color: #ffffff;
+  background: #007aff;
+  color: var(--primary-text-dark);
   border: none;
   cursor: pointer;
   margin-bottom: 24px;
@@ -61,7 +61,7 @@
 .iconBox {
   width: 48px;
   height: 48px;
-  background-color: #e0e0e0;
+  background: #e0e0e0;
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -87,7 +87,7 @@
 .footerIcon {
   width: 24px;
   height: 24px;
-  background-color: #e1f0ff;
+  background: #e1f0ff;
   border-radius: 4px;
   display: flex;
   align-items: center;
