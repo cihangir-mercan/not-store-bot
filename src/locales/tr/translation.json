@@ -1,6 +1,7 @@
 {
   "storePage": {
-    "title": "Not Store"
+    "title": "Not Store",
+    "error": "Özür dileriz; şu anda işleminizi gerçekleştiremiyoruz. Lütfen daha sonra tekrar deneyiniz."
   },
   "productPage": {
     "addToCart": "Sepete ekle",

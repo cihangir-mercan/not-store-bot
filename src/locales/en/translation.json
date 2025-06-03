@@ -1,6 +1,7 @@
 {
   "storePage": {
-    "title": "Not Store"
+    "title": "Not Store",
+    "error": "Sorry, We cannot perform your transaction. Please try again later."
   },
   "productPage": {
     "addToCart": "Add to cart",

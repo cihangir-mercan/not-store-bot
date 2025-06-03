@@ -14,10 +14,11 @@
 }
 
 .status {
+  display: flex;
+  justify-content: center;
   grid-column: span 2;
   text-align: center;
-  padding: 32px 0;
-  color: #666;
+  padding: 32px 16px;
 }
 
 .noResult {

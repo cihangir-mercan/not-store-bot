@@ -10,11 +10,14 @@ import {
 } from "@components/layout-with-bottom-tabs/constants"
 import ScrollUp from "@icons/scrollUp.svg?react"
 import type { FixedSizeList as List } from "react-window"
+import Shimmer from "@icons/shimmer.svg?react"
+import { useTranslation } from "react-i18next"
 
 export const UserPage = (): JSX.Element => {
-  const { data: historyData, isLoading: isHistoryLoading } =
+  const { t } = useTranslation()
+  const { data: historyData, isLoading: isHistoryLoading, isError: isHistoryError } = useGetHistoryQuery(null)
     useGetHistoryQuery(null)
-  const { data: itemsData, isLoading: isItemsLoading } = useGetItemsQuery(null)
+  const { data: itemsData, isLoading: isItemsLoading, isError: isItemsError } = useGetItemsQuery(null)
   const [showScrollToTop, setShowScrollToTop] = useState(false)
   const listRef = useRef<List>(null)
   const history = [...(historyData?.data ?? [])]
@@ -27,7 +30,19 @@ export const UserPage = (): JSX.Element => {
   // Hook returns onScroll handler bound to react-window list and scroll storage
   const onScroll = useScrollRestoreForList(listRef, setShowScrollToTop)
 
-  if (isHistoryLoading || isItemsLoading) return <div>Loading…</div>
+  if (isHistoryLoading || isItemsLoading)
+    return (
+      <div className={styles.status}>
+        <Shimmer />
+      </div>
+    )
+
+  if (isHistoryError || isItemsError)
+    return (
+      <div className={styles.status}>
+        <div className={styles.status}>{t("storePage.error")}</div>
+      </div>
+    )
 
   return (
     <div className={styles.userPage}>

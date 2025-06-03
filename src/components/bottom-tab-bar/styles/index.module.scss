@@ -23,6 +23,9 @@ $bottom-tabbar-height: 60px;
     text-decoration: none;
     padding-top: 7px;
     color: rgb(0, 0, 0, 0.2);
+    img {
+      opacity: 0.6;
+    }
 
     :global(.dark) & {
       color: rgb(255, 255, 255, 0.2);
@@ -35,6 +38,10 @@ $bottom-tabbar-height: 60px;
       :global(.dark) & {
         background: black;
         color: white;
+      }
+
+      img {
+        opacity: 1;
       }
     }
 
