@@ -35,8 +35,8 @@ export const ProductPage: React.FC = () => {
     }
   }, [navigate, tgWeb.BackButton])
 
-  if (isLoading) return <RechargeLoading />
-  if (isError) return <ErrorText />
+  if (isLoading) return <RechargeLoading fullHeight />
+  if (isError) return <ErrorText fullHeight />
 
   const product = data?.data.find(p => p.id === Number(productId))
   if (!product) return <div className={styles.status}>Product not found.</div>

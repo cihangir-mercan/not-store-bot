@@ -147,8 +147,9 @@
 
 .status {
   display: flex;
+  align-items: center;
   justify-content: center;
-  grid-column: span 2;
   text-align: center;
   padding: 32px 16px;
+  height: var(--tg-viewport-height);
 }
