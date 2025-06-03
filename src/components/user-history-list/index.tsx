@@ -6,12 +6,16 @@ import styles from "./styles/index.module.scss"
 import dayjs from "dayjs"
 import type { ProductItem } from "@app/slices/itemsApiSlice"
 import type { VirtualHistoryItem } from "@pages/user-page"
+import { useTranslation } from "react-i18next"
+import Shimmer from "@icons/shimmer.svg?react"
 
 type Props = {
   history: VirtualHistoryItem[]
   itemMap: Map<number, ProductItem>
   onScroll: (props: ListOnScrollProps) => void
   listRef: RefObject<List | null>
+  isLoading: boolean
+  isError: boolean
 }
 
 export const UserHistoryList = ({
@@ -19,11 +23,48 @@ export const UserHistoryList = ({
                                   itemMap,
                                   onScroll,
                                   listRef,
+  isLoading, isError
                                 }: Props): JSX.Element => {
+  const { t } = useTranslation()
   const tgWebApp = window.Telegram.WebApp
   const user = tgWebApp.initDataUnsafe.user
   const userPp = user?.photo_url
   const firstName = user?.first_name
+
+  const renderHeader = () => {
+    return <div className={styles.listHeader}>
+      <div className={styles.centered}>
+        <img
+          src={userPp}
+          alt={firstName}
+          className={styles.headerImage}
+          loading="lazy"
+        />
+        <span className={styles.name}>{firstName ?? "User"}</span>
+      </div>
+      <h2 className={styles.title}>History</h2>
+    </div>
+  }
+
+  if (isLoading)
+    return (
+      <>
+        {renderHeader()}
+        <div className={styles.status}>
+          <Shimmer />
+        </div>
+      </>
+    )
+
+  if (isError)
+    return (
+      <>
+        {renderHeader()}
+        <div className={styles.status}>
+          <div className={styles.status}>{t("storePage.error")}</div>
+        </div>
+      </>
+    )
 
   const Row = ({
                  index,
@@ -35,20 +76,7 @@ export const UserHistoryList = ({
     const item = history[index]
 
     if ("type" in item && item.type === "header") {
-      return (
-        <div className={styles.listHeader} style={style}>
-          <div className={styles.centered}>
-            <img
-              src={userPp}
-              alt={firstName}
-              className={styles.headerImage}
-              loading="lazy"
-            />
-            <span className={styles.name}>{firstName ?? "User"}</span>
-          </div>
-          <h2 className={styles.title}>History</h2>
-        </div>
-      )
+      return renderHeader()
     }
 
     const purchase = item

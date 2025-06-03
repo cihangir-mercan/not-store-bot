@@ -10,15 +10,12 @@ import {
 } from "@components/layout-with-bottom-tabs/constants"
 import ScrollUp from "@icons/scrollUp.svg?react"
 import type { VariableSizeList as List } from "react-window"
-import Shimmer from "@icons/shimmer.svg?react"
-import { useTranslation } from "react-i18next"
 
 export type VirtualHistoryItem =
   | { type: "header" }
   | (HistoryItem & { type?: undefined })
 
 export const UserPage = (): JSX.Element => {
-  const { t } = useTranslation()
   const { data: historyData, isLoading: isHistoryLoading, isError: isHistoryError } = useGetHistoryQuery(null)
     useGetHistoryQuery(null)
   const { data: itemsData, isLoading: isItemsLoading, isError: isItemsError } = useGetItemsQuery(null)
@@ -31,23 +28,9 @@ export const UserPage = (): JSX.Element => {
   const tgWebApp = window.Telegram.WebApp
   const bottomInset = tgWebApp.safeAreaInset.bottom
   const offset = BOTTOM_TABBAR_HEIGHT + bottomInset + SCROLL_TO_TOP_MARGIN
-
-  // Hook returns onScroll handler bound to react-window list and scroll storage
+  const isLoading = isHistoryLoading || isItemsLoading;
+  const isError = isHistoryError || isItemsError;
   const onScroll = useScrollRestoreForList(listRef, setShowScrollToTop)
-
-  if (isHistoryLoading || isItemsLoading)
-    return (
-      <div className={styles.status}>
-        <Shimmer />
-      </div>
-    )
-
-  if (isHistoryError || isItemsError)
-    return (
-      <div className={styles.status}>
-        <div className={styles.status}>{t("storePage.error")}</div>
-      </div>
-    )
 
   return (
     <div className={styles.userPage}>
@@ -57,6 +40,8 @@ export const UserPage = (): JSX.Element => {
           itemMap={itemMap}
           onScroll={onScroll}
           listRef={listRef}
+          isLoading={isLoading}
+          isError={isError}
         />
       </div>
 
