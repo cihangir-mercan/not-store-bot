@@ -1,1 +1,1 @@
-export const MARGIN_BOTTOM = 16
+export const MARGIN_BOTTOM = 0

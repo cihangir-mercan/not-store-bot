@@ -1,81 +1,35 @@
-.vaulOverlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(8px);
-  z-index: 800;
-
-  :global(.dark) & {
-    background: rgba(255, 255, 255, 0.3);
-  }
-}
-
-.vaulContent {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  max-width: 480px;
+.sheetContent {
   background: var(--primary-bg-light);
-  border-radius: 16px 16px 0 0;
-  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
-  padding: 0;
-  z-index: 801;
-  transition: transform 0.3s ease-out;
-  max-height: var(--tg-viewport-height);
+  border-radius: 20px 20px 0 0;
+  padding: 16px;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  touch-action: manipulation;
 
   :global(.dark) & {
     background: var(--primary-bg-dark);
   }
 }
 
-.vaulHandle {
-  margin: 8px auto;
-  cursor: grab;
-
-  :global(.dark) & {
-    background: var(--primary-bg-light);
-  }
-}
-
-.header,
-.footer {
+.header {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 16px;
-  color: var(--primary-text-light);
-
-  :global(.dark) & {
-    color: var(--primary-text-dark);
-  }
-}
-
-.header {
-  padding-left: 16px;
-  padding-right: 16px;
-  margin-top: 0;
-}
-
-.footer {
-  padding-left: 16px;
-  padding-right: 16px;
+  padding-bottom: 8px;
 }
 
 .headerTitle {
   font-weight: 590;
   font-size: 20px;
   line-height: 24px;
-  letter-spacing: 0px;
-  text-align: center;
 }
 
 .closeButton {
   position: absolute;
-  right: 16px;
-  top: 20px;
+  right: 0;
+  top: 0;
   width: 28px;
   height: 28px;
   border-radius: 50%;
@@ -98,12 +52,8 @@
 }
 
 .body {
-  text-align: center;
-  flex: 1;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding-left: 16px;
-  padding-right: 16px;
+  overflow-y: hidden;
+  padding: 8px 0 16px;
 }
 
 .noDataBody {
@@ -111,17 +61,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
 
-  .noDataWrapper {
-    flex: 1;
-  }
+.noDataWrapper {
+  text-align: center;
+  width: 100%;
+}
+
+.footer {
+  padding-top: 16px;
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .buyButton,
 .okButton {
   width: 100%;
   height: 50px;
-  text-align: center;
   border-radius: 12px;
   border: none;
   cursor: pointer;
@@ -144,11 +99,7 @@
 .noItemTitle {
   font-weight: 590;
   font-size: 26px;
-  line-height: 32px;
-  letter-spacing: 0.38px;
-  text-align: center;
   color: var(--primary-text-light);
-  margin-bottom: 8px;
 
   :global(.dark) & {
     color: var(--primary-text-dark);
@@ -156,14 +107,16 @@
 }
 
 .noItemContent {
-  font-weight: 400;
   font-size: 17px;
-  line-height: 22px;
-  letter-spacing: -0.43px;
-  text-align: center;
   color: var(--secondary-text-light);
 
   :global(.dark) & {
     color: var(--secondary-text-dark);
   }
+}
+
+.customBackdrop {
+  pointer-events: none !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(8px) !important;
 }
