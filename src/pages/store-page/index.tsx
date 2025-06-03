@@ -8,11 +8,10 @@ import type { ProductItem } from "@app/slices/itemsApiSlice"
 import { ProductCard } from "@components/product-card"
 import { useScrollRestoreForStore } from "@components/layout-with-bottom-tabs/hooks/useScrollRestoreForStore.tsx"
 import Duck from "@icons/duck.svg?react"
-import Shimmer from "@icons/shimmer.svg?react"
-import { useTranslation } from "react-i18next"
+import { ShimmerLoading } from "@components/shimmer-loading"
+import { ErrorText } from "@components/error-text"
 
 export const StorePage = (): JSX.Element => {
-  const { t } = useTranslation()
   const [cartOpen, setCartOpen] = useState(false)
   const [searchMode, setSearchMode] = useState(false)
   const [searchValue, setSearchValue] = useState("")
@@ -42,11 +41,9 @@ export const StorePage = (): JSX.Element => {
       />
 
       {isLoading ? (
-        <div className={styles.status}>
-          <Shimmer />
-        </div>
+        <ShimmerLoading />
       ) : isError ? (
-        <div className={styles.status}>{t("storePage.error")}</div>
+        <ErrorText />
       ) : filteredItems.length === 0 ? (
         <div className={styles.noResult}>
           <Duck />

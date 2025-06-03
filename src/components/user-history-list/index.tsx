@@ -6,8 +6,8 @@ import styles from "./styles/index.module.scss"
 import dayjs from "dayjs"
 import type { ProductItem } from "@app/slices/itemsApiSlice"
 import type { VirtualHistoryItem } from "@pages/user-page"
-import { useTranslation } from "react-i18next"
-import Shimmer from "@icons/shimmer.svg?react"
+import { ShimmerLoading } from "@components/shimmer-loading"
+import { ErrorText } from "@components/error-text"
 
 type Props = {
   history: VirtualHistoryItem[]
@@ -26,7 +26,6 @@ export const UserHistoryList = ({
   isLoading,
   isError,
 }: Props): JSX.Element => {
-  const { t } = useTranslation()
   const tgWebApp = window.Telegram.WebApp
   const user = tgWebApp.initDataUnsafe.user
   const userPp = user?.photo_url
@@ -53,9 +52,7 @@ export const UserHistoryList = ({
     return (
       <>
         {renderHeader()}
-        <div className={styles.status}>
-          <Shimmer />
-        </div>
+        <ShimmerLoading />
       </>
     )
 
@@ -63,9 +60,7 @@ export const UserHistoryList = ({
     return (
       <>
         {renderHeader()}
-        <div className={styles.status}>
-          <div className={styles.status}>{t("storePage.error")}</div>
-        </div>
+        <ErrorText />
       </>
     )
 

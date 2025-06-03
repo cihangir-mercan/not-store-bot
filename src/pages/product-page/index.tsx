@@ -15,11 +15,13 @@ import Share from "@icons/share.svg?react"
 import { WalletModal } from "@components/wallet-modal"
 import type { Swiper as SwiperClass } from "swiper"
 import { ProductImageSwiper } from "@components/product-image-swiper"
+import { ShimmerLoading } from "@components/shimmer-loading"
+import { ErrorText } from "@components/error-text"
 
 export const ProductPage: React.FC = () => {
   const { productId } = useParams<{ productId: string }>()
   const navigate = useNavigate()
-  const { data } = useGetItemsQuery(null)
+  const { data, isLoading, isError } = useGetItemsQuery(null)
   const [selectedIndex, setSelectedIndex] = useState(0)
   const swiperRef = useRef<SwiperClass | null>(null)
 
@@ -41,6 +43,10 @@ export const ProductPage: React.FC = () => {
       tgWeb.BackButton.offClick(onBackButton)
     }
   }, [navigate, tgWeb.BackButton])
+
+  if (isLoading) return <ShimmerLoading />
+
+  if (isError) return <ErrorText />
 
   const product = data?.data.find(p => p.id === Number(productId))
   if (!product) return <div className={styles.status}>Product not found.</div>
