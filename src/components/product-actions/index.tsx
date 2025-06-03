@@ -42,6 +42,10 @@ export const ProductActions: React.FC<ProductActionsProps> = ({
   const canAddMore = qtyInCart < maxAllowed
   const hasMoreThanZero = maxAllowed > 0
 
+  const handlePaymentSuccess = () => {
+    setIsSuccessModalOpen(true)
+  }
+
   const showErrorToast = (msgKey: string) => {
     toast.dismiss()
     toast.error(t(`productPage.${msgKey}`))
@@ -51,10 +55,6 @@ export const ProductActions: React.FC<ProductActionsProps> = ({
     tonConnectUI.openModal().catch(() => {
       showErrorToast("walletOpenError")
     })
-  }
-
-  const handlePaymentSuccess = () => {
-    setIsSuccessModalOpen(true)
   }
 
   const handleBuyNow = async () => {

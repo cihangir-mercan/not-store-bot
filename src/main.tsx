@@ -10,7 +10,7 @@ import { store } from "./app/store"
 import "./i18n"
 import type { Telegram } from "@twa-dev/types"
 import { TonConnectUIProvider } from "@tonconnect/ui-react"
-import { Toaster } from "react-hot-toast"
+import { ToastPortal } from "@components/toast-portal"
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
@@ -32,7 +32,7 @@ if (container) {
         <Provider store={store}>
           <TonConnectUIProvider manifestUrl={manifestUrl}>
             <App />
-            <Toaster position="top-center" toastOptions={{ duration: 2000 }} />
+            <ToastPortal />
           </TonConnectUIProvider>
         </Provider>
       </BrowserRouter>
