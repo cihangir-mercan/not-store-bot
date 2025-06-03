@@ -90,9 +90,14 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 
   return (
     <>
-      <Drawer.Root open={cartOpen} onOpenChange={handleOpenChange}>
+      <Drawer.Root
+        open={cartOpen}
+        onOpenChange={handleOpenChange}>
         <Drawer.Portal>
-          <Drawer.Overlay className={styles.vaulOverlay} />
+          <Drawer.Overlay
+            className={styles.vaulOverlay}
+            onClick={e => { e.stopPropagation(); }}
+          />
           <Drawer.Content
             className={styles.vaulContent}
             style={
