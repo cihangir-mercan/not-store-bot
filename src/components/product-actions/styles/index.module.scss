@@ -30,7 +30,7 @@
 
     :global(.light) & {
       background: rgb(235, 235, 235);
-      color: #000;
+      color: var(--primary-text-light);
 
       &:disabled {
         background: #eee;
@@ -47,7 +47,7 @@
 
     :global(.light) & {
       background: var(--primary-bg-dark);
-      color: #fff;
+      color: var(--primary-text-dark);
     }
   }
 }
@@ -64,7 +64,7 @@
     color 0.2s;
 
   :global(.light) & {
-    background-color: #f0f0f0;
+    background: #f0f0f0;
   }
 }
 
@@ -74,7 +74,7 @@
   height: 32px;
   border: none;
   background: transparent;
-  color: #fff;
+  color: var(--primary-text-dark);
   border-radius: 4px;
   font-size: 18px;
   cursor: pointer;
@@ -88,7 +88,7 @@
     color 0.2s;
 
   :global(.light) & {
-    color: #000;
+    color: var(--primary-text-light);
   }
 
   svg {
@@ -137,10 +137,10 @@
   line-height: 24px;
   font-weight: 600;
   text-align: center;
-  color: #fff;
+  color: var(--primary-text-dark);
   transition: color 0.2s;
 
   :global(.light) & {
-    color: #000;
+    color: var(--primary-text-light);
   }
 }
