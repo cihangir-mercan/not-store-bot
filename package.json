@@ -16,13 +16,11 @@
     "type-check": "tsc -b --noEmit"
   },
   "dependencies": {
-    "@headlessui/react": "^2.2.4",
     "@reduxjs/toolkit": "^2.6.1",
     "@tonconnect/ui-react": "^2.1.0",
     "@twa-dev/types": "^8.0.2",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.13",
-    "framer-motion": "^12.16.0",
     "i18next": "^25.2.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
@@ -37,7 +35,6 @@
     "ton": "^13.9.0",
     "tonweb": "^0.0.66",
     "uuid": "^11.1.0",
-    "vaul": "^1.1.2",
     "vite-plugin-node-polyfills": "^0.23.0"
   },
   "devDependencies": {
