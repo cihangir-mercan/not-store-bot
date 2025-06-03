@@ -9,6 +9,9 @@
     "outOfStock": "Out of stock",
     "incrementQuantity": "Increment quantity",
     "decrementQuantity": "Decrement quantity",
-    "connectWallet": "Buy Now"
+    "connectWallet": "Buy Now",
+    "insufficientFunds": "Insufficient funds.",
+    "noJettonWallet": "Jetton wallet address not available.",
+    "paymentCancelled": "Payment was cancelled."
   }
 }

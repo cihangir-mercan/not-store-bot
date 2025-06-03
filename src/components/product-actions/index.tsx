@@ -1,6 +1,5 @@
-// src/components/product-actions/index.tsx
-
-import React, { useState } from "react"
+import type React from "react"
+import { useState } from "react"
 import { useAppDispatch, useAppSelector } from "@app/hooks"
 import {
   addToCart,
@@ -12,19 +11,25 @@ import { useTranslation } from "react-i18next"
 import Plus from "@icons/plus.svg?react"
 import Minus from "@icons/minus.svg?react"
 import styles from "./styles/index.module.scss"
-
 import { useTonAddress, useTonConnectUI } from "@tonconnect/ui-react"
-import { handleSendTon } from "@components/wallet-modal/utils"
 import { SuccessModal } from "@components/success-modal"
+import { handleSendNot } from "@components/product-actions/utils/handleSendNot.ts"
+import toast from "react-hot-toast"
+import {
+  INSUFFICIENT_FUNDS,
+  NO_JETTON_WALLET,
+} from "@components/product-actions/constants"
 
 type ProductActionsProps = {
   productId: number
-  maxAllowed: number // genelde product.left
+  maxAllowed: number
+  notPrice: number
 }
 
 export const ProductActions: React.FC<ProductActionsProps> = ({
   productId,
   maxAllowed,
+  notPrice,
 }) => {
   const { t } = useTranslation()
   const dispatch = useAppDispatch()
@@ -37,9 +42,14 @@ export const ProductActions: React.FC<ProductActionsProps> = ({
   const canAddMore = qtyInCart < maxAllowed
   const hasMoreThanZero = maxAllowed > 0
 
+  const showErrorToast = (msgKey: string) => {
+    toast.dismiss()
+    toast.error(t(`productPage.${msgKey}`))
+  }
+
   const handleConnectWallet = () => {
-    tonConnectUI.openModal().catch((err: unknown) => {
-      console.error("TON Connect açılırken hata:", err)
+    tonConnectUI.openModal().catch(() => {
+      showErrorToast("walletOpenError")
     })
   }
 
@@ -48,12 +58,23 @@ export const ProductActions: React.FC<ProductActionsProps> = ({
   }
 
   const handleBuyNow = async () => {
-    if (!userAddress) return
+    if (!userAddress) {
+      handleConnectWallet()
+      return
+    }
+
     try {
-      await handleSendTon(tonConnectUI)
+      await handleSendNot(tonConnectUI, userAddress, notPrice)
       handlePaymentSuccess()
-    } catch (err) {
-      console.warn("TonConnect işlemi iptal edildi veya hata oluştu:", err)
+    } catch (err: unknown) {
+      console.warn("handleSendNot threw:", err)
+      if (err instanceof Error && err.message === INSUFFICIENT_FUNDS) {
+        showErrorToast("insufficientFunds")
+      } else if (err instanceof Error && err.message === NO_JETTON_WALLET) {
+        showErrorToast("noJettonWallet")
+      } else {
+        showErrorToast("paymentCancelled")
+      }
     }
   }
 

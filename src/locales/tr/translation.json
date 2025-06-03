@@ -9,6 +9,9 @@
     "outOfStock": "Stoklar tükendi",
     "incrementQuantity": "Miktarı artır",
     "decrementQuantity": "Miktarı azalt",
-    "connectWallet": "Şimdi Al"
+    "connectWallet": "Şimdi Al",
+    "insufficientFunds": "Yetersiz bakiye.",
+    "noJettonWallet": "Jetton cüzdan adresi bulunamadı.",
+    "paymentCancelled": "Ödeme işlemi iptal edildi."
   }
 }

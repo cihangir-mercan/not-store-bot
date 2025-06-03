@@ -1,6 +1,7 @@
 import type React from "react"
 import ReactDOM from "react-dom"
 import styles from "./styles/index.module.scss"
+import confettiGif from "./confetti.gif" // <-- buraya ekledik
 
 type SuccessModalProps = {
   isOpen: boolean
@@ -21,7 +22,11 @@ export const SuccessModal: React.FC<SuccessModalProps> = ({
           e.stopPropagation()
         }}
       >
-        <div className={styles.emoji}>🎉</div>
+        <img
+          className={styles.confetti}
+          src={confettiGif}
+          alt={"Confetti"}
+        ></img>
         <h2 className={styles.title}>You Got It!</h2>
         <p className={styles.subtitle}>Your purchase is on the way</p>
         <button className={styles.closeButton} onClick={onClose}>

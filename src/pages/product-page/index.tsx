@@ -111,6 +111,7 @@ export const ProductPage: React.FC = () => {
         <ProductActions
           productId={Number(productId)}
           maxAllowed={product.left}
+          notPrice={product.price}
         />
       </div>
     </div>

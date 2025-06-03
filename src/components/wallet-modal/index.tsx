@@ -3,8 +3,8 @@ import { useEffect, useState } from "react"
 import ReactDOM from "react-dom"
 import styles from "./styles/index.module.scss"
 import { useTonAddress, useTonConnectUI } from "@tonconnect/ui-react"
-import { handleSendTon } from "@components/wallet-modal/utils"
 import clsx from "clsx"
+import { handleSendTon } from "@components/product-actions/utils/handleSendNot.ts"
 
 type WalletModalProps = {
   isOpen: boolean
