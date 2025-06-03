@@ -19,12 +19,13 @@ type Props = {
 }
 
 export const UserHistoryList = ({
-                                  history,
-                                  itemMap,
-                                  onScroll,
-                                  listRef,
-  isLoading, isError
-                                }: Props): JSX.Element => {
+  history,
+  itemMap,
+  onScroll,
+  listRef,
+  isLoading,
+  isError,
+}: Props): JSX.Element => {
   const { t } = useTranslation()
   const tgWebApp = window.Telegram.WebApp
   const user = tgWebApp.initDataUnsafe.user
@@ -32,18 +33,20 @@ export const UserHistoryList = ({
   const firstName = user?.first_name
 
   const renderHeader = () => {
-    return <div className={styles.listHeader}>
-      <div className={styles.centered}>
-        <img
-          src={userPp}
-          alt={firstName}
-          className={styles.headerImage}
-          loading="lazy"
-        />
-        <span className={styles.name}>{firstName ?? "User"}</span>
+    return (
+      <div className={styles.listHeader}>
+        <div className={styles.centered}>
+          <img
+            src={userPp}
+            alt={firstName}
+            className={styles.headerImage}
+            loading="lazy"
+          />
+          <span className={styles.name}>{firstName ?? "User"}</span>
+        </div>
+        <h2 className={styles.title}>History</h2>
       </div>
-      <h2 className={styles.title}>History</h2>
-    </div>
+    )
   }
 
   if (isLoading)
@@ -67,9 +70,9 @@ export const UserHistoryList = ({
     )
 
   const Row = ({
-                 index,
-                 style,
-               }: {
+    index,
+    style,
+  }: {
     index: number
     style: CSSProperties
   }): JSX.Element | null => {
@@ -111,7 +114,6 @@ export const UserHistoryList = ({
     )
   }
 
-
   return (
     <AutoSizer>
       {({ height, width }: { height: number; width: number }) => (
@@ -120,7 +122,7 @@ export const UserHistoryList = ({
           height={height}
           width={width}
           itemCount={history.length}
-          itemSize={index => index === 0 ? 280 : 76}
+          itemSize={index => (index === 0 ? 280 : 76)}
           onScroll={onScroll}
         >
           {Row}

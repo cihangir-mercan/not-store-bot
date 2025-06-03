@@ -1,5 +1,8 @@
 import { useRef, type JSX, useState } from "react"
-import { type HistoryItem, useGetHistoryQuery } from "@app/slices/historyApiSlice"
+import {
+  type HistoryItem,
+  useGetHistoryQuery,
+} from "@app/slices/historyApiSlice"
 import { useGetItemsQuery } from "@app/slices/itemsApiSlice"
 import { UserHistoryList } from "@components/user-history-list"
 import { useScrollRestoreForList } from "./hooks/useScrollRestoreForList.tsx"
@@ -16,20 +19,31 @@ export type VirtualHistoryItem =
   | (HistoryItem & { type?: undefined })
 
 export const UserPage = (): JSX.Element => {
-  const { data: historyData, isLoading: isHistoryLoading, isError: isHistoryError } = useGetHistoryQuery(null)
-    useGetHistoryQuery(null)
-  const { data: itemsData, isLoading: isItemsLoading, isError: isItemsError } = useGetItemsQuery(null)
+  const {
+    data: historyData,
+    isLoading: isHistoryLoading,
+    isError: isHistoryError,
+  } = useGetHistoryQuery(null)
+  useGetHistoryQuery(null)
+  const {
+    data: itemsData,
+    isLoading: isItemsLoading,
+    isError: isItemsError,
+  } = useGetItemsQuery(null)
   const [showScrollToTop, setShowScrollToTop] = useState(false)
   const listRef = useRef<List>(null)
   const history = [...(historyData?.data ?? [])]
-  const virtualizedHistory: VirtualHistoryItem[] = [{ type: "header" }, ...history]
+  const virtualizedHistory: VirtualHistoryItem[] = [
+    { type: "header" },
+    ...history,
+  ]
   const items = itemsData?.data ?? []
   const itemMap = new Map(items.map(item => [item.id, item]))
   const tgWebApp = window.Telegram.WebApp
   const bottomInset = tgWebApp.safeAreaInset.bottom
   const offset = BOTTOM_TABBAR_HEIGHT + bottomInset + SCROLL_TO_TOP_MARGIN
-  const isLoading = isHistoryLoading || isItemsLoading;
-  const isError = isHistoryError || isItemsError;
+  const isLoading = isHistoryLoading || isItemsLoading
+  const isError = isHistoryError || isItemsError
   const onScroll = useScrollRestoreForList(listRef, setShowScrollToTop)
 
   return (

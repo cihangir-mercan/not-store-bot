@@ -24,14 +24,14 @@ export const ThumbnailCarousel: React.FC<ThumbnailCarouselProps> = ({
     const swiper = thumbSwiperRef.current
     if (!swiper) return
 
-    const visibleCount = swiper.params.slidesPerView === 'auto'
-      ? Math.floor(swiper.width / swiper.slides[0].clientWidth)
-      : swiper.params.slidesPerView ?? 1
+    const visibleCount =
+      swiper.params.slidesPerView === "auto"
+        ? Math.floor(swiper.width / swiper.slides[0].clientWidth)
+        : (swiper.params.slidesPerView ?? 1)
 
     const scrollIndex = Math.max(0, selectedIndex - visibleCount + 1)
     swiper.slideTo(scrollIndex)
   }, [selectedIndex])
-
 
   return (
     <Swiper
