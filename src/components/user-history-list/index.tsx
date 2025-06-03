@@ -1,14 +1,14 @@
 import type { CSSProperties, JSX, RefObject } from "react"
 import type { ListOnScrollProps } from "react-window"
-import { FixedSizeList as List } from "react-window"
+import { VariableSizeList as List } from "react-window"
 import AutoSizer from "react-virtualized-auto-sizer"
 import styles from "./styles/index.module.scss"
 import dayjs from "dayjs"
 import type { ProductItem } from "@app/slices/itemsApiSlice"
-import type { HistoryItem } from "@app/slices/historyApiSlice"
+import type { VirtualHistoryItem } from "@pages/user-page"
 
 type Props = {
-  history: HistoryItem[]
+  history: VirtualHistoryItem[]
   itemMap: Map<number, ProductItem>
   onScroll: (props: ListOnScrollProps) => void
   listRef: RefObject<List | null>
@@ -27,25 +27,35 @@ export const UserHistoryList = ({
     index: number
     style: CSSProperties
   }): JSX.Element | null => {
-    const purchase = history[index]
-    const item = itemMap.get(purchase.id)
-    if (!item) return null
+    const item = history[index]
+
+    if ("type" in item && item.type === "header") {
+      return (
+        <div className={styles.listHeader} style={style}>
+          <h2 className={styles.title}>History</h2>
+        </div>
+      )
+    }
+
+    const purchase = item
+    const product = itemMap.get(purchase.id)
+    if (!product) return null
 
     return (
       <div
         className={styles.item}
-        key={[purchase.id, purchase.timestamp, index].join("-")}
+        key={`${String(purchase.id)}-${String(purchase.timestamp)}`}
         style={style}
       >
         <img
-          src={item.images[0]}
-          alt={item.name}
+          src={product.images[0]}
+          alt={product.name}
           className={styles.itemImage}
           loading="lazy"
         />
         <div className={styles.itemDetails}>
-          <div className={styles.category}>{item.category}</div>
-          <div className={styles.name}>{item.name}</div>
+          <div className={styles.category}>{product.category}</div>
+          <div className={styles.name}>{product.name}</div>
         </div>
         <div className={styles.itemMeta}>
           <div className={styles.date}>
@@ -59,6 +69,7 @@ export const UserHistoryList = ({
     )
   }
 
+
   return (
     <AutoSizer>
       {({ height, width }: { height: number; width: number }) => (
@@ -67,7 +78,7 @@ export const UserHistoryList = ({
           height={height}
           width={width}
           itemCount={history.length}
-          itemSize={76}
+          itemSize={index => index === 0 ? 56 : 76}
           onScroll={onScroll}
         >
           {Row}

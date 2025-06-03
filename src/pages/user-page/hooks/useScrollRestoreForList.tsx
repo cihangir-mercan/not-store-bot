@@ -2,8 +2,7 @@ import type React from "react"
 import { useEffect } from "react"
 import { useLocation } from "react-router"
 import type { ListOnScrollProps } from "react-window"
-import type { FixedSizeList as List } from "react-window"
-
+import type { VariableSizeList as List } from "react-window"
 const scrollPositions = new Map<string, number>()
 
 export function useScrollRestoreForList(

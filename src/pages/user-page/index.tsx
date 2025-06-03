@@ -1,5 +1,5 @@
 import { useRef, type JSX, useState } from "react"
-import { useGetHistoryQuery } from "@app/slices/historyApiSlice"
+import { type HistoryItem, useGetHistoryQuery } from "@app/slices/historyApiSlice"
 import { useGetItemsQuery } from "@app/slices/itemsApiSlice"
 import { UserHistoryList } from "@components/user-history-list"
 import { useScrollRestoreForList } from "./hooks/useScrollRestoreForList.tsx"
@@ -9,9 +9,13 @@ import {
   SCROLL_TO_TOP_MARGIN,
 } from "@components/layout-with-bottom-tabs/constants"
 import ScrollUp from "@icons/scrollUp.svg?react"
-import type { FixedSizeList as List } from "react-window"
+import type { VariableSizeList as List } from "react-window"
 import Shimmer from "@icons/shimmer.svg?react"
 import { useTranslation } from "react-i18next"
+
+export type VirtualHistoryItem =
+  | { type: "header" }
+  | (HistoryItem & { type?: undefined })
 
 export const UserPage = (): JSX.Element => {
   const { t } = useTranslation()
@@ -21,6 +25,7 @@ export const UserPage = (): JSX.Element => {
   const [showScrollToTop, setShowScrollToTop] = useState(false)
   const listRef = useRef<List>(null)
   const history = [...(historyData?.data ?? [])]
+  const virtualizedHistory: VirtualHistoryItem[] = [{ type: "header" }, ...history]
   const items = itemsData?.data ?? []
   const itemMap = new Map(items.map(item => [item.id, item]))
   const tgWebApp = window.Telegram.WebApp
@@ -46,11 +51,9 @@ export const UserPage = (): JSX.Element => {
 
   return (
     <div className={styles.userPage}>
-      <h2 className={styles.title}>History</h2>
-
       <div className={styles.listContainer}>
         <UserHistoryList
-          history={history}
+          history={virtualizedHistory}
           itemMap={itemMap}
           onScroll={onScroll}
           listRef={listRef}
