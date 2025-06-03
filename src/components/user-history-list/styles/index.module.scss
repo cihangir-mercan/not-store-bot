@@ -1,4 +1,6 @@
+
 .listHeader {
+  position: relative;
   padding-top: 40px;
   padding-left: 16px;
   padding-right: 16px;
@@ -34,6 +36,77 @@
   letter-spacing: 0;
   vertical-align: middle;
   padding-top: 16px;
+}
+
+.walletControl {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.connectLink {
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: #007aff;
+  cursor: pointer;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #005ecb;
+  }
+}
+
+.addressContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Adres link butonunuz */
+.addressLink {
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: #007aff;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  text-align: center;
+
+  &:hover {
+    color: #005ecb;
+  }
+}
+
+.disconnectDropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 4px;
+  padding: 8px 12px;
+  font-size: 13px;
+  border-radius: 6px;
+  background: #f8f8f8;
+  color: #333;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  white-space: nowrap;
+  z-index: 950;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
 .item {
@@ -72,7 +145,6 @@
   font-size: 17px;
   line-height: 24px;
   letter-spacing: -0.7px;
-
   color: var(--primary-text-light);
 
   :global(.dark) & {
