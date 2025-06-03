@@ -45,7 +45,11 @@ $card-height: 173px;
   line-height: 20px;
   letter-spacing: -0.2px;
   vertical-align: bottom;
-  color: rgb(128, 128, 128);
+  color: var(--secondary-text-light);
+
+  :global(.dark) & {
+    color: var(--secondary-text-dark);
+  }
 }
 
 .imageWrapper {

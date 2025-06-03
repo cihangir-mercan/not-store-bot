@@ -110,3 +110,45 @@
     color: var(--primary-text-dark);
   }
 }
+
+.noResult {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+
+  :global(.light) & {
+    color: black;
+  }
+}
+
+.noResultTitle {
+  font-weight: 590;
+  font-size: 26px;
+  line-height: 32px;
+  letter-spacing: 0.38px;
+  text-align: center;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  color: var(--primary-text-light);
+
+  :global(.dark) & {
+    color: var(--primary-text-dark);
+  }
+}
+
+.noResultSubtitle {
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 22px;
+  letter-spacing: -0.43px;
+  text-align: center;
+  color: var(--secondary-text-light);
+
+  :global(.dark) & {
+    color: var(--secondary-text-dark);
+  }
+}

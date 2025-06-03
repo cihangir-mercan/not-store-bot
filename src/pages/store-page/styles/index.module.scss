@@ -42,6 +42,11 @@
   text-align: center;
   margin-top: 16px;
   margin-bottom: 8px;
+  color: var(--primary-text-light);
+
+  :global(.dark) & {
+    color: var(--primary-text-dark);
+  }
 }
 
 .noResultSubtitle {
@@ -50,5 +55,9 @@
   line-height: 22px;
   letter-spacing: -0.43px;
   text-align: center;
-  color: rgb(128, 128, 128);
+  color: var(--secondary-text-light);
+
+  :global(.dark) & {
+    color: var(--secondary-text-dark);
+  }
 }

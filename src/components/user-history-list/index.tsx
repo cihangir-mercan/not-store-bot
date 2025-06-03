@@ -64,6 +64,17 @@ export const UserHistoryList = ({
       </>
     )
 
+  if (history.length === 0)
+    return (
+      <>
+        {renderHeader()}
+        <div className={styles.noResult}>
+          <h2 className={styles.noResultTitle}>No history yet</h2>
+          <p className={styles.noResultSubtitle}>Let’s change that</p>
+        </div>
+      </>
+    )
+
   const Row = ({
     index,
     style,

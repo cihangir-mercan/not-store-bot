@@ -31,7 +31,11 @@
   line-height: 14px;
   letter-spacing: -0.2px;
   vertical-align: bottom;
-  color: rgb(128, 128, 128);
+  color: var(--secondary-text-light);
+
+  :global(.dark) & {
+    color: var(--secondary-text-dark);
+  }
 }
 
 .cartItemName {
@@ -51,7 +55,11 @@
   flex-wrap: wrap;
   gap: 4px;
   font-size: 13px;
-  color: rgb(128, 128, 128);
+  color: var(--secondary-text-light);
+
+  :global(.dark) & {
+    color: var(--secondary-text-dark);
+  }
 }
 
 .cartItemQuantity {
@@ -65,7 +73,11 @@
 
 .cartItemUnitPrice {
   font-style: italic;
-  color: rgb(128, 128, 128);
+  color: var(--secondary-text-light);
+
+  :global(.dark) & {
+    color: var(--secondary-text-dark);
+  }
 }
 
 .rightWrapper {
