@@ -1,11 +1,11 @@
 import type { JSX } from "react"
 import styles from "./styles/index.module.scss"
-import Shimmer from "@icons/shimmer.svg?react"
+import { AnimatedLine } from "@components/animated-line"
 
 export const ShimmerLoading = (): JSX.Element => {
   return (
     <div className={styles.status}>
-      <Shimmer />
+      <AnimatedLine />
     </div>
   )
 }
