@@ -18,16 +18,12 @@ export const LayoutWithBottomTabs = (): JSX.Element => {
   return (
     <div className={styles.appContainer} style={{ paddingBottom: offset }}>
       <div className={styles.content}>
-        {isStore && (
-          <div className={styles.tabContent} data-active={isStore}>
-            <StorePage />
-          </div>
-        )}
-        {isUser && (
-          <div className={styles.tabContent} data-active={isUser}>
-            <UserPage />
-          </div>
-        )}
+        <div className={styles.tabContent} data-active={isStore}>
+          <StorePage />
+        </div>
+        <div className={styles.tabContent} data-active={isUser}>
+          <UserPage />
+        </div>
       </div>
 
       <BottomTabBar />
