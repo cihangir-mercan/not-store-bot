@@ -13,7 +13,7 @@ import { ProductActions } from "@components/product-actions"
 import Share from "@icons/share.svg?react"
 import type { Swiper as SwiperClass } from "swiper"
 import { ProductImageSwiper } from "@components/product-image-swiper"
-import { ShimmerLoading } from "@components/shimmer-loading"
+import { RechargeLoading } from "@components/recharge-loading"
 import { ErrorText } from "@components/error-text"
 
 export const ProductPage: React.FC = () => {
@@ -35,7 +35,7 @@ export const ProductPage: React.FC = () => {
     }
   }, [navigate, tgWeb.BackButton])
 
-  if (isLoading) return <ShimmerLoading />
+  if (isLoading) return <RechargeLoading />
   if (isError) return <ErrorText />
 
   const product = data?.data.find(p => p.id === Number(productId))

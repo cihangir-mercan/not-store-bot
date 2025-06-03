@@ -8,7 +8,7 @@ import AutoSizer from "react-virtualized-auto-sizer"
 import styles from "./styles/index.module.scss"
 import type { ProductItem } from "@app/slices/itemsApiSlice"
 import type { VirtualHistoryItem } from "@pages/user-page"
-import { ShimmerLoading } from "@components/shimmer-loading"
+import { RechargeLoading } from "@components/recharge-loading"
 import { ErrorText } from "@components/error-text"
 import type { ItemData } from "@components/user-history-row"
 import { UserHistoryRow } from "@components/user-history-row"
@@ -87,7 +87,7 @@ export const UserHistoryList = ({
           handleToggleDisconnect={handleToggleDisconnect}
           handleDisconnect={handleDisconnect}
         />
-        <ShimmerLoading />
+        <RechargeLoading />
       </>
     )
   }

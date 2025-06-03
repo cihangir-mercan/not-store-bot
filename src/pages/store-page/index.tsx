@@ -8,7 +8,7 @@ import type { ProductItem } from "@app/slices/itemsApiSlice"
 import { ProductCard } from "@components/product-card"
 import { useScrollRestoreForStore } from "@components/layout-with-bottom-tabs/hooks/useScrollRestoreForStore.tsx"
 import Duck from "@icons/duck.svg?react"
-import { ShimmerLoading } from "@components/shimmer-loading"
+import { RechargeLoading } from "@components/recharge-loading"
 import { ErrorText } from "@components/error-text"
 
 export const StorePage = (): JSX.Element => {
@@ -41,7 +41,7 @@ export const StorePage = (): JSX.Element => {
       />
 
       {isLoading ? (
-        <ShimmerLoading />
+        <RechargeLoading />
       ) : isError ? (
         <ErrorText />
       ) : filteredItems.length === 0 ? (
