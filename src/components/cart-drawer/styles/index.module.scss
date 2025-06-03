@@ -19,9 +19,12 @@
   background: var(--primary-bg-light);
   border-radius: 16px 16px 0 0;
   box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
-  padding: 16px;
+  padding: 0;
   z-index: 1001;
   transition: transform 0.3s ease-out;
+  max-height: var(--tg-viewport-height);
+  display: flex;
+  flex-direction: column;
 
   :global(.dark) & {
     background: var(--primary-bg-dark);
@@ -29,11 +32,7 @@
 }
 
 .vaulHandle {
-  width: 40px;
-  height: 4px;
-  background: var(--primary-bg-dark);
-  border-radius: 2px;
-  margin: 0 auto 8px auto;
+  margin: 8px auto;
   cursor: grab;
 
   :global(.dark) & {
@@ -56,7 +55,14 @@
 }
 
 .header {
+  padding-left: 16px;
+  padding-right: 16px;
   margin-top: 0;
+}
+
+.footer {
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
 .headerTitle {
@@ -70,7 +76,7 @@
 .closeButton {
   position: absolute;
   right: 16px;
-  top: 28px;
+  top: 20px;
   width: 28px;
   height: 28px;
   border-radius: 50%;
@@ -94,12 +100,18 @@
 
 .body {
   text-align: center;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
 .noDataBody {
   min-height: 150px;
   display: flex;
   align-items: center;
+  justify-content: center;
 
   .noDataWrapper {
     flex: 1;
