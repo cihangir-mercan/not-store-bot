@@ -120,7 +120,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
               </button>
             </header>
 
-            <Sheet.Scroller>
+
               <div className={hasZeroLength ? styles.noDataBody : styles.body}>
                 {hasZeroLength ? (
                   <div className={styles.noDataWrapper}>
@@ -141,7 +141,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                   })
                 )}
               </div>
-            </Sheet.Scroller>
+
 
             <footer className={styles.footer} style={{ marginBottom }}>
               {cartItems.length > 0 ? (
