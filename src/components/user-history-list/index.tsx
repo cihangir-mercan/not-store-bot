@@ -20,6 +20,11 @@ export const UserHistoryList = ({
                                   onScroll,
                                   listRef,
                                 }: Props): JSX.Element => {
+  const tgWebApp = window.Telegram.WebApp
+  const user = tgWebApp.initDataUnsafe.user
+  const userPp = user?.photo_url
+  const firstName = user?.first_name
+
   const Row = ({
                  index,
                  style,
@@ -32,6 +37,15 @@ export const UserHistoryList = ({
     if ("type" in item && item.type === "header") {
       return (
         <div className={styles.listHeader} style={style}>
+          <div className={styles.centered}>
+            <img
+              src={userPp}
+              alt={firstName}
+              className={styles.headerImage}
+              loading="lazy"
+            />
+            <span className={styles.name}>{firstName ?? "User"}</span>
+          </div>
           <h2 className={styles.title}>History</h2>
         </div>
       )
@@ -78,7 +92,7 @@ export const UserHistoryList = ({
           height={height}
           width={width}
           itemCount={history.length}
-          itemSize={index => index === 0 ? 56 : 76}
+          itemSize={index => index === 0 ? 280 : 76}
           onScroll={onScroll}
         >
           {Row}

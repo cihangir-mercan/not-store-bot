@@ -1,8 +1,31 @@
 <svg width="200" height="100" viewBox="0 0 184 106" xmlns="http://www.w3.org/2000/svg">
-    <path d="M6 98L58.7661 35.4064L123.193 69.0137L178 6" stroke="#e0e0e0" stroke-width="12" fill="none"
-          stroke-linecap="round" stroke-linejoin="round"></path>
-    <path d="M6 98L58.7661 35.4064L123.193 69.0137L178 6" stroke="white" stroke-width="12" fill="none"
-          stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="30,100" stroke-dashoffset="0" opacity="0.5">
-        <animate attributeName="stroke-dashoffset" values="0;-130" dur="1.5s" repeatCount="indefinite"></animate>
-    </path>
+    <style>
+        .animated-stroke {
+        stroke-dasharray: 30, 100;
+        stroke-dashoffset: 0;
+        animation: dash-anim 1.5s linear infinite;
+        }
+
+        @keyframes dash-anim {
+        to {
+        stroke-dashoffset: -130;
+        }
+        }
+    </style>
+
+    <path d="M6 98L58.7661 35.4064L123.193 69.0137L178 6"
+          stroke="#e0e0e0"
+          stroke-width="12"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round" />
+
+    <path class="animated-stroke"
+          d="M6 98L58.7661 35.4064L123.193 69.0137L178 6"
+          stroke="white"
+          stroke-width="12"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          opacity="0.5" />
 </svg>
