@@ -22,9 +22,9 @@
 }
 
 .thumbnail.active {
-  border-color: white;
+  border-color: var(--primary-text-dark);
 
   :global(.light) & {
-    border-color: black;
+    border-color: var(--primary-text-light);
   }
 }

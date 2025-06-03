@@ -118,10 +118,10 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: white;
+  color: var(--primary-text-dark);
 
   :global(.light) & {
-    color: black;
+    color: var(--primary-text-light);
   }
 }
 

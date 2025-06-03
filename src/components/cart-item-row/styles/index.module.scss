@@ -43,10 +43,10 @@
   font-size: 17px;
   line-height: 24px;
   letter-spacing: -0.7px;
-  color: black;
+  color: var(--primary-text-light);
 
   :global(.dark) & {
-    color: white;
+    color: var(--primary-text-dark);
   }
 }
 
@@ -64,10 +64,10 @@
 
 .cartItemQuantity {
   font-weight: 500;
-  color: black;
+  color: var(--primary-text-light);
 
   :global(.dark) & {
-    color: white;
+    color: var(--primary-text-dark);
   }
 }
 
@@ -90,10 +90,10 @@
   font-size: 17px;
   line-height: 22px;
   letter-spacing: -0.43px;
-  color: black;
+  color: var(--primary-text-light);
 
   :global(.dark) & {
-    color: white;
+    color: var(--primary-text-dark);
   }
 }
 
@@ -107,12 +107,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: black;
-  color: white;
+  background: var(--primary-bg-dark);
+  color: var(--primary-text-dark);
 
   :global(.dark) & {
-    background: white;
-    color: black;
+    background: var(--primary-bg-light);
+    color: var(--primary-text-light);
   }
 
   svg {

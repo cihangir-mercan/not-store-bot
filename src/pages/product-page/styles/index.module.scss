@@ -3,13 +3,13 @@
   flex-direction: column;
   height: 100%;
 
-  background: black;
-  color: white;
+  background: var(--primary-bg-dark);
+  color: var(--primary-text-dark);
 
   /* Light‐theme overrides */
   :global(.light) & {
-    background: white;
-    color: black;
+    background: var(--primary-bg-light);
+    color: var(--primary-text-light);
   }
 }
 
@@ -23,12 +23,12 @@
   padding-right: 16px;
   padding-left: 16px;
 
-  background: black;
-  color: white;
+  background: var(--primary-bg-dark);
+  color: var(--primary-text-dark);
 
   :global(.light) & {
-    background: white;
-    color: black;
+    background: var(--primary-bg-light);
+    color: var(--primary-text-light);
   }
 }
 
@@ -44,12 +44,12 @@
   padding-right: 16px;
   padding-left: 16px;
 
-  background: black;
-  color: white;
+  background: var(--primary-bg-dark);
+  color: var(--primary-text-dark);
 
   :global(.light) & {
-    background: white;
-    color: black;
+    background: var(--primary-bg-light);
+    color: var(--primary-text-light);
   }
 }
 
@@ -67,10 +67,10 @@
   letter-spacing: 0.38px;
   margin: 0;
   padding: 0;
-  color: white;
+  color: var(--primary-text-dark);
 
   :global(.light) & {
-    color: black;
+    color: var(--primary-text-light);
   }
 }
 
@@ -93,11 +93,11 @@
   }
 
   .tagLeft {
-    color: black;
+    color: var(--primary-text-light);
     margin-right: 4px;
 
     :global(.dark) & {
-      color: white;
+      color: var(--primary-text-dark);
     }
   }
 

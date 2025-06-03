@@ -18,8 +18,8 @@
   }
 
   .addToCart {
-    background: black;
-    color: white;
+    background: var(--primary-bg-dark);
+    color: var(--primary-text-dark);
 
     &:disabled {
       opacity: 0.5;
@@ -42,11 +42,11 @@
   }
 
   .buyNow {
-    background: white;
-    color: black;
+    background: var(--primary-bg-light);
+    color: var(--primary-text-light);
 
     :global(.light) & {
-      background: #000;
+      background: var(--primary-bg-dark);
       color: #fff;
     }
   }

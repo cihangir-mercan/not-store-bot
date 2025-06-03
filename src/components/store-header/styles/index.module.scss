@@ -35,10 +35,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--primary-text-dark);
 
   :global(.light) & {
-    color: black;
+    color: var(--primary-text-light);
   }
 
   svg {
@@ -53,12 +53,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: white;
-  color: black;
+  background: var(--primary-bg-light);
+  color: var(--primary-text-light);
 
   :global(.light) & {
-    background: black;
-    color: white;
+    background: var(--primary-bg-dark);
+    color: var(--primary-text-dark);
   }
 }
 
@@ -93,12 +93,12 @@
   font-size: 17px;
   line-height: 22px;
   letter-spacing: -0.43px;
-  color: white;
+  color: var(--primary-text-dark);
   background: rgb(14, 14, 14);
 
   :global(.light) & {
     background: rgb(241, 241, 241);
-    color: black;
+    color: var(--primary-text-light);
   }
 
   &::placeholder {
@@ -127,12 +127,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--primary-text-dark);
   background: rgb(168, 168, 168);
 
   :global(.dark) & {
     background: rgb(87, 87, 87);
-    color: black;
+    color: var(--primary-text-light);
   }
 
   svg {
@@ -167,9 +167,9 @@
   font-size: 18px;
   line-height: 24px;
   letter-spacing: -0.2px;
-  color: black;
+  color: var(--primary-text-light);
 
   :global(.dark) & {
-    color: white;
+    color: var(--primary-text-dark);
   }
 }

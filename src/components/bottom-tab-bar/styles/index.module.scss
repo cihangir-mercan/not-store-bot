@@ -8,10 +8,10 @@ $bottom-tabbar-height: 60px;
   z-index: 55555;
   display: flex;
   border-top: 0.33px solid var(--system-border, #00000014);
-  background: white;
+  background: var(--primary-bg-light);
 
   :global(.dark) & {
-    background: black;
+    background: var(--primary-bg-dark);
   }
 
   .tab {
@@ -32,12 +32,12 @@ $bottom-tabbar-height: 60px;
     }
 
     &.tabActive {
-      color: black;
+      color: var(--primary-text-light);
       font-weight: bold;
 
       :global(.dark) & {
-        background: black;
-        color: white;
+        background: var(--primary-bg-dark);
+        color: var(--primary-text-dark);
       }
 
       img {

@@ -16,7 +16,7 @@
   left: 0;
   width: 100%;
   max-width: 480px;
-  background: white;
+  background: var(--primary-bg-light);
   border-radius: 16px 16px 0 0;
   box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
   padding: 16px;
@@ -24,20 +24,20 @@
   transition: transform 0.3s ease-out;
 
   :global(.dark) & {
-    background: black;
+    background: var(--primary-bg-dark);
   }
 }
 
 .vaulHandle {
   width: 40px;
   height: 4px;
-  background: black;
+  background: var(--primary-bg-dark);
   border-radius: 2px;
   margin: 0 auto 8px auto;
   cursor: grab;
 
   :global(.dark) & {
-    background: white;
+    background: var(--primary-bg-light);
   }
 }
 
@@ -48,10 +48,10 @@
   align-items: center;
   margin-bottom: 16px;
   margin-top: 16px;
-  color: black;
+  color: var(--primary-text-light);
 
   :global(.dark) & {
-    color: white;
+    color: var(--primary-text-dark);
   }
 }
 
@@ -79,12 +79,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: black;
-  color: white;
+  background: var(--primary-bg-dark);
+  color: var(--primary-text-dark);
 
   :global(.dark) & {
-    color: black;
-    background: white;
+    color: var(--primary-text-light);
+    background: var(--primary-bg-light);
   }
 
   svg {
@@ -114,12 +114,12 @@
   border-radius: 12px;
   border: none;
   cursor: pointer;
-  background: black;
-  color: white;
+  background: var(--primary-bg-dark);
+  color: var(--primary-text-dark);
 
   :global(.dark) & {
-    background-color: white;
-    color: black;
+    background-color: var(--primary-text-dark);
+    color: var(--primary-text-light);
   }
 }
 
@@ -136,11 +136,11 @@
   line-height: 32px;
   letter-spacing: 0.38px;
   text-align: center;
-  color: black;
+  color: var(--primary-text-light);
   margin-bottom: 8px;
 
   :global(.dark) & {
-    color: white;
+    color: var(--primary-text-dark);
   }
 }
 

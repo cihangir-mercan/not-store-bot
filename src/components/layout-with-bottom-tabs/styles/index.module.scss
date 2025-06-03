@@ -7,13 +7,13 @@ $bottom-tabbar-height: 60px;
   overflow: hidden;
 
   :global(.light) & {
-    background-color: white;
-    color: black;
+    background-color: var(--primary-text-dark);
+    color: var(--primary-text-light);
   }
 
   :global(.dark) & {
-    background-color: black;
-    color: white;
+    background-color: var(--primary-text-light);
+    color: var(--primary-text-dark);
   }
 }
 

@@ -36,5 +36,5 @@ $card-height: 173px;
 :global(.swiper-pagination-bullet-active) {
   width: 20px;
   height: 4px;
-  background: white;
+  background: var(--primary-bg-light);
 }
