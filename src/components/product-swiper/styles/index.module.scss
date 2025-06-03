@@ -27,8 +27,9 @@ $card-height: 173px;
 :global(.swiper-pagination-bullet) {
   width: 4px;
   height: 4px;
+  background: rgba(255, 255, 255, 0.5);
   border-radius: 999px;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
   margin: 0 3px !important;
 }
 
@@ -36,5 +37,4 @@ $card-height: 173px;
   width: 20px;
   height: 4px;
   background: white;
-  border-radius: 999px;
 }
