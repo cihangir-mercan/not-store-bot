@@ -1,6 +1,5 @@
 import type React from "react"
-import { useRef } from "react"
-import { useEffect, useState } from "react"
+import { useRef, useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router"
 import { useGetItemsQuery } from "@app/slices/itemsApiSlice"
 import styles from "./styles/index.module.scss"
@@ -8,11 +7,10 @@ import {
   BASE_URL_FOR_SHARE,
   DEFAULT_FIXED_HEIGHT,
   DEFAULT_PADDING_BOTTOM,
-} from "@pages/product-page/constants"
+} from "./constants"
 import { ThumbnailCarousel } from "@components/thumbnail-carousel"
 import { ProductActions } from "@components/product-actions"
 import Share from "@icons/share.svg?react"
-import { WalletModal } from "@components/wallet-modal"
 import type { Swiper as SwiperClass } from "swiper"
 import { ProductImageSwiper } from "@components/product-image-swiper"
 import { ShimmerLoading } from "@components/shimmer-loading"
@@ -22,21 +20,14 @@ export const ProductPage: React.FC = () => {
   const { productId } = useParams<{ productId: string }>()
   const navigate = useNavigate()
   const { data, isLoading, isError } = useGetItemsQuery(null)
+
   const [selectedIndex, setSelectedIndex] = useState(0)
   const swiperRef = useRef<SwiperClass | null>(null)
 
-  const [isHelloPopupOpen, setIsHelloPopupOpen] = useState(false)
-
   const tgWeb = window.Telegram.WebApp
-  const bottomInset = tgWeb.safeAreaInset.bottom
-  const paddingBottom = DEFAULT_PADDING_BOTTOM + bottomInset
-  const fixedHeight = DEFAULT_FIXED_HEIGHT + bottomInset
-
   useEffect(() => {
     tgWeb.BackButton.show()
-    const onBackButton = () => {
-      void navigate(-1)
-    }
+    const onBackButton = () => void navigate(-1)
     tgWeb.BackButton.onClick(onBackButton)
     return () => {
       tgWeb.BackButton.hide()
@@ -45,7 +36,6 @@ export const ProductPage: React.FC = () => {
   }, [navigate, tgWeb.BackButton])
 
   if (isLoading) return <ShimmerLoading />
-
   if (isError) return <ErrorText />
 
   const product = data?.data.find(p => p.id === Number(productId))
@@ -60,17 +50,12 @@ export const ProductPage: React.FC = () => {
       `https://t.me/share/url?` +
       `url=${encodeURIComponent(link)}` +
       `&text=${encodeURIComponent(text)}`
-
     tgWeb.openLink(telegramShareUrl)
   }
 
-  const handleBuyNow = () => {
-    setIsHelloPopupOpen(true)
-  }
-
-  const closeHelloPopup = () => {
-    setIsHelloPopupOpen(false)
-  }
+  const bottomInset = tgWeb.safeAreaInset.bottom
+  const paddingBottom = DEFAULT_PADDING_BOTTOM + bottomInset
+  const fixedHeight = DEFAULT_FIXED_HEIGHT + bottomInset
 
   return (
     <div className={styles.pageWrapper}>
@@ -123,16 +108,11 @@ export const ProductPage: React.FC = () => {
           swiperRef={swiperRef}
         />
 
-        {/* “Buy Now” butonuna tıklandığında handleBuyNow çalışacak */}
         <ProductActions
           productId={Number(productId)}
           maxAllowed={product.left}
-          onBuy={handleBuyNow}
         />
       </div>
-
-      {/* 5) WalletModal bileşeni: isOpen ve onClose props’larıyla */}
-      <WalletModal isOpen={isHelloPopupOpen} onClose={closeHelloPopup} />
     </div>
   )
 }

@@ -8,6 +8,7 @@
     "buyNow": "Buy Now",
     "outOfStock": "Out of stock",
     "incrementQuantity": "Increment quantity",
-    "decrementQuantity": "Decrement quantity"
+    "decrementQuantity": "Decrement quantity",
+    "connectWallet": "Buy Now"
   }
 }

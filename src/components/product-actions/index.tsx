@@ -1,4 +1,6 @@
-import type React from "react"
+// src/components/product-actions/index.tsx
+
+import React, { useState } from "react"
 import { useAppDispatch, useAppSelector } from "@app/hooks"
 import {
   addToCart,
@@ -11,26 +13,49 @@ import Plus from "@icons/plus.svg?react"
 import Minus from "@icons/minus.svg?react"
 import styles from "./styles/index.module.scss"
 
+import { useTonAddress, useTonConnectUI } from "@tonconnect/ui-react"
+import { handleSendTon } from "@components/wallet-modal/utils"
+import { SuccessModal } from "@components/success-modal"
+
 type ProductActionsProps = {
   productId: number
-  maxAllowed: number // typically `product.left`
-  onBuy?: () => void
+  maxAllowed: number // genelde product.left
 }
 
 export const ProductActions: React.FC<ProductActionsProps> = ({
   productId,
   maxAllowed,
-  onBuy,
 }) => {
-  const dispatch = useAppDispatch()
   const { t } = useTranslation()
-
+  const dispatch = useAppDispatch()
+  const [tonConnectUI] = useTonConnectUI()
+  const userAddress = useTonAddress()
+  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false)
   const qtyInCart = useAppSelector(state =>
     selectQuantityById(state)(productId),
   )
-
   const canAddMore = qtyInCart < maxAllowed
   const hasMoreThanZero = maxAllowed > 0
+
+  const handleConnectWallet = () => {
+    tonConnectUI.openModal().catch((err: unknown) => {
+      console.error("TON Connect açılırken hata:", err)
+    })
+  }
+
+  const handlePaymentSuccess = () => {
+    setIsSuccessModalOpen(true)
+  }
+
+  const handleBuyNow = async () => {
+    if (!userAddress) return
+    try {
+      await handleSendTon(tonConnectUI)
+      handlePaymentSuccess()
+    } catch (err) {
+      console.warn("TonConnect işlemi iptal edildi veya hata oluştu:", err)
+    }
+  }
 
   const addButtonText = canAddMore
     ? t("productPage.addToCart")
@@ -83,12 +108,24 @@ export const ProductActions: React.FC<ProductActionsProps> = ({
       {hasMoreThanZero && (
         <button
           className={styles.buyNow}
-          onClick={onBuy}
+          onClick={() => {
+            if (!userAddress) {
+              handleConnectWallet()
+            } else {
+              void handleBuyNow()
+            }
+          }}
           aria-label={t("productPage.buyNow")}
         >
           {t("productPage.buyNow")}
         </button>
       )}
+      <SuccessModal
+        isOpen={isSuccessModalOpen}
+        onClose={() => {
+          setIsSuccessModalOpen(false)
+        }}
+      />
     </div>
   )
 }
