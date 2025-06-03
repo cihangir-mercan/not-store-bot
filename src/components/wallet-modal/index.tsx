@@ -102,10 +102,7 @@ export const WalletModal: React.FC<WalletModalProps> = ({
             </button>
             {showDisconnectOption && (
               <button
-                className={clsx(
-                  styles.disconnectDropdown,
-                  styles.visible
-                )}
+                className={clsx(styles.disconnectDropdown, styles.visible)}
                 onClick={() => {
                   void handleDisconnect()
                 }}
@@ -114,7 +111,6 @@ export const WalletModal: React.FC<WalletModalProps> = ({
                 Disconnect Wallet
               </button>
             )}
-
           </div>
         )}
 
