@@ -18,6 +18,8 @@ import {
 import { handleSendNot } from "@components/product-actions/utils/handleSendNot"
 import { useTranslation } from "react-i18next"
 import { SuccessModal } from "@components/success-modal"
+import { useAppDispatch } from "@app/hooks"
+import { clearCart } from "@app/slices/cartSlice"
 
 type CartDrawerProps = {
   cartOpen: boolean
@@ -29,6 +31,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   setCartOpen,
 }) => {
   const { t } = useTranslation()
+  const dispatch = useAppDispatch()
   const tgWebApp = window.Telegram.WebApp
   const bottomInset = tgWebApp.safeAreaInset.bottom
   const marginBottom = MARGIN_BOTTOM + bottomInset
@@ -46,6 +49,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   }, 0)
 
   const handlePaymentSuccess = () => {
+    dispatch(clearCart())
     setIsSuccessModalOpen(true)
   }
 
