@@ -82,11 +82,13 @@ export const StoreHeader: React.FC<StoreHeaderProps> = ({
               onClick={() => {
                 setSearchMode(true)
               }}
+              aria-label={"Search"}
             >
               <Search />
             </button>
             <button
               className={styles.cartButton}
+              aria-label={"Cart"}
               onClick={() => {
                 setCartOpen(true)
               }}

@@ -62,7 +62,6 @@ export const UserHistoryRow = React.memo(
     return (
       <div
         className={styles.item}
-        role="listitem"
         key={`${String(purchase.id)}-${String(purchase.timestamp)}`}
         style={style}
       >
