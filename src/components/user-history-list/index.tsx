@@ -44,7 +44,7 @@ export const UserHistoryList = ({
 
   const handleOpenModal = () => {
     tonConnectUI.openModal().catch((err: unknown) => {
-      console.error("TonConnect açılırken hata:", err)
+      console.error("Error while opening tonConnect:", err)
     })
   }
 
@@ -55,7 +55,7 @@ export const UserHistoryList = ({
         setShowDisconnectOption(false)
       })
       .catch((err: unknown) => {
-        console.error("Disconnect sırasında hata:", err)
+        console.error("Error while disconnect:", err)
       })
   }
 
@@ -130,7 +130,7 @@ export const UserHistoryList = ({
   }
 
   return (
-    <AutoSizer>
+    <AutoSizer >
       {({ height, width }: { height: number; width: number }) => (
         <List
           ref={listRef}

@@ -48,7 +48,7 @@ export const UserHistoryHeader = ({
   }
 
   return (
-    <div className={styles.listHeader} style={style}>
+    <div className={styles.listHeader} style={style} role="banner">
       <div className={styles.centered}>
         <img
           src={userPp}
@@ -66,7 +66,7 @@ export const UserHistoryHeader = ({
           <button
             className={styles.connectLink}
             onClick={handleOpenModal}
-            aria-label="Cüzdanı bağla"
+            aria-label="Connect Wallet"
           >
             Connect Wallet
           </button>
@@ -77,7 +77,7 @@ export const UserHistoryHeader = ({
               onClick={() => {
                 handleToggleDisconnect()
               }}
-              aria-label="Adres seçenekleri"
+              aria-label="Address options"
             >
               {shortenAddress(userAddress)} ▾
             </button>
@@ -85,7 +85,7 @@ export const UserHistoryHeader = ({
               <button
                 className={`${styles.disconnectDropdown} ${styles.visible}`}
                 onClick={handleDisconnect}
-                aria-label="Cüzdan bağlantısını kes"
+                aria-label="Disconnect from wallet"
               >
                 Disconnect Wallet
               </button>

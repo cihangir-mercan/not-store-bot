@@ -5,6 +5,7 @@ import { useAppDispatch } from "@app/hooks"
 import { decrementQuantity } from "@app/slices/cartSlice"
 import type { ProductItem } from "@app/slices/itemsApiSlice"
 import type { CartItem } from "@app/slices/cartSlice"
+import { useTranslation } from "react-i18next"
 
 type CartItemRowProps = {
   product: ProductItem
@@ -15,6 +16,7 @@ export const CartItemRow: React.FC<CartItemRowProps> = ({
   product,
   cartItem,
 }) => {
+  const { t } = useTranslation()
   const dispatch = useAppDispatch()
 
   return (
@@ -46,6 +48,7 @@ export const CartItemRow: React.FC<CartItemRowProps> = ({
         <button
           className={styles.removeButton}
           onClick={() => dispatch(decrementQuantity({ id: product.id }))}
+          aria-label={t("productPage.decrementQuantity")}
         >
           <Minus />
         </button>

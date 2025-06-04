@@ -25,7 +25,7 @@ export const ProductCard: FC<ProductCardProps> = ({ item }) => {
         />
         {quantity > 0 && (
           <div className={styles.tick}>
-            <Check />
+            <Check aria-hidden="true" focusable="false" />
           </div>
         )}
       </div>

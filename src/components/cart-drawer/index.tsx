@@ -79,6 +79,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                 onClick={() => {
                   setCartOpen(false)
                 }}
+                aria-label="Close"
               >
                 <Close />
               </button>
