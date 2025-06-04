@@ -23,7 +23,7 @@ export const LayoutWithBottomTabs = (): JSX.Element => {
     <div
       className={styles.appContainer}
       style={{
-        paddingBottom: keyboardVisible ? 0 : offset,
+        paddingBottom: keyboardVisible ? bottomInset : offset,
       }}
     >
       <div className={styles.content}>
