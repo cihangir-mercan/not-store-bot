@@ -11,7 +11,9 @@ const getTabClasses = (isActive: boolean): string =>
 type BottomTabBarProps = {
   initialBottomInset: number
 }
-export const BottomTabBar = ({initialBottomInset}: BottomTabBarProps): JSX.Element => {
+export const BottomTabBar = ({
+  initialBottomInset,
+}: BottomTabBarProps): JSX.Element => {
   const tgWebApp = window.Telegram.WebApp
   const offset = BOTTOM_TABBAR_HEIGHT + initialBottomInset
   const user = tgWebApp.initDataUnsafe.user
