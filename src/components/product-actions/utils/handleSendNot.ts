@@ -3,7 +3,6 @@
  */
 import type { TonConnectUI } from "@tonconnect/ui-react"
 import { beginCell, Address, toNano } from "ton"
-import { v4 as uuidv4 } from "uuid"
 import { getJettonWalletAddress } from "@components/product-actions/utils/getJettonWalletAddress.ts"
 import {
   getTxValidUntil,
@@ -11,37 +10,8 @@ import {
   NO_JETTON_WALLET,
   NOT_MASTER_ADDRESS,
   RECEIVER_ADDRESS,
-  TON_AMOUNT,
   TON_FEE,
 } from "@components/product-actions/constants"
-
-export const handleSendTon = async (tonConnectUI: TonConnectUI) => {
-  const uniqueHash = uuidv4()
-
-  const body = beginCell()
-    .storeUint(0, 32)
-    .storeStringTail(`TON payment! - ${uniqueHash}`)
-    .endCell()
-
-  const tonTransaction = {
-    validUntil: getTxValidUntil(),
-    messages: [
-      {
-        address: RECEIVER_ADDRESS.toString(),
-        amount: TON_AMOUNT.toString(),
-        payload: body.toBoc().toString("base64"),
-      },
-    ],
-  }
-
-  try {
-    await tonConnectUI.sendTransaction(tonTransaction)
-    console.log("TON payment sent successfully")
-  } catch (error) {
-    console.error("Error sending TON transaction:", error)
-    throw error
-  }
-}
 
 export const handleSendNot = async (
   tonConnectUI: TonConnectUI,

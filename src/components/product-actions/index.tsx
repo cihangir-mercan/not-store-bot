@@ -11,14 +11,8 @@ import { useTranslation } from "react-i18next"
 import Plus from "@icons/plus.svg?react"
 import Minus from "@icons/minus.svg?react"
 import styles from "./styles/index.module.scss"
-import { useTonAddress, useTonConnectUI } from "@tonconnect/ui-react"
 import { SuccessModal } from "@components/success-modal"
-import { handleSendNot } from "@components/product-actions/utils/handleSendNot.ts"
-import toast from "react-hot-toast"
-import {
-  INSUFFICIENT_FUNDS,
-  NO_JETTON_WALLET,
-} from "@components/product-actions/constants"
+import { useBuyWithNot } from "../../hooks/useBuyWithNot.ts"
 
 type ProductActionsProps = {
   productId: number
@@ -33,49 +27,21 @@ export const ProductActions: React.FC<ProductActionsProps> = ({
 }) => {
   const { t } = useTranslation()
   const dispatch = useAppDispatch()
-  const [tonConnectUI] = useTonConnectUI()
-  const userAddress = useTonAddress()
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false)
   const qtyInCart = useAppSelector(state =>
     selectQuantityById(state)(productId),
   )
   const canAddMore = qtyInCart < maxAllowed
   const hasMoreThanZero = maxAllowed > 0
+  const { sendPayment } = useBuyWithNot()
 
   const handlePaymentSuccess = () => {
     setIsSuccessModalOpen(true)
   }
 
-  const showErrorToast = (msgKey: string) => {
-    toast.dismiss()
-    toast.error(t(`productPage.${msgKey}`))
-  }
-
-  const handleConnectWallet = () => {
-    tonConnectUI.openModal().catch(() => {
-      showErrorToast("walletOpenError")
-    })
-  }
-
   const handleBuyNow = async () => {
-    if (!userAddress) {
-      handleConnectWallet()
-      return
-    }
-
-    try {
-      await handleSendNot(tonConnectUI, userAddress, notPrice)
-      handlePaymentSuccess()
-    } catch (err: unknown) {
-      console.warn("handleSendNot threw:", err)
-      if (err instanceof Error && err.message === INSUFFICIENT_FUNDS) {
-        showErrorToast("insufficientFunds")
-      } else if (err instanceof Error && err.message === NO_JETTON_WALLET) {
-        showErrorToast("noJettonWallet")
-      } else {
-        showErrorToast("paymentCancelled")
-      }
-    }
+    const success = await sendPayment(notPrice)
+    if (success) handlePaymentSuccess()
   }
 
   const addButtonText = canAddMore
@@ -130,11 +96,7 @@ export const ProductActions: React.FC<ProductActionsProps> = ({
         <button
           className={styles.buyNow}
           onClick={() => {
-            if (!userAddress) {
-              handleConnectWallet()
-            } else {
-              void handleBuyNow()
-            }
+            void handleBuyNow()
           }}
           aria-label={t("productPage.buyNow")}
         >

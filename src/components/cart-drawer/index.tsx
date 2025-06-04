@@ -9,17 +9,10 @@ import styles from "./styles/index.module.scss"
 import Close from "@icons/close.svg?react"
 import { CartItemRow } from "@components/cart-item-row"
 import { MARGIN_BOTTOM } from "@components/cart-drawer/constants"
-import { useTonAddress, useTonConnectUI } from "@tonconnect/ui-react"
-import toast from "react-hot-toast"
-import {
-  INSUFFICIENT_FUNDS,
-  NO_JETTON_WALLET,
-} from "@components/product-actions/constants"
-import { handleSendNot } from "@components/product-actions/utils/handleSendNot"
-import { useTranslation } from "react-i18next"
 import { SuccessModal } from "@components/success-modal"
 import { useAppDispatch } from "@app/hooks"
 import { clearCart } from "@app/slices/cartSlice"
+import { useBuyWithNot } from "../../hooks/useBuyWithNot.ts"
 
 type CartDrawerProps = {
   cartOpen: boolean
@@ -30,14 +23,12 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   cartOpen,
   setCartOpen,
 }) => {
-  const { t } = useTranslation()
   const dispatch = useAppDispatch()
   const tgWebApp = window.Telegram.WebApp
   const bottomInset = tgWebApp.safeAreaInset.bottom
   const marginBottom = MARGIN_BOTTOM + bottomInset
-  const [tonConnectUI] = useTonConnectUI()
-  const userAddress = useTonAddress()
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false)
+  const { sendPayment } = useBuyWithNot()
 
   const cartItems = useAppSelector(selectCart)
   const hasZeroLength = cartItems.length === 0
@@ -53,34 +44,9 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
     setIsSuccessModalOpen(true)
   }
 
-  const showErrorToast = (msgKey: string) => {
-    toast.dismiss()
-    toast.error(t(`productPage.${msgKey}`))
-  }
-
-  const handleConnectWallet = () => {
-    tonConnectUI.openModal().catch(() => {
-      showErrorToast("walletOpenError")
-    })
-  }
-
   const handleBuyNow = async () => {
-    if (!userAddress) {
-      handleConnectWallet()
-      return
-    }
-    try {
-      await handleSendNot(tonConnectUI, userAddress, totalPrice)
-      handlePaymentSuccess()
-    } catch (err) {
-      if (err instanceof Error && err.message === INSUFFICIENT_FUNDS) {
-        showErrorToast("insufficientFunds")
-      } else if (err instanceof Error && err.message === NO_JETTON_WALLET) {
-        showErrorToast("noJettonWallet")
-      } else {
-        showErrorToast("paymentCancelled")
-      }
-    }
+    const success = await sendPayment(totalPrice)
+    if (success) handlePaymentSuccess()
   }
 
   return (
@@ -144,11 +110,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                 <button
                   className={styles.buyButton}
                   onClick={() => {
-                    if (!userAddress) {
-                      handleConnectWallet()
-                    } else {
-                      void handleBuyNow()
-                    }
+                    void handleBuyNow()
                   }}
                 >
                   <div className={styles.buttonText}>

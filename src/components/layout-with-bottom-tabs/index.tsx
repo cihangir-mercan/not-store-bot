@@ -32,23 +32,24 @@ export const LayoutWithBottomTabs = (): JSX.Element => {
 
   useEffect(() => {
     if (!isMobile) {
-      setDelayedKeyboardVisible(false);
-      return;
+      setDelayedKeyboardVisible(false)
+      return
     }
 
-    let timeout: NodeJS.Timeout;
+    let timeout: NodeJS.Timeout
 
     if (keyboardVisible) {
-      setDelayedKeyboardVisible(true);
+      setDelayedKeyboardVisible(true)
     } else {
       timeout = setTimeout(() => {
-        setDelayedKeyboardVisible(false);
-      }, KEYBOARD_CLOSE_DELAY_MS);
+        setDelayedKeyboardVisible(false)
+      }, KEYBOARD_CLOSE_DELAY_MS)
     }
 
-    return () => { clearTimeout(timeout); };
-  }, [keyboardVisible]);
-
+    return () => {
+      clearTimeout(timeout)
+    }
+  }, [keyboardVisible])
 
   return (
     <div
