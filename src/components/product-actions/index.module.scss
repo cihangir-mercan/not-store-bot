@@ -20,6 +20,7 @@
   .addToCart {
     background: var(--primary-bg-dark);
     color: var(--primary-text-dark);
+    cursor: pointer;
 
     &:disabled {
       opacity: 0.5;
@@ -44,6 +45,7 @@
   .buyNow {
     background: var(--primary-bg-light);
     color: var(--primary-text-light);
+    cursor: pointer;
 
     :global(.light) & {
       background: var(--primary-bg-dark);
