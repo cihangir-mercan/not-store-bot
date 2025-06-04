@@ -5,6 +5,8 @@ import { BOTTOM_TABBAR_HEIGHT } from "@components/layout-with-bottom-tabs/consta
 import { StorePage } from "@pages/store-page"
 import { UserPage } from "@pages/user-page"
 import { BottomTabBar } from "@components/bottom-tab-bar"
+import { useAppSelector } from "@app/hooks"
+import { selectSearchInputFocused } from "@app/slices/uiSlice"
 
 export const LayoutWithBottomTabs = (): JSX.Element => {
   const location = useLocation()
@@ -15,8 +17,16 @@ export const LayoutWithBottomTabs = (): JSX.Element => {
   const isStore = location.pathname === "/"
   const isUser = location.pathname === "/user"
 
+  const keyboardVisible = useAppSelector(selectSearchInputFocused)
+
   return (
-    <div className={styles.appContainer} style={{ paddingBottom: offset }}>
+    <div
+      className={styles.appContainer}
+      style={{
+        paddingBottom: keyboardVisible ? 0 : offset,
+        transition: "padding-bottom 0.25s ease",
+      }}
+    >
       <div className={styles.content}>
         <div className={styles.tabContent} data-active={isStore}>
           <StorePage />
@@ -26,7 +36,7 @@ export const LayoutWithBottomTabs = (): JSX.Element => {
         </div>
       </div>
 
-      <BottomTabBar />
+      {!keyboardVisible && <BottomTabBar />}
     </div>
   )
 }

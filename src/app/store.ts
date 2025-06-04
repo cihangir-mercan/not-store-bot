@@ -4,8 +4,14 @@ import { setupListeners } from "@reduxjs/toolkit/query"
 import { cartSlice } from "@app/slices/cartSlice.ts"
 import { itemsApiSlice } from "@app/slices/itemsApiSlice.ts"
 import { historyApiSlice } from "@app/slices/historyApiSlice.ts"
+import { uiSlice } from "@app/slices/uiSlice.ts"
 
-const rootReducer = combineSlices(cartSlice, itemsApiSlice, historyApiSlice)
+const rootReducer = combineSlices(
+  cartSlice,
+  uiSlice,
+  itemsApiSlice,
+  historyApiSlice,
+)
 
 export type RootState = ReturnType<typeof rootReducer>
 

@@ -6,9 +6,10 @@ import Cart from "@icons/cart.svg?react"
 import Search from "@icons/search.svg?react"
 import Px from "@icons/px.svg?react"
 import { useTranslation } from "react-i18next"
-import { useAppSelector } from "@app/hooks.ts"
+import { useAppDispatch, useAppSelector } from "@app/hooks.ts"
 import { selectTotalCount } from "@app/slices/cartSlice.ts"
 import Delete from "@icons/delete.svg?react"
+import { setSearchInputFocused } from "@app/slices/uiSlice.ts"
 
 type StoreHeaderProps = {
   setCartOpen: Dispatch<SetStateAction<boolean>>
@@ -28,6 +29,7 @@ export const StoreHeader: React.FC<StoreHeaderProps> = ({
   const { t } = useTranslation()
   const inputRef = useRef<HTMLInputElement>(null)
   const totalCount = useAppSelector(selectTotalCount)
+  const dispatch = useAppDispatch()
 
   return (
     <header className={styles.header}>
@@ -46,6 +48,8 @@ export const StoreHeader: React.FC<StoreHeaderProps> = ({
               onChange={e => {
                 setSearchValue(e.target.value)
               }}
+              onFocus={() => dispatch(setSearchInputFocused(true))}
+              onBlur={() => dispatch(setSearchInputFocused(false))}
             />
             {searchValue && (
               <button
