@@ -34,13 +34,7 @@ export const LayoutWithBottomTabs = (): JSX.Element => {
         </div>
       </div>
 
-      <div
-        style={{
-          visibility: keyboardVisible ? 'hidden' : 'visible',
-        }}
-      >
-        <BottomTabBar />
-      </div>
+      <BottomTabBar />
     </div>
   )
 }
