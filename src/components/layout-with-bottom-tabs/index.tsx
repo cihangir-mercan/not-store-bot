@@ -9,7 +9,7 @@ import { BottomTabBar } from "@components/bottom-tab-bar";
 import { useAppSelector } from "@app/hooks.ts";
 import { selectSearchInputFocused } from "@app/slices/uiSlice.ts";
 
-const KEYBOARD_CLOSE_DELAY_MS = 300;
+const KEYBOARD_CLOSE_DELAY_MS = 250;
 
 export const LayoutWithBottomTabs = (): JSX.Element => {
   const location = useLocation();
