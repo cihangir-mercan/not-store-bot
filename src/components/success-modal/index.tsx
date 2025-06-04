@@ -34,8 +34,12 @@ export const SuccessModal: React.FC<SuccessModalProps> = ({
           src={confettiGif}
           alt={"Confetti"}
         ></img>
-        <h2 id="success-modal-title" className={styles.title}>You Got It!</h2>
-        <p id="success-modal-desc" className={styles.subtitle}>Your purchase is on the way</p>
+        <h2 id="success-modal-title" className={styles.title}>
+          You Got It!
+        </h2>
+        <p id="success-modal-desc" className={styles.subtitle}>
+          Your purchase is on the way
+        </p>
         <button className={styles.closeButton} onClick={onClose}>
           Awesome
         </button>

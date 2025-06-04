@@ -130,7 +130,7 @@ export const UserHistoryList = ({
   }
 
   return (
-    <AutoSizer >
+    <AutoSizer>
       {({ height, width }: { height: number; width: number }) => (
         <List
           ref={listRef}

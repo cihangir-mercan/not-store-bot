@@ -53,6 +53,7 @@ export const LayoutWithBottomTabs = (): JSX.Element => {
 
   return (
     <div
+      id="layout-root"
       className={styles.appContainer}
       style={{
         paddingBottom: delayedKeyboardVisible ? 0 : offset,

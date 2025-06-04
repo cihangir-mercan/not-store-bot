@@ -21,7 +21,11 @@ export const BottomTabBar = ({
   const firstName = user?.first_name
 
   return (
-    <nav className={styles.bottomTabbar} aria-label="Main navigation" style={{ height: offset }}>
+    <nav
+      className={styles.bottomTabbar}
+      aria-label="Main navigation"
+      style={{ height: offset }}
+    >
       <NavLink to="/" className={({ isActive }) => getTabClasses(isActive)} end>
         <Not />
         <span className={styles.label}>Store</span>
