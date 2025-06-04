@@ -11,6 +11,7 @@ export const LayoutWithBottomTabs = (): JSX.Element => {
   const tgWebApp = window.Telegram.WebApp
   const bottomInset = tgWebApp.safeAreaInset.bottom
   const offset = BOTTOM_TABBAR_HEIGHT + bottomInset
+  const viewport = tgWebApp.viewportHeight
 
   const isStore = location.pathname === "/"
   const isUser = location.pathname === "/user"
@@ -18,7 +19,8 @@ export const LayoutWithBottomTabs = (): JSX.Element => {
   return (
     <div className={styles.appContainer} style={{ paddingBottom: offset }}>
       <div className={styles.content}>
-        <p>offset: {offset}</p>
+        <div>bottomInset: {bottomInset}</div>
+        <div>viewport: {viewport}</div>
         <div className={styles.tabContent} data-active={isStore}>
           <StorePage />
         </div>
