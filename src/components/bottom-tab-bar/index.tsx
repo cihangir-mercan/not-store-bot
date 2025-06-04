@@ -11,6 +11,7 @@ const getTabClasses = (isActive: boolean): string =>
 type BottomTabBarProps = {
   initialBottomInset: number
 }
+
 export const BottomTabBar = ({
   initialBottomInset,
 }: BottomTabBarProps): JSX.Element => {

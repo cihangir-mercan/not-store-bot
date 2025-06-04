@@ -14,7 +14,7 @@ import type { ItemData } from "@components/user-history-row"
 import { UserHistoryRow } from "@components/user-history-row"
 import { UserHistoryHeader } from "@components/user-history-reader"
 
-type Props = {
+type UserHistoryListProps = {
   history: VirtualHistoryItem[]
   itemMap: Map<number, ProductItem>
   onScroll: (props: ListOnScrollProps) => void
@@ -32,7 +32,7 @@ export const UserHistoryList = ({
   listRef,
   isLoading,
   isError,
-}: Props): JSX.Element => {
+}: UserHistoryListProps): JSX.Element => {
   const tgWebApp = window.Telegram.WebApp
   const user = tgWebApp.initDataUnsafe.user
   const userPp = user?.photo_url
