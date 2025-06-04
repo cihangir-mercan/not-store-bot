@@ -1,5 +1,5 @@
 import type React from "react"
-import styles from "./styles/index.module.scss"
+import styles from "./index.module.scss"
 import Minus from "@icons/minus.svg?react"
 import { useAppDispatch } from "@app/hooks"
 import { decrementQuantity } from "@app/slices/cartSlice"

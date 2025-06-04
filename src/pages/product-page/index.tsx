@@ -2,7 +2,7 @@ import type React from "react"
 import { useRef, useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router"
 import { useGetItemsQuery } from "@app/slices/itemsApiSlice"
-import styles from "./styles/index.module.scss"
+import styles from "./index.module.scss"
 import {
   BASE_URL_FOR_SHARE,
   DEFAULT_FIXED_HEIGHT,

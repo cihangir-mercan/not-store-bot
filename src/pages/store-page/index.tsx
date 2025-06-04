@@ -1,6 +1,6 @@
 import type { JSX } from "react"
 import { useState } from "react"
-import styles from "./styles/index.module.scss"
+import styles from "./index.module.scss"
 import { StoreHeader } from "@components/store-header"
 import { CartDrawer } from "@components/cart-drawer"
 import { useGetItemsQuery } from "@app/slices/itemsApiSlice"

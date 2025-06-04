@@ -1,6 +1,6 @@
 import type { JSX } from "react"
 import { NavLink } from "react-router"
-import styles from "./styles/index.module.scss"
+import styles from "./index.module.scss"
 import clsx from "clsx"
 import { BOTTOM_TABBAR_HEIGHT } from "@components/layout-with-bottom-tabs/constants"
 import Not from "@icons/not.svg?react"

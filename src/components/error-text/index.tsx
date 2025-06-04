@@ -1,5 +1,5 @@
 import type { JSX } from "react"
-import styles from "./styles/index.module.scss"
+import styles from "./index.module.scss"
 import { useTranslation } from "react-i18next"
 
 type ErrorTextProps = {

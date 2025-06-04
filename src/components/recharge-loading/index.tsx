@@ -1,5 +1,5 @@
 import type { JSX } from "react"
-import styles from "./styles/index.module.scss"
+import styles from "./index.module.scss"
 import Recharge from "@icons/recharge.svg?react"
 
 type RechargeLoadingProps = {

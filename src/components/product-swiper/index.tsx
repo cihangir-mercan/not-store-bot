@@ -2,7 +2,7 @@ import type { FC } from "react"
 import { Link } from "react-router"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination } from "swiper/modules"
-import styles from "./styles/index.module.scss"
+import styles from "./index.module.scss"
 
 type ProductSwiperProps = {
   images: string[]

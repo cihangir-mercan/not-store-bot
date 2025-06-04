@@ -1,7 +1,7 @@
 import type React from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import type { Swiper as SwiperClass } from "swiper"
-import styles from "./styles/index.module.scss"
+import styles from "./index.module.scss"
 
 type ProductImageSwiperProps = {
   images: string[]

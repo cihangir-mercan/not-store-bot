@@ -10,7 +10,7 @@ import {
 import { useTranslation } from "react-i18next"
 import Plus from "@icons/plus.svg?react"
 import Minus from "@icons/minus.svg?react"
-import styles from "./styles/index.module.scss"
+import styles from "./index.module.scss"
 import { SuccessModal } from "@components/success-modal"
 import { useBuyWithNot } from "../../hooks/useBuyWithNot.ts"
 

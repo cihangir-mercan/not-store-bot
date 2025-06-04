@@ -1,7 +1,7 @@
 import type { FC } from "react"
 import { Link } from "react-router"
 import type { ProductItem } from "@app/slices/itemsApiSlice"
-import styles from "./styles/index.module.scss"
+import styles from "./index.module.scss"
 import { ProductSwiper } from "@components/product-swiper"
 import Check from "@icons/check.svg?react"
 import { useAppSelector } from "@app/hooks.ts"

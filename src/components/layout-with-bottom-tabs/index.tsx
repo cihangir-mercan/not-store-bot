@@ -1,7 +1,7 @@
 import type { JSX } from "react"
 import { useEffect, useState } from "react"
 import { useLocation } from "react-router"
-import styles from "./styles/index.module.scss"
+import styles from "./index.module.scss"
 import { BOTTOM_TABBAR_HEIGHT } from "@components/layout-with-bottom-tabs/constants"
 import { StorePage } from "@pages/store-page"
 import { UserPage } from "@pages/user-page"

@@ -5,7 +5,7 @@ import type { ListOnScrollProps } from "react-window"
 import { VariableSizeList as List } from "react-window"
 import AutoSizer from "react-virtualized-auto-sizer"
 
-import styles from "./styles/index.module.scss"
+import styles from "./index.module.scss"
 import type { ProductItem } from "@app/slices/itemsApiSlice"
 import type { VirtualHistoryItem } from "@pages/user-page"
 import { RechargeLoading } from "@components/recharge-loading"

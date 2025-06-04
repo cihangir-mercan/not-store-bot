@@ -3,7 +3,7 @@ import type { CSSProperties, JSX } from "react"
 import dayjs from "dayjs"
 import type { ProductItem } from "@app/slices/itemsApiSlice"
 import type { VirtualHistoryItem } from "@pages/user-page"
-import styles from "./styles/index.module.scss"
+import styles from "./index.module.scss"
 import { UserHistoryHeader } from "@components/user-history-reader"
 
 export type ItemData = {

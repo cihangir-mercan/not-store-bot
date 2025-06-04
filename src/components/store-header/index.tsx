@@ -1,7 +1,7 @@
 import type React from "react"
 import { useRef } from "react"
 import type { Dispatch, SetStateAction } from "react"
-import styles from "./styles/index.module.scss"
+import styles from "./index.module.scss"
 import Cart from "@icons/cart.svg?react"
 import Search from "@icons/search.svg?react"
 import Px from "@icons/px.svg?react"

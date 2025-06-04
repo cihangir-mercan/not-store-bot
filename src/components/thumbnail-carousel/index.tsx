@@ -2,7 +2,7 @@ import type React from "react"
 import { useEffect, useRef } from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import clsx from "clsx"
-import styles from "./styles/index.module.scss"
+import styles from "./index.module.scss"
 import type { Swiper as SwiperClass } from "swiper"
 
 type ThumbnailCarouselProps = {

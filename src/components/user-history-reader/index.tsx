@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react"
 import type { CSSProperties, JSX } from "react"
-import styles from "./styles/index.module.scss"
+import styles from "./index.module.scss"
 
 export type UserHistoryHeaderProps = {
   style?: CSSProperties

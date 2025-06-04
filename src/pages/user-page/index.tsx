@@ -6,7 +6,7 @@ import {
 import { useGetItemsQuery } from "@app/slices/itemsApiSlice"
 import { UserHistoryList } from "@components/user-history-list"
 import { useScrollRestoreForList } from "./hooks/useScrollRestoreForList.tsx"
-import styles from "./styles/index.module.scss"
+import styles from "./index.module.scss"
 import {
   BOTTOM_TABBAR_HEIGHT,
   SCROLL_TO_TOP_MARGIN,
