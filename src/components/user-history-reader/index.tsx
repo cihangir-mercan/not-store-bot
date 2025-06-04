@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react"
 import type { CSSProperties, JSX } from "react"
 import styles from "./styles/index.module.scss"
 
@@ -8,7 +9,7 @@ export type UserHistoryHeaderProps = {
   userAddress?: string
   showDisconnectOption: boolean
   handleOpenModal: () => void
-  handleToggleDisconnect: () => void
+  handleToggleDisconnect: (force?: boolean) => void
   handleDisconnect: () => void
 }
 
@@ -22,6 +23,25 @@ export const UserHistoryHeader = ({
   handleToggleDisconnect,
   handleDisconnect,
 }: UserHistoryHeaderProps): JSX.Element => {
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        showDisconnectOption &&
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
+        handleToggleDisconnect(false)
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [showDisconnectOption, handleToggleDisconnect])
+
   const shortenAddress = (addr: string) => {
     if (addr.length <= 4) return addr
     return addr[0] + "…" + addr.slice(-3)
@@ -51,10 +71,12 @@ export const UserHistoryHeader = ({
             Connect Wallet
           </button>
         ) : (
-          <div className={styles.addressContainer}>
+          <div ref={containerRef} className={styles.addressContainer}>
             <button
               className={styles.addressLink}
-              onClick={handleToggleDisconnect}
+              onClick={() => {
+                handleToggleDisconnect()
+              }}
               aria-label="Adres seçenekleri"
             >
               {shortenAddress(userAddress)} ▾

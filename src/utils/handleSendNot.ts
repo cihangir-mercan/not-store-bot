@@ -3,7 +3,7 @@
  */
 import type { TonConnectUI } from "@tonconnect/ui-react"
 import { beginCell, Address, toNano } from "ton"
-import { getJettonWalletAddress } from "@components/product-actions/utils/getJettonWalletAddress.ts"
+import { getJettonWalletAddress } from "./getJettonWalletAddress.ts"
 import {
   getTxValidUntil,
   INSUFFICIENT_FUNDS,
@@ -11,7 +11,7 @@ import {
   NOT_MASTER_ADDRESS,
   RECEIVER_ADDRESS,
   TON_FEE,
-} from "@components/product-actions/constants"
+} from "../constants"
 
 export const handleSendNot = async (
   tonConnectUI: TonConnectUI,

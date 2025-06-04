@@ -59,8 +59,8 @@ export const UserHistoryList = ({
       })
   }
 
-  const handleToggleDisconnect = () => {
-    setShowDisconnectOption(prev => !prev)
+  const handleToggleDisconnect = (force?: boolean) => {
+    setShowDisconnectOption(prev => force ?? !prev)
   }
 
   const itemData: ItemData = {

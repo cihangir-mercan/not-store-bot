@@ -1,11 +1,8 @@
 // hooks/useBuyWithTon.ts
 import { useTonAddress, useTonConnectUI } from "@tonconnect/ui-react"
 import toast from "react-hot-toast"
-import { handleSendNot } from "@components/product-actions/utils/handleSendNot"
-import {
-  INSUFFICIENT_FUNDS,
-  NO_JETTON_WALLET,
-} from "@components/product-actions/constants"
+import { handleSendNot } from "../utils/handleSendNot.ts"
+import { INSUFFICIENT_FUNDS, NO_JETTON_WALLET } from "../constants"
 import { useTranslation } from "react-i18next"
 import { useCallback } from "react"
 
