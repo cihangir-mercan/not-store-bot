@@ -1,7 +1,7 @@
 import type React from "react"
 import ReactDOM from "react-dom"
 import styles from "./styles/index.module.scss"
-import confettiGif from "./confetti.gif" // <-- buraya ekledik
+import confettiGif from "./confetti.gif"
 
 type SuccessModalProps = {
   isOpen: boolean

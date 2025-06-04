@@ -83,17 +83,11 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
     <>
       {cartOpen && (
         <div
-          style={{
-            position: "fixed",
-            inset: 0,
-            zIndex: 799, // lower than Sheet (zIndex 800)
-            pointerEvents: "auto",
-            background: "transparent",
-          }}
+          className={styles.noClickBackdrop}
           onClick={e => {
             e.stopPropagation()
             setCartOpen(false)
-          }} // blocks clicks from reaching backdrop
+          }}
         />
       )}
 

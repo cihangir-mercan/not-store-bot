@@ -82,7 +82,6 @@ export const handleSendNot = async (
     jettonBalance = result.balance
   }
 
-  // → If balance is missing or too low, throw a special Error:
   if (!jettonBalance || jettonBalance < notAmountNano) {
     throw new Error(INSUFFICIENT_FUNDS)
   }

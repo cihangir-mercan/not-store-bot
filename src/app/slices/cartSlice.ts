@@ -1,5 +1,3 @@
-// stores/cartSlice.ts
-
 import { createAppSlice } from "../createAppSlice.ts"
 
 export type CartItem = {
@@ -72,16 +70,13 @@ export const cartSlice = createAppSlice({
   }),
 
   selectors: {
-    // Return all products in the cart as an array
     selectCart: cart => cart.products,
 
-    // Return the quantity for the given product ID (0 if not found)
     selectQuantityById: cart => (id: number) => {
       const found = cart.products.find(item => item.id === id)
       return found ? found.quantity : 0
     },
 
-    // Total number of items in the cart: sum of all quantities
     selectTotalCount: cart =>
       cart.products.reduce((sum, item) => sum + item.quantity, 0),
   },

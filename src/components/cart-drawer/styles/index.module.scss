@@ -129,3 +129,11 @@
   background-color: rgba(0, 0, 0, 0.5) !important;
   backdrop-filter: blur(8px) !important;
 }
+
+.noClickBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 799;
+  pointer-events: auto;
+  background: transparent;
+}

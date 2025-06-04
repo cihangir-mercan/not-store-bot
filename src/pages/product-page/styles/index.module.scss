@@ -6,7 +6,6 @@
   background: var(--primary-bg-dark);
   color: var(--primary-text-dark);
 
-  /* Light‐theme overrides */
   :global(.light) & {
     background: var(--primary-bg-light);
     color: var(--primary-text-light);
@@ -110,7 +109,6 @@
   }
 }
 
-/* Share button next to the title */
 .shareButton {
   background: transparent;
   border: none;

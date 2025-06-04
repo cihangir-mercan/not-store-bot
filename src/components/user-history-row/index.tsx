@@ -4,7 +4,7 @@ import dayjs from "dayjs"
 import type { ProductItem } from "@app/slices/itemsApiSlice"
 import type { VirtualHistoryItem } from "@pages/user-page"
 import styles from "./styles/index.module.scss"
-import { UserHistoryHeader } from "@components/user-history-reader" // adjust path if needed
+import { UserHistoryHeader } from "@components/user-history-reader"
 
 export type ItemData = {
   history: VirtualHistoryItem[]
@@ -40,7 +40,6 @@ export const UserHistoryRow = React.memo(
 
     const item = history[index]
 
-    // If this is the “header” item, render the Header
     if ("type" in item && item.type === "header") {
       return (
         <UserHistoryHeader
@@ -56,7 +55,6 @@ export const UserHistoryRow = React.memo(
       )
     }
 
-    // Otherwise it’s a purchase entry
     const purchase = item
     const product = itemMap.get(purchase.id)
     if (!product) return null
