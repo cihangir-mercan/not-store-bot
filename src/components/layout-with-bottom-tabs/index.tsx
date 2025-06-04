@@ -1,33 +1,53 @@
-import type { JSX} from "react";
-import { useEffect, useState } from "react"
-import { useLocation } from "react-router"
-import styles from "./styles/index.module.scss"
-import { BOTTOM_TABBAR_HEIGHT } from "@components/layout-with-bottom-tabs/constants"
-import { StorePage } from "@pages/store-page"
-import { UserPage } from "@pages/user-page"
-import { BottomTabBar } from "@components/bottom-tab-bar"
-import { useAppSelector } from "@app/hooks.ts"
-import { selectSearchInputFocused } from "@app/slices/uiSlice.ts"
+import type { JSX } from "react";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router";
+import styles from "./styles/index.module.scss";
+import { BOTTOM_TABBAR_HEIGHT } from "@components/layout-with-bottom-tabs/constants";
+import { StorePage } from "@pages/store-page";
+import { UserPage } from "@pages/user-page";
+import { BottomTabBar } from "@components/bottom-tab-bar";
+import { useAppSelector } from "@app/hooks.ts";
+import { selectSearchInputFocused } from "@app/slices/uiSlice.ts";
 
 export const LayoutWithBottomTabs = (): JSX.Element => {
-  const location = useLocation()
+  const location = useLocation();
   const [initialBottomInset, setInitialBottomInset] = useState(0);
-  const offset = BOTTOM_TABBAR_HEIGHT + initialBottomInset
+  const offset = BOTTOM_TABBAR_HEIGHT + initialBottomInset;
 
-  const isStore = location.pathname === "/"
-  const isUser = location.pathname === "/user"
-  const keyboardVisible = useAppSelector(selectSearchInputFocused)
+  const isStore = location.pathname === "/";
+  const isUser = location.pathname === "/user";
+  const keyboardVisible = useAppSelector(selectSearchInputFocused);
+
+  const [shouldShowTabBar, setShouldShowTabBar] = useState(true);
+
+  // Delay showing tabbar after keyboard closes
+  useEffect(() => {
+    let timeout: NodeJS.Timeout;
+
+    if (keyboardVisible) {
+      setShouldShowTabBar(false);
+    } else {
+      timeout = setTimeout(() => {
+        setShouldShowTabBar(true);
+      }, 300); // Adjust duration if animation takes longer
+    }
+
+    return () => { clearTimeout(timeout); };
+  }, [keyboardVisible]);
 
   useEffect(() => {
-    const tgWebApp = window.Telegram.WebApp
-    const bottomInset = tgWebApp.safeAreaInset.bottom
+    const tgWebApp = window.Telegram.WebApp;
+    const bottomInset = tgWebApp.safeAreaInset.bottom;
     setInitialBottomInset(bottomInset);
-  }, [])
+  }, []);
 
   return (
-    <div className={styles.appContainer} style={{
-      paddingBottom: keyboardVisible ? 0 : offset
-    }}>
+    <div
+      className={styles.appContainer}
+      style={{
+        paddingBottom: keyboardVisible ? 0 : offset,
+      }}
+    >
       <div className={styles.content}>
         <div className={styles.tabContent} data-active={isStore}>
           <StorePage />
@@ -37,12 +57,9 @@ export const LayoutWithBottomTabs = (): JSX.Element => {
         </div>
       </div>
 
-      {
-        !keyboardVisible &&
-        <BottomTabBar
-          initialBottomInset={initialBottomInset}
-        />
-      }
+      {shouldShowTabBar && (
+        <BottomTabBar initialBottomInset={initialBottomInset} />
+      )}
     </div>
-  )
-}
+  );
+};
