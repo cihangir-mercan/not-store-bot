@@ -9,6 +9,8 @@ import { BottomTabBar } from "@components/bottom-tab-bar";
 import { useAppSelector } from "@app/hooks.ts";
 import { selectSearchInputFocused } from "@app/slices/uiSlice.ts";
 
+const KEYBOARD_CLOSE_DELAY_MS = 300;
+
 export const LayoutWithBottomTabs = (): JSX.Element => {
   const location = useLocation();
   const [initialBottomInset, setInitialBottomInset] = useState(0);
@@ -18,22 +20,7 @@ export const LayoutWithBottomTabs = (): JSX.Element => {
   const isUser = location.pathname === "/user";
   const keyboardVisible = useAppSelector(selectSearchInputFocused);
 
-  const [shouldShowTabBar, setShouldShowTabBar] = useState(true);
-
-  // Delay showing tabbar after keyboard closes
-  useEffect(() => {
-    let timeout: NodeJS.Timeout;
-
-    if (keyboardVisible) {
-      setShouldShowTabBar(false);
-    } else {
-      timeout = setTimeout(() => {
-        setShouldShowTabBar(true);
-      }, 300); // Adjust duration if animation takes longer
-    }
-
-    return () => { clearTimeout(timeout); };
-  }, [keyboardVisible]);
+  const [delayedKeyboardVisible, setDelayedKeyboardVisible] = useState(keyboardVisible);
 
   useEffect(() => {
     const tgWebApp = window.Telegram.WebApp;
@@ -41,11 +28,25 @@ export const LayoutWithBottomTabs = (): JSX.Element => {
     setInitialBottomInset(bottomInset);
   }, []);
 
+  useEffect(() => {
+    let timeout: NodeJS.Timeout;
+
+    if (keyboardVisible) {
+      setDelayedKeyboardVisible(true);
+    } else {
+      timeout = setTimeout(() => {
+        setDelayedKeyboardVisible(false);
+      }, KEYBOARD_CLOSE_DELAY_MS);
+    }
+
+    return () => { clearTimeout(timeout); };
+  }, [keyboardVisible]);
+
   return (
     <div
       className={styles.appContainer}
       style={{
-        paddingBottom: keyboardVisible ? 0 : offset,
+        paddingBottom: delayedKeyboardVisible ? 0 : offset,
       }}
     >
       <div className={styles.content}>
@@ -57,7 +58,7 @@ export const LayoutWithBottomTabs = (): JSX.Element => {
         </div>
       </div>
 
-      {shouldShowTabBar && (
+      {!delayedKeyboardVisible && (
         <BottomTabBar initialBottomInset={initialBottomInset} />
       )}
     </div>
