@@ -72,7 +72,6 @@ export const handleSendNot = async (
 
   try {
     await tonConnectUI.sendTransaction(notTransaction)
-    console.log("NOT payment sent successfully")
   } catch (error) {
     console.error("Error sending NOT transaction:", error)
     throw error
