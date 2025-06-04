@@ -38,8 +38,8 @@ beforeAll(() => {
     },
   } as never
   beforeAll(() => {
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     window.matchMedia =
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       window.matchMedia ||
       (() => {
         return {
