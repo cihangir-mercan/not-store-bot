@@ -54,8 +54,12 @@ export const StoreHeader: React.FC<StoreHeaderProps> = ({
             {searchValue && (
               <button
                 className={styles.clearInput}
+                onMouseDown={e => {
+                  e.preventDefault()
+                }}
                 onClick={() => {
                   setSearchValue("")
+                  inputRef.current?.focus()
                 }}
                 aria-label="Clear search"
               >

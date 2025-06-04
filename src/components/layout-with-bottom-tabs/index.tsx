@@ -67,11 +67,7 @@ export const LayoutWithBottomTabs = (): JSX.Element => {
         >
           <StorePage />
         </div>
-        <div
-          className={styles.tabContent}
-          data-active={isUser}
-          inert={!isUser}
-        >
+        <div className={styles.tabContent} data-active={isUser} inert={!isUser}>
           <UserPage />
         </div>
       </div>
