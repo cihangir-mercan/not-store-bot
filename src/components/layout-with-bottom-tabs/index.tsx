@@ -36,10 +36,7 @@ export const LayoutWithBottomTabs = (): JSX.Element => {
 
       <div
         style={{
-          height: keyboardVisible ? 0 : offset,
-          opacity: keyboardVisible ? 0 : 1,
-          pointerEvents: keyboardVisible ? "none" : "auto",
-          transition: "opacity 0.2s ease, height 0.2s ease"
+          visibility: keyboardVisible ? 'hidden' : 'visible',
         }}
       >
         <BottomTabBar />
