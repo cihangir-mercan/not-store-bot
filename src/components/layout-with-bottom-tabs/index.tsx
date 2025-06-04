@@ -35,6 +35,7 @@ export const LayoutWithBottomTabs = (): JSX.Element => {
         transition: "padding-bottom 0.25s ease",
       }}
     >
+      <p>bottom inset: {bottomInset}</p>
       <div className={styles.content}>
         <div className={styles.tabContent} data-active={isStore}>
           <StorePage />
