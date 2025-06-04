@@ -9,3 +9,4 @@ export const NOT_MASTER_ADDRESS =
   "EQAvlWFDxGF2lXm67y4yzC17wYKD9A0guwPkMs1gOsM__NOT"
 export const INSUFFICIENT_FUNDS = "INSUFFICIENT_FUNDS"
 export const NO_JETTON_WALLET = "NO_JETTON_WALLET"
+export const isMobile = /Mobi|Android/i.test(navigator.userAgent)

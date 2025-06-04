@@ -8,7 +8,7 @@ import { UserPage } from "@pages/user-page"
 import { BottomTabBar } from "@components/bottom-tab-bar"
 import { useAppSelector } from "@app/hooks.ts"
 import { selectSearchInputFocused } from "@app/slices/uiSlice.ts"
-import { isMobile } from "../../utils/common-utils.tsx"
+import { isMobile } from "../../constants"
 
 const KEYBOARD_CLOSE_DELAY_MS = 300
 
