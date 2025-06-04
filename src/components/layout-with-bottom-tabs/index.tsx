@@ -1,4 +1,5 @@
-import { JSX, useEffect, useState } from "react"
+import type { JSX} from "react";
+import { useEffect, useState } from "react"
 import { useLocation } from "react-router"
 import styles from "./styles/index.module.scss"
 import { BOTTOM_TABBAR_HEIGHT } from "@components/layout-with-bottom-tabs/constants"
@@ -24,10 +25,10 @@ export const LayoutWithBottomTabs = (): JSX.Element => {
   }, [])
 
   return (
-    <div className={styles.appContainer} style={{ paddingBottom: offset }}>
+    <div className={styles.appContainer} style={{
+      paddingBottom: keyboardVisible ? 0 : offset
+    }}>
       <div className={styles.content}>
-        <p>initialBottomInset: {initialBottomInset}</p>
-        <p>keyboardVisible: {keyboardVisible}</p>
         <div className={styles.tabContent} data-active={isStore}>
           <StorePage />
         </div>
@@ -36,9 +37,12 @@ export const LayoutWithBottomTabs = (): JSX.Element => {
         </div>
       </div>
 
-      <BottomTabBar
-        initialBottomInset={initialBottomInset}
-      />
+      {
+        !keyboardVisible &&
+        <BottomTabBar
+          initialBottomInset={initialBottomInset}
+        />
+      }
     </div>
   )
 }
