@@ -67,12 +67,12 @@ $card-height: 173px;
   height: 22px;
   border-radius: 50%;
   z-index: 1;
-  background: var(--primary-bg-dark);
-  color: var(--primary-text-dark);
+  background: var(--primary-bg-light);
+  color: var(--primary-text-light);
 
   :global(.light) & {
-    background: var(--primary-bg-light);
-    color: var(--primary-text-light);
+    background: var(--primary-bg-dark);
+    color: var(--primary-text-dark);
   }
 
   svg {
