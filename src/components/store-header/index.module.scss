@@ -94,10 +94,10 @@
   line-height: 22px;
   letter-spacing: -0.43px;
   color: var(--primary-text-dark);
-  background: rgb(14, 14, 14);
+  background: rgb(255, 255, 255, 0.05);
 
   :global(.light) & {
-    background: rgb(241, 241, 241);
+    background: rgb(0, 0, 0, 0.05);
     color: var(--primary-text-light);
   }
 
