@@ -8,10 +8,12 @@ import Not from "@icons/not.svg?react"
 const getTabClasses = (isActive: boolean): string =>
   clsx(styles.tab, isActive && styles.tabActive)
 
-export const BottomTabBar = (): JSX.Element => {
+type BottomTabBarProps = {
+  initialBottomInset: number
+}
+export const BottomTabBar = ({initialBottomInset}: BottomTabBarProps): JSX.Element => {
   const tgWebApp = window.Telegram.WebApp
-  const bottomInset = tgWebApp.safeAreaInset.bottom
-  const offset = BOTTOM_TABBAR_HEIGHT + bottomInset
+  const offset = BOTTOM_TABBAR_HEIGHT + initialBottomInset
   const user = tgWebApp.initDataUnsafe.user
   const userPp = user?.photo_url
   const firstName = user?.first_name

@@ -36,7 +36,9 @@ export const LayoutWithBottomTabs = (): JSX.Element => {
         </div>
       </div>
 
-      <BottomTabBar />
+      <BottomTabBar
+        initialBottomInset={initialBottomInset}
+      />
     </div>
   )
 }
