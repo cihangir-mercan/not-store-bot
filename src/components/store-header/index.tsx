@@ -67,6 +67,7 @@ export const StoreHeader: React.FC<StoreHeaderProps> = ({
             className={styles.cancelSearch}
             onClick={() => {
               setSearchMode(false)
+              setSearchValue("")
             }}
           >
             Cancel
