@@ -24,7 +24,6 @@ export const LayoutWithBottomTabs = (): JSX.Element => {
       className={styles.appContainer}
       style={{
         paddingBottom: keyboardVisible ? 0 : offset,
-        transition: "padding-bottom 0.25s ease",
       }}
     >
       <div className={styles.content}>
