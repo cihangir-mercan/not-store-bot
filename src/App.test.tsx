@@ -29,9 +29,11 @@ vi.mock("@tonconnect/ui-react", async () => {
 import { App } from "./App"
 import { renderWithProviders } from "./utils/testUtils.tsx"
 
-test("App should have correct initial render", () => {
-  const { container } = renderWithProviders(<App />, { route: "/" })
+describe("App component", () => {
+  test("should render layout root on initial route", () => {
+    const { container } = renderWithProviders(<App />, { route: "/" })
 
-  const layoutRoot = container.querySelector("#layout-root")
-  expect(layoutRoot).toBeInTheDocument()
+    const layoutRoot = container.querySelector("#layout-root")
+    expect(layoutRoot).toBeInTheDocument()
+  })
 })
