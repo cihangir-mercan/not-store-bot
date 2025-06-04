@@ -26,6 +26,7 @@ export const LayoutWithBottomTabs = (): JSX.Element => {
       <div className={styles.content}>
         <div>bottomInset: {bottomInset}</div>
         <div>viewport: {viewport}</div>
+        <div>keyboardVisible: {keyboardVisible}</div>
         <div className={styles.tabContent} data-active={isStore}>
           <StorePage />
         </div>
